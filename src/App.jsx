@@ -53,7 +53,7 @@ function App() {
               </div>
               
               <h1 style={{ marginBottom: '1.5rem' }}>
-                Regularize seu patrimônio com a segurança de quem entende o Direito Imobiliário na <span style={{ color: 'var(--accent-gold)', fontStyle: 'italic' }}>USP</span>.
+                Regularize seu patrimônio com a segurança de quem é especialista em Direito Imobiliário.
               </h1>
               
               <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '2.5rem' }}>
@@ -186,10 +186,10 @@ function App() {
                  Excelência Jurídica desde 1989
                </p>
                <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-                 A Dra. Libia Cristiane Correa e Andrade e Florio possui sólida formação acadêmica pela Universidade de São Paulo (USP) e é Membro Efetivo da Comissão Especial de Direito Imobiliário da OAB/SP.
+                 A Dra. Libia Cristiane Correa e Andrade e Florio é <strong>Mestre em Direito pela Universidade de São Paulo (USP)</strong> e especialista em <strong>Direito Notarial e Registral</strong> pela Legale Educacional. Mantendo seu compromisso com a excelência técnica, é atualmente <strong>pós-graduanda em Direito Imobiliário e Processo Civil</strong> pela Damásio Educacional.
                </p>
                <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
-                 Com uma carreira forjada na prática rigorosa e no alto desempenho técnico há mais de três décadas, une a excelência acadêmica à prática jurídica de boutique. A entrega é uma solução personalizada para clientes que não abrem mão de segurança, discrição e sofisticação para os seus bens.
+                 Com mais de três décadas de experiência, une a profundidade acadêmica do mestrado à especialização em registros públicos. Membro Efetivo da Comissão Especial de Direito Imobiliário da OAB/SP, sua atuação é focada em oferecer segurança jurídica e soluções estratégicas personalizadas para a proteção do patrimônio de seus clientes.
                </p>
                
                <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem', borderTop: '1px solid var(--bg-surface-light)', paddingTop: '2rem' }}>
