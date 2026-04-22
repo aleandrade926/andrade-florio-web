@@ -53,11 +53,11 @@ function App() {
               </div>
               
               <h1 style={{ marginBottom: '1.5rem' }}>
-                Regularize seu patrimônio com a segurança de quem é especialista em Direito Imobiliário.
+                Regularize seu patrimônio com a segurança de uma advogada especialista em Direito Imobiliário.
               </h1>
               
               <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '2.5rem' }}>
-                Dra. Libia Florio oferece consultoria jurídica especializada para transformar imóveis irregulares em ativos seguros e valorizados. Proteja seu legado com agilidade e rigor técnico.
+                Dra. Libia Florio oferece assessoria jurídica imobiliária para transformar imóveis irregulares em ativos seguros. Conte com um escritório de advocacia especializado em direito imobiliário em São Paulo para proteger seu legado.
               </p>
               
               <WhatsAppButton text="Agendar Consultoria Especializada" />
@@ -148,22 +148,22 @@ function App() {
               {
                 icon: <Home size={32} color="var(--accent-gold)" />,
                 title: "Regularização de Imóveis",
-                desc: "Transformamos contratos de gaveta em escrituras definitivas, garantindo a propriedade plena."
+                desc: "Transformamos contratos de gaveta em escrituras definitivas com a expertise de uma advogada especialista."
               },
               {
                 icon: <Scale size={32} color="var(--accent-gold)" />,
                 title: "Usucapião Judicial e Extra",
-                desc: "O caminho mais seguro para quem possui a posse, mas ainda não tem o registro legal."
+                desc: "Atuação de advogado imobiliário em usucapião judicial e extrajudicial para consolidar sua propriedade legal."
               },
               {
                 icon: <Search size={32} color="var(--accent-gold)" />,
-                title: "Due Diligence Imobiliária",
-                desc: "Análise profunda de riscos para compras e vendas, evitando surpresas desagradáveis."
+                title: "Assessoria Jurídica Imobiliária",
+                desc: "Due diligence profunda de riscos para compras, vendas e contratos imobiliários."
               },
               {
                 icon: <BookOpen size={32} color="var(--accent-gold)" />,
                 title: "Inventários e Partilhas",
-                desc: "Gestão jurídica humanizada e técnica para a transição segura do patrimônio familiar."
+                desc: "Gestão jurídica especializada em direitos imobiliários para a transição segura do patrimônio familiar."
               }
             ].map((srv, idx) => (
               <div key={idx} className="card-surface">
@@ -183,13 +183,13 @@ function App() {
             <div style={{ order: 2 }}>
                <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Dra. Libia Florio</h2>
                <p style={{ color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.85rem', marginBottom: '2rem' }}>
-                 Excelência Jurídica desde 1989
+                 Advogada Especialista em Direito Imobiliário
                </p>
                <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-                 A Dra. Libia Cristiane Correa e Andrade e Florio é <strong>Mestre em Direito pela Universidade de São Paulo (USP)</strong> e especialista em <strong>Direito Notarial e Registral</strong> pela Legale Educacional. Mantendo seu compromisso com a excelência técnica, é atualmente <strong>pós-graduanda em Direito Imobiliário e Processo Civil</strong> pela Damásio Educacional.
+                 A Dra. Libia Cristiane Correa e Andrade e Florio é <strong>Mestre em Direito pela Universidade de São Paulo (USP)</strong> e especialista em <strong>Direito Notarial e Registral</strong> pela Legale Educacional. É referência como advogada de direito imobiliário em São Paulo, atuando com excelência.
                </p>
                <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
-                 Com mais de três décadas de experiência, une a profundidade acadêmica do mestrado à especialização em registros públicos. Membro Efetivo da Comissão Especial de Direito Imobiliário da OAB/SP, sua atuação é focada em oferecer segurança jurídica e soluções estratégicas personalizadas para a proteção do patrimônio de seus clientes.
+                 Com mais de três décadas de experiência prestando assessoria jurídica imobiliária, une a profundidade acadêmica à especialização em advocacia imobiliária. Membro Efetivo da Comissão Especial de Direito Imobiliário da OAB/SP, oferece soluções e segurança focada nos direitos imobiliários de seus clientes.
                </p>
                
                <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem', borderTop: '1px solid var(--bg-surface-light)', paddingTop: '2rem' }}>
@@ -231,7 +231,7 @@ function App() {
       <footer style={{ padding: '4rem 0', backgroundColor: 'var(--bg-color)', textAlign: 'center', color: 'var(--text-muted)' }}>
         <div className="container">
           <h2 style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', letterSpacing: '2px', color: 'var(--text-main)', marginBottom: '1rem' }}>
-            ANDRADE E FLORIO ESCRITÓRIO DE ADVOCACIA
+            ANDRADE E FLORIO ESCRITÓRIO DE ADVOCACIA ESPECIALIZADO EM DIREITO IMOBILIÁRIO
           </h2>
           <p style={{ fontSize: '0.85rem', opacity: 0.6 }}>© {new Date().getFullYear()} Andrade e Florio Escritório de Advocacia. Todos os direitos reservados.</p>
         </div>
