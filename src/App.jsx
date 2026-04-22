@@ -2,30 +2,33 @@ import React from 'react';
 import { Shield, Home, Search, BookOpen, MessageCircle, ArrowRight, CheckCircle2, GraduationCap, Scale } from 'lucide-react';
 import './App.css';
 
-const WHATSAPP_NUMBER = "5511945727148"; 
-const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Olá,%20vi%20seu%20anúncio%20e%20gostaria%20de%20uma%20consulta%20jurídica`;
+const handleWhatsAppClick = () => {
+  const url = 'https://wa.me/5511945727148?text=Olá,%20vi%20seu%20anúncio%20e%20gostaria%20de%20uma%20consulta%20jurídica';
 
-const handleWhatsAppClick = (e) => {
-  // Envia o sinal de conversão para o Google Ads
+  // Verifica se o Google Tag (gtag) está carregado
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'conversion', {
-      'send_to': 'AW-822096588/nlxZCPiY6qAcEMzlgIgD'
+      'send_to': 'AW-822096588/nlxZCPiY6qAcEMzlgIgD',
+      'event_callback': () => {
+        // Opcional: Alguma lógica após o disparo (o open já acontece abaixo)
+      }
     });
   }
+
+  // Abre o WhatsApp da Dra. Lídia em uma nova aba imediatamente
+  window.open(url, '_blank');
 };
 
 function WhatsAppButton({ text = "Falar com a Dra. Libia", outline = false }) {
   return (
-    <a 
-      href={WHATSAPP_LINK}
-      target="_blank"
-      rel="noopener noreferrer"
+    <button 
       className={outline ? "btn-outline" : "btn-gold"}
       onClick={handleWhatsAppClick}
+      style={{ border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', fontFamily: 'inherit', fontSize: '1rem', gap: '0.5rem' }}
     >
       <MessageCircle size={20} />
       {text}
-    </a>
+    </button>
   );
 }
 
@@ -248,10 +251,7 @@ function App() {
       </footer>
 
       {/* Botão Sticky WhatsApp */}
-      <a 
-        href={WHATSAPP_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
+      <button 
         style={{
           position: 'fixed',
           bottom: '2rem',
@@ -266,14 +266,16 @@ function App() {
           justifyContent: 'center',
           boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
           zIndex: 1000,
-          transition: 'transform 0.3s ease'
+          transition: 'transform 0.3s ease',
+          border: 'none',
+          cursor: 'pointer'
         }}
         onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'}
         onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
         onClick={handleWhatsAppClick}
       >
         <MessageCircle size={30} fill="currentColor" />
-      </a>
+      </button>
     </>
   )
 }
