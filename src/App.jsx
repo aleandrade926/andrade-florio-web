@@ -6,12 +6,21 @@ const WHATSAPP_NUMBER = "5511945727148";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%2C%20Dra.%20Libia.%20Gostaria%20de%20agendar%20uma%20consultoria%20sobre%20regulariza%C3%A7%C3%A3o%20imobili%C3%A1ria.`;
 
 function WhatsAppButton({ text = "Falar com a Dra. Libia", outline = false }) {
+  const handleClick = () => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-822096588/nlXZCPiY6qAcEMzlgIgD'
+      });
+    }
+  };
+
   return (
     <a 
       href={WHATSAPP_LINK}
       target="_blank"
       rel="noopener noreferrer"
       className={outline ? "btn-outline" : "btn-gold"}
+      onClick={handleClick}
     >
       <MessageCircle size={20} />
       {text}
@@ -260,6 +269,13 @@ function App() {
         }}
         onMouseOver={e => e.currentTarget.style.transform = 'scale(1.1)'}
         onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+        onClick={() => {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'conversion', {
+              'send_to': 'AW-822096588/nlXZCPiY6qAcEMzlgIgD'
+            });
+          }
+        }}
       >
         <MessageCircle size={30} fill="currentColor" />
       </a>
