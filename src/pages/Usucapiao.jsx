@@ -59,7 +59,7 @@ export default function UsucapiaoPage() {
         <div className="container">
           <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
             <Scale size={40} color="var(--accent-gold)" style={{ margin: '0 auto 1.5rem auto' }} />
-            <h2 style={{ marginBottom: '2rem', fontSize: '2.2rem' }}>O fim do medo da desapropriação.</h2>
+            <h2 style={{ marginBottom: '2rem', fontSize: '2.2rem' }}>O fim do medo da perda da posse.</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'left' }}>
               <p style={{ fontSize: '1.2rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                 <CheckCircle2 color="var(--accent-gold)" style={{ flexShrink: 0, marginTop: '4px' }} />
