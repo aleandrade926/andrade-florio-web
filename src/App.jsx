@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Shield, Home, Search, BookOpen, MessageCircle, ArrowRight, CheckCircle2, GraduationCap, Scale } from 'lucide-react';
 import './App.css';
 
@@ -39,6 +39,8 @@ function WhatsAppButton({ text = "Falar com a Dra. Libia", outline = false }) {
 }
 
 function App() {
+  const [isDiplomaOpen, setIsDiplomaOpen] = useState(false);
+
   return (
     <>
       {/* Header - Navegação Cega */}
@@ -236,13 +238,44 @@ function App() {
                </div>
             </div>
             <div style={{ order: 1 }}>
-               {/* Fundo decorativo */}
-               <div style={{ background: 'var(--bg-surface-light)', padding: '2rem', border: '1px solid var(--accent-gold)' }}>
-                 <GraduationCap size={40} color="var(--text-muted)" style={{ opacity: 0.5, marginBottom: '1rem' }} />
-                 <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.8rem', fontStyle: 'italic', marginBottom: '1rem' }}>
-                   "O verdadeiro luxo é deitar a cabeça no travesseiro sabendo que o seu legado está absolutamente blindado e intocável."
-                 </h3>
+               {/* Diploma USP */}
+               <div 
+                 style={{ 
+                   position: 'relative', 
+                   padding: '1rem', 
+                   background: 'var(--bg-surface-light)', 
+                   border: '1px solid var(--accent-gold)',
+                   cursor: 'pointer',
+                   overflow: 'hidden'
+                 }}
+                 onClick={() => setIsDiplomaOpen(true)}
+                 onMouseOver={e => e.currentTarget.lastChild.style.opacity = '1'}
+                 onMouseOut={e => e.currentTarget.lastChild.style.opacity = '0'}
+               >
+                 <img 
+                   src="/diploma-usp.jpg" 
+                   alt="Diploma de Mestrado na USP - Dra. Libia Florio" 
+                   style={{ width: '100%', height: 'auto', display: 'block', border: '1px solid var(--bg-surface)' }}
+                 />
+                 <div style={{
+                   position: 'absolute',
+                   top: 0, left: 0, width: '100%', height: '100%',
+                   background: 'rgba(17, 17, 17, 0.7)',
+                   display: 'flex',
+                   flexDirection: 'column',
+                   alignItems: 'center',
+                   justifyContent: 'center',
+                   opacity: 0,
+                   transition: 'opacity 0.3s ease',
+                   pointerEvents: 'none'
+                 }}>
+                   <Search size={40} color="var(--accent-gold)" style={{ marginBottom: '0.5rem' }} />
+                   <span style={{ color: 'var(--accent-gold)', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem' }}>Ampliar</span>
+                 </div>
                </div>
+               <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '1rem', fontStyle: 'italic' }}>
+                 Mestrado em Direito Comercial - Universidade de São Paulo (USP)
+               </p>
             </div>
           </div>
         </div>
@@ -308,6 +341,46 @@ function App() {
       >
         <MessageCircle size={30} fill="currentColor" />
       </button>
+
+      {/* Lightbox / Modal do Diploma */}
+      {isDiplomaOpen && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, width: '100vw', height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            backdropFilter: 'blur(5px)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '2rem'
+          }}
+          onClick={() => setIsDiplomaOpen(false)}
+        >
+          <div 
+            style={{ position: 'relative', maxWidth: '900px', width: '100%' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setIsDiplomaOpen(false)}
+              style={{
+                position: 'absolute', top: '-40px', right: '0',
+                background: 'none', border: 'none', color: 'var(--accent-gold)',
+                fontSize: '3rem', cursor: 'pointer', lineHeight: '1'
+              }}
+              aria-label="Fechar"
+            >
+              &times;
+            </button>
+            <img 
+              src="/diploma-usp.jpg" 
+              alt="Diploma USP em tamanho original" 
+              style={{ width: '100%', height: 'auto', border: '2px solid var(--accent-gold)', boxShadow: '0 10px 40px rgba(0,0,0,0.5)' }} 
+            />
+          </div>
+        </div>
+      )}
     </>
   )
 }
