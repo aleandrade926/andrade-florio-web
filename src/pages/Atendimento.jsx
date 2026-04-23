@@ -52,7 +52,7 @@ export default function AtendimentoPage() {
                <Clock size={20} color="var(--accent-gold)" /> Segunda a Sexta, 09h às 18h
              </div>
              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--text-muted)' }}>
-               <Mail size={20} color="var(--accent-gold)" /> contato@andradeflorio.com.br
+               <Mail size={20} color="var(--accent-gold)" /> libia@andradeflorio.com.br
              </div>
              <a href="https://www.linkedin.com/in/libiaflorio/" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--text-muted)', textDecoration: 'none' }}>
                <LinkedinIcon size={20} /> Perfil Oficial
