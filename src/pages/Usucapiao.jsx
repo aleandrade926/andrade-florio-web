@@ -123,7 +123,7 @@ export default function UsucapiaoPage() {
       </section>
 
       <section className="section" style={{ textAlign: 'center', backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--bg-surface-light)', borderTop: '1px solid var(--bg-surface-light)' }}>
-        <div className="container">
+        <div className="container" style={{ margin: '0 auto' }}>
            <h2 style={{ marginBottom: '1.5rem' }}>Sua posse transformada em propriedade.</h2>
            <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 3rem auto' }}>Agende sua consultoria agora e inicie o projeto de blindagem final do seu terreno ou construção.</p>
            <WhatsAppButton text="Agendar Consultoria de Usucapião" />

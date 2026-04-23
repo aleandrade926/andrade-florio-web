@@ -18,7 +18,7 @@ export default function AtendimentoPage() {
       </header>
 
       <main style={{ flexGrow: 1, padding: '4rem 0' }}>
-        <div className="container" style={{ maxWidth: '800px', textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
           <h1 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', fontFamily: 'var(--font-heading)' }}>
             Atendimento Estratégico
           </h1>

@@ -123,7 +123,7 @@ export default function InventariosPage() {
       </section>
 
       <section className="section" style={{ textAlign: 'center', backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--bg-surface-light)', borderTop: '1px solid var(--bg-surface-light)' }}>
-        <div className="container">
+        <div className="container" style={{ margin: '0 auto' }}>
            <h2 style={{ marginBottom: '1.5rem' }}>Evite multas pelo atraso na abertura.</h2>
            <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 3rem auto' }}>A lei prevê multas pesadas para inventários não iniciados em 60 dias. Fale conosco hoje mesmo.</p>
            <WhatsAppButton text="Falar agora com a Dra. Libia" />
