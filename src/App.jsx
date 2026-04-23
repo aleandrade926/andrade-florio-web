@@ -1,6 +1,14 @@
 import React from 'react';
-import { Shield, Home, Search, BookOpen, MessageCircle, ArrowRight, CheckCircle2, GraduationCap, Scale, Linkedin } from 'lucide-react';
+import { Shield, Home, Search, BookOpen, MessageCircle, ArrowRight, CheckCircle2, GraduationCap, Scale } from 'lucide-react';
 import './App.css';
+
+const LinkedinIcon = ({ size = 24 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+    <rect width="4" height="12" x="2" y="9"/>
+    <circle cx="4" cy="4" r="2"/>
+  </svg>
+);
 
 const handleWhatsAppClick = () => {
   const url = 'https://wa.me/5511945727148?text=Olá,%20vi%20seu%20anúncio%20e%20gostaria%20de%20uma%20consulta%20jurídica';
@@ -205,7 +213,7 @@ function App() {
                    onMouseOut={e => e.currentTarget.style.opacity = '1'}
                    aria-label="LinkedIn Dra. Libia Florio"
                  >
-                   <Linkedin size={32} />
+                   <LinkedinIcon size={32} />
                  </a>
                </div>
                <p style={{ color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.85rem', marginBottom: '2rem' }}>
@@ -269,7 +277,7 @@ function App() {
                onMouseOut={e => e.currentTarget.style.color = 'var(--text-muted)'}
                aria-label="LinkedIn Dra. Libia Florio"
              >
-               <Linkedin size={24} />
+               <LinkedinIcon size={24} />
              </a>
           </div>
           <p style={{ fontSize: '0.85rem', opacity: 0.6 }}>© {new Date().getFullYear()} Andrade e Florio Escritório de Advocacia. Todos os direitos reservados.</p>
