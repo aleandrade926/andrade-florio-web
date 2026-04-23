@@ -41,9 +41,9 @@ export default function AtendimentoPage() {
               <div style={{ backgroundColor: 'var(--bg-surface-light)', borderRadius: '50%', padding: '1rem', marginBottom: '1.5rem', border: '1px solid var(--accent-gold)' }}>
                  <MapPin size={32} color="var(--accent-gold)" />
               </div>
-              <h3 style={{ marginBottom: '1rem', fontSize: '1.3rem' }}>Escritório Sede</h3>
-              <p style={{ color: 'var(--text-muted)' }}>Av. Faria Lima, 2012</p>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Atendimento presencial somente com horário previamente agendado.</p>
+              <h3 style={{ marginBottom: '1rem', fontSize: '1.3rem' }}>Escritório Especializado</h3>
+              <p style={{ color: 'var(--text-muted)' }}>São Paulo - SP</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Consultoria técnica disponível sob agendamento.</p>
             </div>
           </div>
 
