@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Home, Search, BookOpen, MessageCircle, ArrowRight, CheckCircle2, GraduationCap, Scale } from 'lucide-react';
+import { Shield, Home, Search, BookOpen, MessageCircle, ArrowRight, CheckCircle2, GraduationCap, Scale, Linkedin } from 'lucide-react';
 import './App.css';
 
 const handleWhatsAppClick = () => {
@@ -194,7 +194,20 @@ function App() {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
             <div style={{ order: 2 }}>
-               <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Dra. Libia Florio</h2>
+               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
+                 <h2 style={{ fontSize: '2.5rem', margin: 0 }}>Dra. Libia Florio</h2>
+                 <a 
+                   href="https://www.linkedin.com/in/libiaflorio/" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   style={{ color: 'var(--accent-gold)', display: 'flex', transition: 'opacity 0.2s ease' }} 
+                   onMouseOver={e => e.currentTarget.style.opacity = '0.7'}
+                   onMouseOut={e => e.currentTarget.style.opacity = '1'}
+                   aria-label="LinkedIn Dra. Libia Florio"
+                 >
+                   <Linkedin size={32} />
+                 </a>
+               </div>
                <p style={{ color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.85rem', marginBottom: '2rem' }}>
                  Advogada Especialista em Direito Imobiliário
                </p>
@@ -246,6 +259,19 @@ function App() {
           <h2 style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', letterSpacing: '2px', color: 'var(--text-main)', marginBottom: '1rem' }}>
             ANDRADE E FLORIO ESCRITÓRIO DE ADVOCACIA ESPECIALIZADO EM DIREITO IMOBILIÁRIO
           </h2>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+             <a 
+               href="https://www.linkedin.com/in/libiaflorio/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               style={{ color: 'var(--text-muted)', transition: 'color 0.2s ease' }} 
+               onMouseOver={e => e.currentTarget.style.color = 'var(--accent-gold)'}
+               onMouseOut={e => e.currentTarget.style.color = 'var(--text-muted)'}
+               aria-label="LinkedIn Dra. Libia Florio"
+             >
+               <Linkedin size={24} />
+             </a>
+          </div>
           <p style={{ fontSize: '0.85rem', opacity: 0.6 }}>© {new Date().getFullYear()} Andrade e Florio Escritório de Advocacia. Todos os direitos reservados.</p>
         </div>
       </footer>
