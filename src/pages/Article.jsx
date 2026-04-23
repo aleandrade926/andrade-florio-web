@@ -18,15 +18,13 @@ export default function ArticlePage() {
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color='var(--accent-gold)'} onMouseOut={e => e.currentTarget.style.color='var(--text-muted)'}>
             <ArrowLeft size={16} /> Voltar para o Escritório
           </Link>
-          <span style={{ fontSize: '1rem', letterSpacing: '2px', color: 'var(--text-main)', fontWeight: 'bold' }}>
-            A&F<span style={{color: 'var(--accent-gold)'}}>.</span>
-          </span>
+          <img src="/favicon.svg" alt="Andrade e Florio" style={{ height: '40px', width: 'auto' }} />
         </div>
       </header>
 
       {/* Conteúdo do Artigo */}
       <main style={{ flexGrow: 1, padding: '4rem 0' }}>
-        <article className="container" style={{ maxWidth: '800px' }}>
+        <article className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
           
           {/* Cabeçalho do Artigo */}
           <header style={{ marginBottom: '4rem', textAlign: 'center' }}>
