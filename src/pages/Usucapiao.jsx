@@ -81,6 +81,28 @@ export default function UsucapiaoPage() {
         </div>
       </section>
 
+      {/* Prova Social / Legal */}
+      <section className="section" style={{ borderTop: '1px solid var(--bg-surface-light)' }}>
+        <div className="container">
+          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+            <h2 style={{ marginBottom: '1.5rem', fontSize: '2rem' }}>Resultados Comprovados</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '3rem' }}>
+              Nosso escritório atua ativamente no registro definitivo de propriedades, garantindo o direito à moradia e ao investimento de nossos clientes.
+            </p>
+            <div style={{ padding: '1rem', background: 'var(--bg-surface-light)', border: '1px solid var(--accent-gold)', borderRadius: '8px' }}>
+              <img 
+                src="/prova-usucapiao.png" 
+                alt="Registro de Usucapião Extrajudicial Concedido" 
+                style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '4px' }} 
+              />
+              <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '1rem', fontStyle: 'italic' }}>
+                * Trecho real de matrícula imobiliária com registro de Usucapião Extrajudicial garantido pela Dra. Libia. Dados pessoais preservados por sigilo profissional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Autoridade (Bio Boutique) */}
       <section className="section">
         <div className="container">
