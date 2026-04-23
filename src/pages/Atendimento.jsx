@@ -43,7 +43,16 @@ export default function AtendimentoPage() {
               </div>
               <h3 style={{ marginBottom: '1rem', fontSize: '1.3rem' }}>Escritório Especializado</h3>
               <p style={{ color: 'var(--text-muted)' }}>São Paulo - SP</p>
-              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Consultoria técnica disponível sob agendamento.</p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>Consultoria técnica disponível sob agendamento.</p>
+              <a 
+                href="https://calendly.com/libia-andradeflorio/30min" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-outline" 
+                style={{ fontSize: '1rem', width: '100%', marginBottom: 'auto' }}
+              >
+                Agendar Videoconferência
+              </a>
             </div>
           </div>
 
