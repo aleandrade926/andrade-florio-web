@@ -80,6 +80,14 @@ export function Footer() {
             >
               <LinkedinIcon size={24} />
             </a>
+            <a 
+              href="mailto:contato@andradeflorio.com.br" 
+              style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s ease', fontSize: '0.9rem', display: 'flex', alignItems: 'center' }} 
+              onMouseOver={e => e.currentTarget.style.color = 'var(--accent-gold)'}
+              onMouseOut={e => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              contato@andradeflorio.com.br
+            </a>
         </div>
         <p style={{ fontSize: '0.85rem', opacity: 0.6 }}>© {new Date().getFullYear()} Andrade e Florio Escritório de Advocacia. Todos os direitos reservados.</p>
       </div>
