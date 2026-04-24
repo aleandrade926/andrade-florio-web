@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { MessageCircle, MapPin, Mail, Clock } from 'lucide-react';
-import { WhatsAppButton, Footer, LinkedinIcon } from '../components/Shared';
+import { WhatsAppButton, Footer, Navbar, LinkedinIcon } from '../components/Shared';
 
 export default function AtendimentoPage() {
   useEffect(() => {
@@ -9,13 +9,7 @@ export default function AtendimentoPage() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: 'var(--bg-color)' }}>
-      <header style={{ padding: '2rem 0', borderBottom: '1px solid var(--bg-surface-light)' }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'center' }}>
-          <h1 style={{ fontSize: '1.5rem', letterSpacing: '2px', color: 'var(--accent-gold)' }}>
-            DRA. LIBIA FLORIO<span style={{color: 'var(--text-main)'}}>.</span>
-          </h1>
-        </div>
-      </header>
+      <Navbar />
 
       <main style={{ flexGrow: 1, padding: '4rem 0' }}>
         <div className="container" style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>

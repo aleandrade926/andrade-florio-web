@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, BookOpen, MessageCircle, CheckCircle2, Search } from 'lucide-react';
-import { WhatsAppButton, StickyWhatsApp, Footer, LinkedinIcon } from '../components/Shared';
+import { WhatsAppButton, StickyWhatsApp, Footer, Navbar, LinkedinIcon } from '../components/Shared';
 
 export default function InventariosPage() {
   const [isDiplomaOpen, setIsDiplomaOpen] = useState(false);
@@ -11,13 +11,7 @@ export default function InventariosPage() {
 
   return (
     <>
-      <header style={{ padding: '2rem 0', borderBottom: '1px solid var(--bg-surface-light)' }}>
-        <div className="container" style={{ display: 'flex', justifyContent: 'center' }}>
-          <h1 style={{ fontSize: '1.5rem', letterSpacing: '2px', color: 'var(--accent-gold)' }}>
-            DRA. LIBIA FLORIO<span style={{color: 'var(--text-main)'}}>.</span>
-          </h1>
-        </div>
-      </header>
+      <Navbar />
 
       <section className="section" style={{ paddingTop: '4rem', overflow: 'hidden' }}>
         <div className="container">

@@ -61,14 +61,50 @@ export function StickyWhatsApp() {
   );
 }
 
+export function Navbar() {
+  return (
+    <header style={{
+      padding: '1.2rem 0',
+      borderBottom: '1px solid var(--bg-surface-light)',
+      backgroundColor: 'var(--bg-color)',
+      position: 'sticky',
+      top: 0,
+      zIndex: 100,
+      backdropFilter: 'blur(10px)',
+    }}>
+      <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <a href="/" aria-label="Andrade e Florio Advogados - Página Inicial">
+          <img
+            src="/logo-af.png"
+            alt="Andrade e Florio Advogados"
+            style={{
+              height: '234px',
+              width: 'auto',
+              display: 'block',
+              transition: 'opacity 0.3s ease',
+            }}
+            onMouseOver={e => e.currentTarget.style.opacity = '0.85'}
+            onMouseOut={e => e.currentTarget.style.opacity = '1'}
+          />
+        </a>
+      </div>
+    </header>
+  );
+}
+
 export function Footer() {
   return (
-    <footer style={{ padding: '4rem 0', backgroundColor: 'var(--bg-color)', textAlign: 'center', color: 'var(--text-muted)' }}>
+    <footer style={{ padding: '4rem 0', backgroundColor: 'var(--bg-color)', textAlign: 'center', color: 'var(--text-muted)', borderTop: '1px solid var(--bg-surface-light)' }}>
       <div className="container">
-        <h2 style={{ fontFamily: 'var(--font-body)', fontSize: '1rem', letterSpacing: '2px', color: 'var(--text-main)', marginBottom: '1rem' }}>
-          ANDRADE E FLORIO ESCRITÓRIO DE ADVOCACIA ESPECIALIZADO EM DIREITO IMOBILIÁRIO
-        </h2>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+        {/* Logo no footer */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+          <img
+            src="/logo-af.png"
+            alt="Andrade e Florio Advogados"
+            style={{ height: '182px', width: 'auto', opacity: 0.7 }}
+          />
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
             <a 
               href="https://www.linkedin.com/in/libiaflorio/" 
               target="_blank" 

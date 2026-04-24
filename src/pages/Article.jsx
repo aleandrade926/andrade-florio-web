@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { WhatsAppButton, StickyWhatsApp, Footer } from '../components/Shared';
+import { WhatsAppButton, StickyWhatsApp, Footer, Navbar } from '../components/Shared';
 
 export default function ArticlePage() {
   // Scroll para o topo ao carregar a página
@@ -12,13 +12,15 @@ export default function ArticlePage() {
   return (
     <div style={{ backgroundColor: 'var(--bg-color)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       
-      {/* Header Simples */}
-      <header style={{ padding: '2rem 0', borderBottom: '1px solid var(--bg-surface-light)', backgroundColor: 'var(--bg-surface)' }}>
+      <header style={{ padding: '1rem 0', borderBottom: '1px solid var(--bg-surface-light)', backgroundColor: 'var(--bg-color)', position: 'sticky', top: 0, zIndex: 100, backdropFilter: 'blur(10px)' }}>
         <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s', fontSize: '0.9rem' }} onMouseOver={e => e.currentTarget.style.color='var(--accent-gold)'} onMouseOut={e => e.currentTarget.style.color='var(--text-muted)'}>
-            <ArrowLeft size={16} /> Voltar para o Escritório
+            <ArrowLeft size={16} /> Voltar
           </Link>
-          <img src="/favicon.svg" alt="Andrade e Florio" style={{ height: '40px', width: 'auto' }} />
+          <a href="/" aria-label="Andrade e Florio Advogados">
+            <img src="/logo-af.png" alt="Andrade e Florio Advogados" style={{ height: '56px', width: 'auto' }} />
+          </a>
+          <div style={{ width: '80px' }} />
         </div>
       </header>
 
