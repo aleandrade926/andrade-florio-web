@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Home, Search, BookOpen, MessageCircle, CheckCircle2, GraduationCap, Scale, ChevronRight } from 'lucide-react';
+import { Shield, Home, Search, BookOpen, MessageCircle, CheckCircle2, GraduationCap, Scale, ChevronRight, Building2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { WhatsAppButton, StickyWhatsApp, Footer, Navbar, LinkedinIcon } from '../components/Shared';
 
@@ -109,7 +109,7 @@ export default function HomePage() {
               { icon: <Home size={32} color="var(--accent-gold)" />, title: "Regularização de Imóveis", desc: "Transformamos contratos de gaveta em escrituras definitivas com a expertise de uma advogada especialista." },
               { icon: <Scale size={32} color="var(--accent-gold)" />, title: "Usucapião Judicial e Extra", desc: "Atuação de advogado imobiliário em usucapião judicial e extrajudicial para consolidar sua propriedade legal." },
               { icon: <Search size={32} color="var(--accent-gold)" />, title: "Assessoria Jurídica Imobiliária", desc: "Due diligence profunda de riscos para compras, vendas e contratos imobiliários." },
-              { icon: <BookOpen size={32} color="var(--accent-gold)" />, title: "Inventários e Partilhas", desc: "Gestão jurídica especializada em direitos imobiliários para a transição segura do patrimônio familiar." }
+              { icon: <BookOpen size={32} color="var(--accent-gold)" />, title: "Inventários e Partilhas", desc: "Gestão jurídica especializada em direitos imobiliários para a transição segura do patrimônio familiar." },
             ].map((srv, idx) => (
               <div key={idx} className="card-surface">
                 <div style={{ marginBottom: '1.5rem' }}>{srv.icon}</div>
@@ -117,7 +117,108 @@ export default function HomePage() {
                 <p style={{ color: 'var(--text-muted)' }}>{srv.desc}</p>
               </div>
             ))}
+
+            {/* ── CARD B2B INCORPORADORAS (5º card — destaque premium) ── */}
+            <div
+              className="card-surface"
+              style={{
+                border: '1px solid var(--accent-gold)',
+                background: 'linear-gradient(135deg, var(--bg-surface) 0%, rgba(212,175,55,0.06) 100%)',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              {/* Etiqueta premium */}
+              <div style={{
+                position: 'absolute',
+                top: '1.25rem',
+                right: '1.25rem',
+                fontSize: '0.65rem',
+                fontWeight: 700,
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: 'var(--accent-gold)',
+                border: '1px solid var(--accent-gold)',
+                padding: '0.2rem 0.6rem',
+                borderRadius: '2px',
+              }}>
+                Corporativo
+              </div>
+
+              <div style={{ marginBottom: '1.5rem' }}>
+                <Building2 size={32} color="var(--accent-gold)" />
+              </div>
+
+              {/* Título combinado — os dois conceitos em pé de igualdade */}
+              <h3 style={{ fontSize: '1.2rem', lineHeight: '1.45', marginBottom: '0.4rem' }}>
+                Consultoria Estratégica
+              </h3>
+              <p style={{
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                letterSpacing: '2px',
+                textTransform: 'uppercase',
+                color: 'var(--accent-gold)',
+                marginBottom: '1.5rem',
+              }}>
+                com Diagnóstico Jurídico-Fiscal · Para Incorporadoras
+              </p>
+
+              <p style={{ color: 'var(--text-muted)', marginBottom: '1.75rem', fontSize: '0.92rem', lineHeight: '1.7' }}>
+                Uma atuação de dupla entrada: mapeamos os riscos contratuais <em>e</em> as ineficiências tributárias do empreendimento, entregando uma visão integrada que protege o VGV e preserva a margem líquida.
+              </p>
+
+              {/* Dois pilares lado a lado */}
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.75rem' }}>
+                <div style={{ borderLeft: '2px solid var(--accent-gold)', paddingLeft: '0.75rem' }}>
+                  <div style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '0.5rem' }}>
+                    Jurídico
+                  </div>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                    {['Blindagem contratual', 'Auditoria de incorporação', 'Contratos de venda'].map(i => (
+                      <li key={i} style={{ fontSize: '0.82rem', color: 'var(--text-muted)', display: 'flex', gap: '0.4rem' }}>
+                        <span style={{ color: 'var(--accent-gold)', flexShrink: 0 }}>—</span>{i}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div style={{ borderLeft: '2px solid var(--accent-gold)', paddingLeft: '0.75rem' }}>
+                  <div style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '0.5rem' }}>
+                    Fiscal
+                  </div>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                    {['Engenharia tributária', 'Passivos ocultos', 'Reforma tributária 2026'].map(i => (
+                      <li key={i} style={{ fontSize: '0.82rem', color: 'var(--text-muted)', display: 'flex', gap: '0.4rem' }}>
+                        <span style={{ color: 'var(--accent-gold)', flexShrink: 0 }}>—</span>{i}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <a
+                href="https://wa.me/5511993725876?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Consultoria%20Estratégica%20para%20Incorporadoras."
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  color: 'var(--accent-gold)',
+                  fontWeight: 700,
+                  fontSize: '0.9rem',
+                  textDecoration: 'none',
+                  letterSpacing: '0.5px',
+                  transition: 'opacity 0.2s ease',
+                }}
+                onMouseOver={e => e.currentTarget.style.opacity = '0.7'}
+                onMouseOut={e => e.currentTarget.style.opacity = '1'}
+              >
+                Solicitar Diagnóstico <ChevronRight size={18} />
+              </a>
+            </div>
           </div>
+
         </div>
       </section>
 
