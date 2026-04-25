@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MessageCircle } from 'lucide-react';
 
 export const LinkedinIcon = ({ size = 24 }) => (
@@ -62,15 +62,24 @@ export function StickyWhatsApp() {
 }
 
 export function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <header style={{
-      padding: '1.2rem 0',
+      padding: scrolled ? '0.4rem 0' : '0.8rem 0',
       borderBottom: '1px solid var(--bg-surface-light)',
-      backgroundColor: 'var(--bg-color)',
+      backgroundColor: 'rgba(18, 18, 18, 0.95)',
       position: 'sticky',
       top: 0,
       zIndex: 100,
-      backdropFilter: 'blur(10px)',
+      backdropFilter: 'blur(12px)',
+      transition: 'padding 0.4s ease',
     }}>
       <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
         <a href="/" aria-label="Andrade e Florio Advogados - Página Inicial">
@@ -78,10 +87,10 @@ export function Navbar() {
             src="/logo-af.png"
             alt="Andrade e Florio Advogados"
             style={{
-              height: '234px',
+              height: scrolled ? '80px' : '260px',
               width: 'auto',
               display: 'block',
-              transition: 'opacity 0.3s ease',
+              transition: 'height 0.4s ease, opacity 0.3s ease',
             }}
             onMouseOver={e => e.currentTarget.style.opacity = '0.85'}
             onMouseOut={e => e.currentTarget.style.opacity = '1'}
@@ -90,7 +99,9 @@ export function Navbar() {
       </div>
     </header>
   );
+
 }
+
 
 export function Footer() {
   return (
