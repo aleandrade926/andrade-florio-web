@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Home, Search, BookOpen, MessageCircle, CheckCircle2, GraduationCap, Scale, ChevronRight, Building2 } from 'lucide-react';
+import { Shield, Home, Search, BookOpen, MessageCircle, CheckCircle2, GraduationCap, Scale, ChevronRight, Building2, ArrowLeftRight, Hammer, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { WhatsAppButton, StickyWhatsApp, Footer, Navbar, LinkedinIcon } from '../components/Shared';
 
@@ -145,13 +145,39 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Grid 4 serviços principais */}
+          {/* Grid 6 serviços — 3 colunas no desktop, 1 no mobile */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
             {[
-              { icon: <Home size={32} color="var(--accent-gold)" />, title: "Regularização de Imóveis", desc: "Transformamos contratos de gaveta em escrituras definitivas com a expertise de uma advogada especialista." },
-              { icon: <Scale size={32} color="var(--accent-gold)" />, title: "Usucapião Judicial e Extra", desc: "Atuação de advogado imobiliário em usucapião judicial e extrajudicial para consolidar sua propriedade legal." },
-              { icon: <Search size={32} color="var(--accent-gold)" />, title: "Assessoria Jurídica Imobiliária", desc: "Due diligence profunda de riscos para compras, vendas e contratos imobiliários." },
-              { icon: <BookOpen size={32} color="var(--accent-gold)" />, title: "Inventários e Partilhas", desc: "Gestão jurídica especializada em direitos imobiliários para a transição segura do patrimônio familiar." },
+              {
+                icon: <Home size={32} color="var(--accent-gold)" />,
+                title: "Regularização de Imóveis",
+                desc: "Transformamos contratos de gaveta em escrituras definitivas com a expertise de uma advogada especialista.",
+              },
+              {
+                icon: <Scale size={32} color="var(--accent-gold)" />,
+                title: "Usucapião Judicial e Extrajudicial",
+                desc: "Atuação especializada em usucapião judicial e extrajudicial para consolidar a propriedade legal do imóvel.",
+              },
+              {
+                icon: <Search size={32} color="var(--accent-gold)" />,
+                title: "Assessoria Jurídica Imobiliária",
+                desc: "Due diligence profunda de riscos para compras, vendas e contratos imobiliários.",
+              },
+              {
+                icon: <BookOpen size={32} color="var(--accent-gold)" />,
+                title: "Inventários e Partilhas",
+                desc: "Gestão jurídica especializada em direitos imobiliários para a transição segura do patrimônio familiar.",
+              },
+              {
+                icon: <ArrowLeftRight size={32} color="var(--accent-gold)" />,
+                title: "Permuta Imobiliária",
+                desc: "Estruturação jurídica de permutas físicas e financeiras — do imóvel familiar à operação entre incorporadoras — com segurança contratual em cada etapa.",
+              },
+              {
+                icon: <Hammer size={32} color="var(--accent-gold)" />,
+                title: "Built to Suit",
+                desc: "Assessoria em contratos atípicos de construção sob encomenda: locação, reversão e entrega de empreendimentos desenhados para o inquilino, com blindagem jurídica completa.",
+              },
             ].map((srv, idx) => (
               <div key={idx} className="card-surface">
                 <div style={{ marginBottom: '1.5rem' }}>{srv.icon}</div>
@@ -185,10 +211,10 @@ export default function HomePage() {
                   fontSize: '0.72rem', fontWeight: 700, letterSpacing: '2px',
                   textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '1.75rem',
                 }}>
-                  com Diagnóstico Jurídico-Fiscal · Para Incorporadoras
+                  Jurídico · Fiscal · Ambiental · Para Incorporadoras
                 </p>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.8', marginBottom: '2rem' }}>
-                  Uma atuação de dupla entrada: mapeamos os riscos contratuais <em>e</em> as ineficiências tributárias na raiz do empreendimento, entregando uma visão integrada que protege o VGV e preserva a margem líquida.
+                  Uma atuação de tripla entrada: mapeamos os riscos contratuais, as ineficiências tributárias <em>e</em> os passivos ambientais na raiz do empreendimento — entregando uma visão integrada que protege o VGV, preserva a margem líquida e assegura o licenciamento.
                 </p>
               </div>
               <a
@@ -206,27 +232,33 @@ export default function HomePage() {
               </a>
             </div>
 
-            {/* LADO DIREITO — pilares Jurídico + Fiscal */}
+            {/* LADO DIREITO — 3 pilares: Jurídico + Fiscal + Ambiental */}
             <div className="card-b2b-right">
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.5rem' }}>
                 {[
                   {
                     label: 'Jurídico',
-                    items: ['Blindagem contratual', 'Auditoria de incorporação', 'Contratos de permuta e venda', 'Gestão de distrato e entrega'],
+                    items: ['Blindagem contratual', 'Auditoria de incorporação', 'Contratos de permuta', 'Distrato e entrega'],
                   },
                   {
                     label: 'Fiscal',
-                    items: ['Engenharia tributária', 'Identificação de passivos ocultos', 'Adequação à Reforma 2026', 'Regimes de apuração por SPE'],
+                    items: ['Engenharia tributária', 'Passivos ocultos', 'Reforma tributária 2026', 'Regimes SPE'],
                   },
-                ].map(({ label, items }) => (
-                  <div key={label} style={{ borderLeft: '2px solid var(--accent-gold)', paddingLeft: '1.25rem' }}>
+                  {
+                    label: 'Ambiental',
+                    icon: <Leaf size={14} color="var(--accent-gold)" style={{ display: 'inline', marginLeft: '0.4rem', verticalAlign: 'middle' }} />,
+                    items: ['Licenciamento ambiental', 'EIA/RIMA estratégico', 'Compensações e passivos', 'Adequação regulatória'],
+                  },
+                ].map(({ label, icon, items }) => (
+                  <div key={label} style={{ borderLeft: '2px solid var(--accent-gold)', paddingLeft: '1rem' }}>
                     <div style={{
                       fontSize: '0.68rem', fontWeight: 700, letterSpacing: '2px',
                       textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '1rem',
-                    }}>{label}</div>
+                      display: 'flex', alignItems: 'center',
+                    }}>{label}{icon}</div>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                       {items.map(i => (
-                        <li key={i} style={{ fontSize: '0.9rem', color: 'var(--text-muted)', display: 'flex', gap: '0.5rem', lineHeight: '1.5' }}>
+                        <li key={i} style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', gap: '0.4rem', lineHeight: '1.5' }}>
                           <span style={{ color: 'var(--accent-gold)', flexShrink: 0, fontWeight: 700 }}>—</span>{i}
                         </li>
                       ))}
