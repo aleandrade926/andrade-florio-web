@@ -190,17 +190,18 @@ export default function HomePage() {
           {/* ── 5º CARD B2B — BANNER HORIZONTAL FULL-WIDTH ── */}
           <div className="card-surface card-b2b">
 
-            {/* Etiqueta Corporativo */}
-            <div style={{
-              position: 'absolute', top: '1.5rem', right: '1.5rem',
-              fontSize: '0.65rem', fontWeight: 700, letterSpacing: '2px',
-              textTransform: 'uppercase', color: 'var(--accent-gold)',
-              border: '1px solid var(--accent-gold)', padding: '0.2rem 0.7rem', borderRadius: '2px',
-            }}>Corporativo</div>
-
             {/* LADO ESQUERDO — identidade + proposta de valor */}
             <div className="card-b2b-left">
               <div>
+                {/* Etiqueta Corporativo — em fluxo, sem sobrepor a coluna Ambiental */}
+                <div style={{
+                  display: 'inline-block',
+                  fontSize: '0.65rem', fontWeight: 700, letterSpacing: '2px',
+                  textTransform: 'uppercase', color: 'var(--accent-gold)',
+                  border: '1px solid var(--accent-gold)', padding: '0.2rem 0.7rem',
+                  borderRadius: '2px', marginBottom: '1.5rem',
+                }}>Corporativo</div>
+
                 <div style={{ marginBottom: '1.5rem' }}>
                   <Building2 size={36} color="var(--accent-gold)" />
                 </div>
@@ -218,7 +219,7 @@ export default function HomePage() {
                 </p>
               </div>
               <a
-                href="https://wa.me/5511993725876?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Consultoria%20Estratégica%20para%20Incorporadoras."
+                href="https://wa.me/5511945727148?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Consultoria%20Estrat%C3%A9gica%20para%20Incorporadoras."
                 target="_blank" rel="noopener noreferrer"
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
