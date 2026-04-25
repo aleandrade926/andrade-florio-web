@@ -40,6 +40,27 @@ const b2bCardStyles = `
       padding-left: 0;
       padding-top: 2rem;
     }
+    .card-b2b-grid {
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+    }
+    .card-b2b-label {
+      font-size: 0.6rem !important;
+      letter-spacing: 1px !important;
+    }
+  }
+  .card-b2b-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .card-b2b-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 1.75rem;
   }
 `;
 
@@ -208,10 +229,7 @@ export default function HomePage() {
                 <h3 style={{ fontSize: '1.5rem', lineHeight: '1.35', marginBottom: '0.4rem' }}>
                   Consultoria Estratégica
                 </h3>
-                <p style={{
-                  fontSize: '0.72rem', fontWeight: 700, letterSpacing: '2px',
-                  textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '1.75rem',
-                }}>
+                <p className="card-b2b-label">
                   Jurídico · Fiscal · Ambiental · Para Incorporadoras
                 </p>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.8', marginBottom: '2rem' }}>
@@ -235,7 +253,7 @@ export default function HomePage() {
 
             {/* LADO DIREITO — 3 pilares: Jurídico + Fiscal + Ambiental */}
             <div className="card-b2b-right">
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.5rem' }}>
+              <div className="card-b2b-grid">
                 {[
                   {
                     label: 'Jurídico',
