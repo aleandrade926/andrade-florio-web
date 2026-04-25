@@ -3,11 +3,52 @@ import { Shield, Home, Search, BookOpen, MessageCircle, CheckCircle2, Graduation
 import { Link } from 'react-router-dom';
 import { WhatsAppButton, StickyWhatsApp, Footer, Navbar, LinkedinIcon } from '../components/Shared';
 
+const b2bCardStyles = `
+  .card-b2b {
+    display: flex;
+    flex-direction: row;
+    gap: 3.5rem;
+    align-items: flex-start;
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--accent-gold) !important;
+    background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(212,175,55,0.06) 100%);
+  }
+  .card-b2b-left {
+    flex: 0 0 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .card-b2b-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 1px solid rgba(212,175,55,0.25);
+    padding-left: 3rem;
+  }
+  @media (max-width: 768px) {
+    .card-b2b {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .card-b2b-right {
+      border-left: none;
+      border-top: 1px solid rgba(212,175,55,0.25);
+      padding-left: 0;
+      padding-top: 2rem;
+    }
+  }
+`;
+
 export default function HomePage() {
   const [isDiplomaOpen, setIsDiplomaOpen] = useState(false);
 
   return (
     <>
+      <style>{b2bCardStyles}</style>
       <Navbar />
 
       {/* Hero Section */}
@@ -104,6 +145,7 @@ export default function HomePage() {
             </p>
           </div>
 
+          {/* Grid 4 serviços principais */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
             {[
               { icon: <Home size={32} color="var(--accent-gold)" />, title: "Regularização de Imóveis", desc: "Transformamos contratos de gaveta em escrituras definitivas com a expertise de uma advogada especialista." },
@@ -117,99 +159,45 @@ export default function HomePage() {
                 <p style={{ color: 'var(--text-muted)' }}>{srv.desc}</p>
               </div>
             ))}
+          </div>
 
-            {/* ── CARD B2B INCORPORADORAS (5º card — destaque premium) ── */}
-            <div
-              className="card-surface"
-              style={{
-                border: '1px solid var(--accent-gold)',
-                background: 'linear-gradient(135deg, var(--bg-surface) 0%, rgba(212,175,55,0.06) 100%)',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
-              {/* Etiqueta premium */}
-              <div style={{
-                position: 'absolute',
-                top: '1.25rem',
-                right: '1.25rem',
-                fontSize: '0.65rem',
-                fontWeight: 700,
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                color: 'var(--accent-gold)',
-                border: '1px solid var(--accent-gold)',
-                padding: '0.2rem 0.6rem',
-                borderRadius: '2px',
-              }}>
-                Corporativo
-              </div>
+          {/* ── 5º CARD B2B — BANNER HORIZONTAL FULL-WIDTH ── */}
+          <div className="card-surface card-b2b">
 
-              <div style={{ marginBottom: '1.5rem' }}>
-                <Building2 size={32} color="var(--accent-gold)" />
-              </div>
+            {/* Etiqueta Corporativo */}
+            <div style={{
+              position: 'absolute', top: '1.5rem', right: '1.5rem',
+              fontSize: '0.65rem', fontWeight: 700, letterSpacing: '2px',
+              textTransform: 'uppercase', color: 'var(--accent-gold)',
+              border: '1px solid var(--accent-gold)', padding: '0.2rem 0.7rem', borderRadius: '2px',
+            }}>Corporativo</div>
 
-              {/* Título combinado — os dois conceitos em pé de igualdade */}
-              <h3 style={{ fontSize: '1.2rem', lineHeight: '1.45', marginBottom: '0.4rem' }}>
-                Consultoria Estratégica
-              </h3>
-              <p style={{
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                color: 'var(--accent-gold)',
-                marginBottom: '1.5rem',
-              }}>
-                com Diagnóstico Jurídico-Fiscal · Para Incorporadoras
-              </p>
-
-              <p style={{ color: 'var(--text-muted)', marginBottom: '1.75rem', fontSize: '0.92rem', lineHeight: '1.7' }}>
-                Uma atuação de dupla entrada: mapeamos os riscos contratuais <em>e</em> as ineficiências tributárias do empreendimento, entregando uma visão integrada que protege o VGV e preserva a margem líquida.
-              </p>
-
-              {/* Dois pilares lado a lado */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1.75rem' }}>
-                <div style={{ borderLeft: '2px solid var(--accent-gold)', paddingLeft: '0.75rem' }}>
-                  <div style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '0.5rem' }}>
-                    Jurídico
-                  </div>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                    {['Blindagem contratual', 'Auditoria de incorporação', 'Contratos de venda'].map(i => (
-                      <li key={i} style={{ fontSize: '0.82rem', color: 'var(--text-muted)', display: 'flex', gap: '0.4rem' }}>
-                        <span style={{ color: 'var(--accent-gold)', flexShrink: 0 }}>—</span>{i}
-                      </li>
-                    ))}
-                  </ul>
+            {/* LADO ESQUERDO — identidade + proposta de valor */}
+            <div className="card-b2b-left">
+              <div>
+                <div style={{ marginBottom: '1.5rem' }}>
+                  <Building2 size={36} color="var(--accent-gold)" />
                 </div>
-                <div style={{ borderLeft: '2px solid var(--accent-gold)', paddingLeft: '0.75rem' }}>
-                  <div style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '0.5rem' }}>
-                    Fiscal
-                  </div>
-                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                    {['Engenharia tributária', 'Passivos ocultos', 'Reforma tributária 2026'].map(i => (
-                      <li key={i} style={{ fontSize: '0.82rem', color: 'var(--text-muted)', display: 'flex', gap: '0.4rem' }}>
-                        <span style={{ color: 'var(--accent-gold)', flexShrink: 0 }}>—</span>{i}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <h3 style={{ fontSize: '1.5rem', lineHeight: '1.35', marginBottom: '0.4rem' }}>
+                  Consultoria Estratégica
+                </h3>
+                <p style={{
+                  fontSize: '0.72rem', fontWeight: 700, letterSpacing: '2px',
+                  textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '1.75rem',
+                }}>
+                  com Diagnóstico Jurídico-Fiscal · Para Incorporadoras
+                </p>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.8', marginBottom: '2rem' }}>
+                  Uma atuação de dupla entrada: mapeamos os riscos contratuais <em>e</em> as ineficiências tributárias na raiz do empreendimento, entregando uma visão integrada que protege o VGV e preserva a margem líquida.
+                </p>
               </div>
-
               <a
                 href="https://wa.me/5511993725876?text=Olá,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Consultoria%20Estratégica%20para%20Incorporadoras."
-                target="_blank"
-                rel="noopener noreferrer"
+                target="_blank" rel="noopener noreferrer"
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  color: 'var(--accent-gold)',
-                  fontWeight: 700,
-                  fontSize: '0.9rem',
-                  textDecoration: 'none',
-                  letterSpacing: '0.5px',
-                  transition: 'opacity 0.2s ease',
+                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                  color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.95rem',
+                  textDecoration: 'none', letterSpacing: '0.5px', transition: 'opacity 0.2s ease',
                 }}
                 onMouseOver={e => e.currentTarget.style.opacity = '0.7'}
                 onMouseOut={e => e.currentTarget.style.opacity = '1'}
@@ -217,6 +205,37 @@ export default function HomePage() {
                 Solicitar Diagnóstico <ChevronRight size={18} />
               </a>
             </div>
+
+            {/* LADO DIREITO — pilares Jurídico + Fiscal */}
+            <div className="card-b2b-right">
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+                {[
+                  {
+                    label: 'Jurídico',
+                    items: ['Blindagem contratual', 'Auditoria de incorporação', 'Contratos de permuta e venda', 'Gestão de distrato e entrega'],
+                  },
+                  {
+                    label: 'Fiscal',
+                    items: ['Engenharia tributária', 'Identificação de passivos ocultos', 'Adequação à Reforma 2026', 'Regimes de apuração por SPE'],
+                  },
+                ].map(({ label, items }) => (
+                  <div key={label} style={{ borderLeft: '2px solid var(--accent-gold)', paddingLeft: '1.25rem' }}>
+                    <div style={{
+                      fontSize: '0.68rem', fontWeight: 700, letterSpacing: '2px',
+                      textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '1rem',
+                    }}>{label}</div>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
+                      {items.map(i => (
+                        <li key={i} style={{ fontSize: '0.9rem', color: 'var(--text-muted)', display: 'flex', gap: '0.5rem', lineHeight: '1.5' }}>
+                          <span style={{ color: 'var(--accent-gold)', flexShrink: 0, fontWeight: 700 }}>—</span>{i}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
 
         </div>
