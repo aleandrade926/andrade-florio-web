@@ -33,23 +33,23 @@ const styles = `
 
   .op-logo-row {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    justify-content: center;
     margin-bottom: 2rem;
   }
 
   .op-logo-img {
-    height: 40px;
+    height: 120px;
     width: auto;
   }
 
-  .op-logo-text {
+  .op-footer-brand {
     font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
     font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: #1a1a1a;
+    margin-bottom: 0.75rem;
   }
 
   .op-title {
@@ -266,14 +266,8 @@ const styles = `
     page-break-inside: avoid;
   }
 
-  .op-footer-brand {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #1a1a1a;
-    margin-bottom: 0.75rem;
+  .op-footer-logo-wrap {
+    margin-bottom: 1rem;
   }
 
   .op-footer-contacts {
@@ -388,9 +382,12 @@ export default function OnePagerPage() {
           {/* ── HEADER ── */}
           <header className="op-header">
             <div className="op-logo-row">
-              <img src="/favicon.png" alt="Andrade e Florio" className="op-logo-img"
-                onError={e => { e.target.style.display = 'none'; }} />
-              <span className="op-logo-text">Andrade e Florio</span>
+              <img
+                src="/logo-af.png"
+                alt="Andrade e Florio Advogados"
+                className="op-logo-img"
+                onError={e => { e.target.style.display = 'none'; }}
+              />
             </div>
             <h1 className="op-title">Diagnóstico Jurídico-Fiscal<br />para Incorporadoras</h1>
             <p className="op-subtitle">
