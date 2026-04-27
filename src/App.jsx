@@ -8,6 +8,8 @@ import Atendimento from './pages/Atendimento';
 import OnePager from './pages/OnePager';
 import './App.css';
 
+import ManualUsucapiao from './pages/ManualUsucapiao';
+
 function App() {
   return (
     <Router>
@@ -18,6 +20,7 @@ function App() {
         <Route path="/servicos/inventarios" element={<Inventarios />} />
         <Route path="/atendimento" element={<Atendimento />} />
         <Route path="/onepager" element={<OnePager />} />
+        <Route path="/manual-usucapiao" element={<ManualUsucapiao />} />
       </Routes>
     </Router>
   );
