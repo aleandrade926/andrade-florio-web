@@ -169,13 +169,12 @@ const Sammarone = () => {
           <div className="s-bonus-grid">
             <div className="s-bonus-card">
               <div className="s-bonus-header">
-                <span className="s-bonus-label">Bônus 1</span>
+                <span className="s-bonus-label">Bônus</span>
                 <h3>Identificação de Oportunidades</h3>
               </div>
-              <p>Análise de eventuais oportunidades tributárias no curso do trabalho. Havendo oportunidade real e defensável (recuperação, redução):</p>
+              <p>Caso, no curso da parceria, seja identificada oportunidade concreta de recuperação, compensação, redução ou aproveitamento econômico, a Andrade Florio poderá conduzir a estratégia mediante honorários de êxito de:</p>
               <div className="s-success-fee">
                 <strong>15% sobre o benefício econômico efetivo</strong>
-                <span>(Somente se houver resultado real)</span>
               </div>
             </div>
 
@@ -186,10 +185,10 @@ const Sammarone = () => {
               </div>
               <ShieldCheck size={48} color="var(--accent-gold)" className="s-guarantee-icon" />
               <p className="s-guarantee-text">
-                Durante o prazo legal de fiscalização (até 5 anos), a Andrade Florio assumirá, <strong>sem cobrança de novos honorários</strong>, a representação da Sammarone em eventual questionamento do Fisco relacionado às nossas orientações.
+                Se a Andrade Florio orientar, estruturar ou assinar uma posição jurídica dentro do escopo contratado, a Sammarone não ficará sozinha caso o Fisco questione essa posição. Durante o prazo legal de fiscalização, <strong>atuaremos sem novos honorários advocatícios</strong> para defender administrativamente ou judicialmente aquilo que foi recomendado por nós.
               </p>
-              <p className="s-guarantee-subtext">
-                "Se nós orientarmos, não deixaremos a Sammarone sozinha caso o Fisco questione essa posição."
+              <p className="s-guarantee-subtext" style={{fontSize: '0.8rem', marginTop: '1rem', color: 'var(--text-muted)', fontStyle: 'normal'}}>
+                *Não estão incluídos tributos, multas, juros, custas, perícias, garantias judiciais, despesas de terceiros ou situações decorrentes de informações incompletas, fatos omitidos ou execução em desacordo com a orientação fornecida.
               </p>
             </div>
           </div>
@@ -219,7 +218,8 @@ const Sammarone = () => {
             </table>
           </div>
           <p className="s-anchoring-outro">
-            Em vez de contratar serviços isolados que podem superar facilmente a marca de R$ 60.000 a R$ 100.000 ao ano, a proposta cria um ambiente de segurança contínua com previsibilidade de caixa.
+            Contratados separadamente, esses entregáveis poderiam superar facilmente <strong>R$ 60.000 a R$ 100.000</strong> ao longo de 6 meses.<br/>
+            Nesta proposta, a Sammarone não está contratando atos isolados, mas uma retaguarda estratégica contínua por R$ 30.000 no período.
           </p>
         </div>
       </section>
@@ -246,60 +246,45 @@ const Sammarone = () => {
       {/* Investment */}
       <section className="s-section s-investment">
         <div className="container">
-          <h2 className="s-section-title">Formatos de Parceria</h2>
-          <p className="s-anchoring-intro" style={{marginBottom: '3rem', textAlign: 'center'}}>Para nos adequarmos perfeitamente ao momento atual e à operação da Sammarone, propomos duas estruturas:</p>
           
-          <div className="s-investment-grid">
-            {/* Card 1: Sob Demanda */}
-            <div className="s-investment-card s-card-outline">
-              <h2>Parceria Guarda-Chuva</h2>
-              <p className="s-card-subtitle">Atuação Sob Demanda</p>
-              <div className="s-price-block">
-                <span className="s-price-currency">R$</span>
-                <span className="s-price-amount">1.500</span>
-                <span className="s-price-period">/mês fixo</span>
-              </div>
-              <p className="s-installments">Custo base de disponibilidade + honorários por demanda.</p>
-              
-              <ul className="s-investment-features">
-                <li><Check size={20} color="var(--text-muted)" style={{flexShrink: 0}} /> Reunião mensal estratégica e canal aberto</li>
-                <li><Check size={20} color="var(--text-muted)" style={{flexShrink: 0}} /> Orçamentos pontuais com "Tabela de Parceiro"</li>
-                <li><Check size={20} color="var(--text-muted)" style={{flexShrink: 0}} /> Baixo custo fixo para não pesar na operação</li>
-                <li><Check size={20} color="var(--text-muted)" style={{flexShrink: 0}} /> 15% de êxito em oportunidades tributárias</li>
-              </ul>
+          <div className="s-investment-card" style={{maxWidth: '600px', margin: '0 auto', padding: '4rem 2rem'}}>
+            <span className="s-recommended-badge">Parceria Recomendada</span>
+            <h2>Parceria Estratégica</h2>
+            <p className="s-card-subtitle" style={{marginBottom: '2rem'}}>Retaguarda Jurídico-Tributária</p>
+            
+            <div className="s-price-block">
+              <span className="s-price-currency">R$</span>
+              <span className="s-price-amount">30.000</span>
+              <span className="s-price-period">total</span>
             </div>
+            <p className="s-installments">em 6 parcelas mensais de R$ 5.000,00</p>
+            
+            <ul className="s-investment-features" style={{maxWidth: '450px'}}>
+              <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Retaguarda jurídico-tributária estratégica.</li>
+              <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Reunião mensal.</li>
+              <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Plantão para dúvidas sensíveis.</li>
+              <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Notas técnicas objetivas.</li>
+              <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Interação com contabilidade.</li>
+              <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Comitê Reforma Tributária.</li>
+              <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Análise de oportunidades como bônus.</li>
+              <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Success fee de 15% apenas se houver benefício econômico efetivo.</li>
+              <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> <strong>Garantia jurídica de 5 anos sobre as posições orientadas.</strong></li>
+            </ul>
 
-            {/* Card 2: Retainer */}
-            <div className="s-investment-card">
-              <span className="s-recommended-badge">Proteção Completa</span>
-              <h2>Parceria Estratégica</h2>
-              <p className="s-card-subtitle">Retaguarda Contínua</p>
-              <div className="s-price-block">
-                <span className="s-price-currency">R$</span>
-                <span className="s-price-amount">5.000</span>
-                <span className="s-price-period">/mês</span>
-              </div>
-              <p className="s-installments">Contrato de 6 meses (Total R$ 30.000)</p>
-              
-              <ul className="s-investment-features">
-                <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Plantão de dúvidas e acompanhamento ilimitado</li>
-                <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Reuniões mensais e Comitê Reforma Tributária</li>
-                <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> Pareceres técnicos e matrizes de risco inclusas</li>
-                <li><Check size={20} color="var(--accent-gold)" style={{flexShrink: 0}} /> <strong>Garantia Jurídica de 5 anos sobre orientações</strong></li>
-              </ul>
+            <div className="s-cta-container" style={{marginTop: '3rem'}}>
+              <p className="s-cta-subtext" style={{marginBottom: '1.5rem', color: 'var(--text-main)', fontSize: '1rem', lineHeight: '1.5'}}>
+                Recomendamos iniciar pela parceria de 6 meses, pois esse prazo permite conhecer a operação, acompanhar decisões reais e construir uma rotina estratégica com a diretoria e a contabilidade.
+              </p>
+              <a 
+                href="https://wa.me/5511978671067?text=Ol%C3%A1%20Alexandre%2C%20analisei%20a%20p%C3%A1gina%20da%20Sammarone%20e%20podemos%20dar%20o%20pr%C3%B3ximo%20passo." 
+                target="_blank" 
+                rel="noreferrer"
+                className="btn-gold s-cta-btn"
+                style={{width: '100%', maxWidth: '100%'}}
+              >
+                Dar o Próximo Passo <ChevronRight size={20} />
+              </a>
             </div>
-          </div>
-
-          <div className="s-cta-container" style={{marginTop: '4rem'}}>
-            <a 
-              href="https://wa.me/5511978671067?text=Ol%C3%A1%20Alexandre%2C%20analisei%20a%20p%C3%A1gina%20da%20Sammarone%20e%20podemos%20dar%20o%20pr%C3%B3ximo%20passo." 
-              target="_blank" 
-              rel="noreferrer"
-              className="btn-gold s-cta-btn"
-            >
-              Dar o Próximo Passo <ChevronRight size={20} />
-            </a>
-            <p className="s-cta-subtext">Ou entre em contato para alinhar qual formato faz mais sentido hoje.</p>
           </div>
         </div>
       </section>
