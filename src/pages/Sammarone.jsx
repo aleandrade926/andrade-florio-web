@@ -39,7 +39,7 @@ const Sammarone = () => {
       <div className="s-login-container">
         <div className="s-login-card">
           <div className="s-login-header">
-            <img src="/logo-af.png" alt="Andrade Florio" className="s-logo-img-login" />
+            <img src="/logo-af.png" alt="Andrade e Florio" className="s-logo-img-login" />
             <div className="s-lock-icon">
               <Lock size={32} color="var(--accent-gold)" />
             </div>
@@ -76,7 +76,7 @@ const Sammarone = () => {
         <div className="container s-header-content">
           <img 
             src="/logo-af.png" 
-            alt="Andrade Florio" 
+            alt="Andrade e Florio" 
             className="s-logo-img-header"
             style={{
               height: scrolled ? '80px' : '180px',
@@ -186,7 +186,7 @@ const Sammarone = () => {
               </div>
               <ShieldCheck size={48} color="var(--accent-gold)" className="s-guarantee-icon" />
               <p className="s-guarantee-text">
-                Durante o prazo legal de fiscalização (até 5 anos), a Andrade Florio assumirá, <strong>sem cobrança de novos honorários</strong>, a representação da Sammarone em eventual questionamento do Fisco relacionado às nossas orientações.
+                Durante o prazo legal de fiscalização (até 5 anos), a Andrade e Florio assumirá, <strong>sem cobrança de novos honorários</strong>, a representação da Sammarone em eventual questionamento do Fisco relacionado às nossas orientações.
               </p>
               <p className="s-guarantee-subtext">
                 "Se nós orientarmos, não deixaremos a Sammarone sozinha caso o Fisco questione essa posição."
