@@ -9,6 +9,7 @@ import OnePager from './pages/OnePager';
 import './App.css';
 
 import ManualUsucapiao from './pages/ManualUsucapiao';
+import Sammarone from './pages/Sammarone';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/atendimento" element={<Atendimento />} />
         <Route path="/onepager" element={<OnePager />} />
         <Route path="/manual-usucapiao" element={<ManualUsucapiao />} />
+        <Route path="/proposta/sammarone" element={<Sammarone />} />
       </Routes>
     </Router>
   );

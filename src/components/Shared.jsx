@@ -115,12 +115,12 @@ export function Footer() {
             style={{ height: '182px', width: 'auto', opacity: 0.7 }}
           />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginBottom: '1.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
             <a 
               href="https://www.linkedin.com/in/libiaflorio/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              style={{ color: 'var(--text-muted)', transition: 'color 0.2s ease' }} 
+              style={{ color: 'var(--text-muted)', transition: 'color 0.2s ease', display: 'flex', alignItems: 'center' }} 
               onMouseOver={e => e.currentTarget.style.color = 'var(--accent-gold)'}
               onMouseOut={e => e.currentTarget.style.color = 'var(--text-muted)'}
               aria-label="LinkedIn Dra. Libia Florio"
@@ -134,6 +134,15 @@ export function Footer() {
               onMouseOut={e => e.currentTarget.style.color = 'var(--text-muted)'}
             >
               libia@andradeflorio.com.br
+            </a>
+            <span style={{ color: 'var(--bg-surface-light)' }}>|</span>
+            <a 
+              href="mailto:alexandre.florio@andradeflorio.com.br" 
+              style={{ color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s ease', fontSize: '0.9rem', display: 'flex', alignItems: 'center' }} 
+              onMouseOver={e => e.currentTarget.style.color = 'var(--accent-gold)'}
+              onMouseOut={e => e.currentTarget.style.color = 'var(--text-muted)'}
+            >
+              alexandre.florio@andradeflorio.com.br
             </a>
         </div>
         <p style={{ fontSize: '0.85rem', opacity: 0.6 }}>© {new Date().getFullYear()} Andrade e Florio Escritório de Advocacia. Todos os direitos reservados.</p>
