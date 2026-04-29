@@ -252,8 +252,8 @@ const Sammarone = () => {
           <div className="s-investment-grid">
             {/* Card 1: Sob Demanda */}
             <div className="s-investment-card s-card-outline">
-              <h2>Parceria Guarda-Chuva</h2>
-              <p className="s-card-subtitle">Atuação Sob Demanda</p>
+              <h2>Retaguarda Sob Demanda</h2>
+              <p className="s-card-subtitle" style={{textTransform: 'none', letterSpacing: '0'}}>Atuação pontual, com disponibilidade estratégica para dúvidas e decisões sensíveis.</p>
               <div className="s-price-block">
                 <span className="s-price-currency">R$</span>
                 <span className="s-price-amount">1.500</span>
