@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { MessageCircle, MapPin, Mail, Clock } from 'lucide-react';
-import { WhatsAppButton, Footer, Navbar, LinkedinIcon } from '../components/Shared';
+import { WhatsAppButton, Footer, Navbar, LinkedinIcon, trackConversion } from '../components/Shared';
 
 export default function AtendimentoPage() {
   useEffect(() => {
@@ -44,6 +44,7 @@ export default function AtendimentoPage() {
                 rel="noopener noreferrer" 
                 className="btn-outline" 
                 style={{ fontSize: '1rem', width: '100%', marginBottom: 'auto' }}
+                onClick={() => trackConversion()}
               >
                 Agendar Videoconferência
               </a>

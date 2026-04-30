@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { trackConversion } from '../components/Shared';
 
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap');
@@ -494,8 +495,16 @@ export default function OnePagerPage() {
           <footer className="op-footer">
             <div className="op-footer-brand">Andrade e Florio — Consultoria Estratégica e Jurídica</div>
             <div className="op-footer-contacts">
-              <span>📞 11 99372-5876 / 11 97867-1067</span>
-              <span>✉ alexandre.florio@andradeflorio.com.br</span>
+              <a href="https://wa.me/5511993725876" target="_blank" rel="noopener noreferrer" onClick={() => trackConversion('nlxZCPiY6qAcEMzlgIgD')}>
+                📞 11 99372-5876
+              </a>
+              <span> / </span>
+              <a href="tel:11978671067">
+                11 97867-1067
+              </a>
+              <a href="mailto:alexandre.florio@andradeflorio.com.br" onClick={() => trackConversion('nlxZCPiY6qAcEMzlgIgD')}>
+                ✉ alexandre.florio@andradeflorio.com.br
+              </a>
               <a href="https://www.andradeflorio.com.br" target="_blank" rel="noopener noreferrer">
                 www.andradeflorio.com.br
               </a>

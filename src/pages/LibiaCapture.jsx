@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { ChevronRight, ShieldCheck, Mail, Users } from 'lucide-react';
+import { ShieldCheck, Mail, Users, ChevronRight } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { trackConversion } from '../components/Shared';
 
 const LibiaCapture = () => {
   const [loading, setLoading] = useState(false);
@@ -29,8 +29,11 @@ const LibiaCapture = () => {
         ]);
 
       if (error) throw error;
+      
+      // 2. Rastreia Conversão no Google Ads
+      trackConversion('nlxZCPiY6qAcEMzlgIgD');
 
-      // 2. Redireciona para a página de VIP (Thank You Page)
+      // 3. Redireciona para a página de VIP (Thank You Page)
       window.location.href = '/vip-offer';
       
     } catch (error) {

@@ -1,5 +1,5 @@
-import React from 'react';
 import { Check, MessageCircle, Book } from 'lucide-react';
+import { trackConversion } from '../components/Shared';
 
 const LibiaVipOffer = () => {
   return (
@@ -215,7 +215,7 @@ const LibiaVipOffer = () => {
           Mas existe uma diferença abissal entre ler um documento e ter direcionamento técnico. Por isso, abrimos a possibilidade de um <strong>super upgrade</strong>:
         </p>
 
-        <button className="btn-gold">
+        <button className="btn-gold" onClick={() => trackConversion('nlxZCPiY6qAcEMzlgIgD')}>
           <Check size={24} />
           QUERO SER VIP POR R$97
         </button>
@@ -267,7 +267,10 @@ const LibiaVipOffer = () => {
           <p style={{color: '#666', fontSize: '0.875rem'}}>Fale com a nossa equipe: libia@andradeflorio.com.br</p>
           <button 
             className="btn-wa"
-            onClick={() => window.open('https://wa.me/5511945727148?text=Olá Dra Líbia, tenho uma dúvida sobre o acesso VIP.', '_blank')}
+            onClick={() => {
+              trackConversion('nlxZCPiY6qAcEMzlgIgD');
+              window.open('https://wa.me/5511945727148?text=Olá Dra Líbia, tenho uma dúvida sobre o acesso VIP.', '_blank');
+            }}
           >
             <MessageCircle size={20} />
             FALAR COM O TIME DA LÍBIA
