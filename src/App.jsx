@@ -10,12 +10,16 @@ import './App.css';
 
 import ManualUsucapiao from './pages/ManualUsucapiao';
 import Sammarone from './pages/Sammarone';
+import LibiaVipOffer from './pages/LibiaVipOffer';
+import LibiaCapture from './pages/LibiaCapture';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/inscricao" element={<LibiaCapture />} />
+        <Route path="/vip-offer" element={<LibiaVipOffer />} />
         <Route path="/artigos/distrato-de-locacao" element={<Article />} />
         <Route path="/servicos/usucapiao" element={<Usucapiao />} />
         <Route path="/servicos/inventarios" element={<Inventarios />} />
