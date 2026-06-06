@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Shield, Home, Search, BookOpen, MessageCircle, CheckCircle2, GraduationCap, Scale, ChevronRight, Building2, ArrowLeftRight, Hammer, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { WhatsAppButton, StickyWhatsApp, Footer, Navbar, LinkedinIcon } from '../components/Shared';
+import { WhatsAppButton, StickyWhatsApp, Footer, Navbar, LinkedinIcon, handleWhatsAppClick } from '../components/Shared';
 
 const b2bCardStyles = `
   .card-b2b {
@@ -236,19 +236,20 @@ export default function HomePage() {
                   Uma atuação de tripla entrada: mapeamos os riscos contratuais, as ineficiências tributárias <em>e</em> os passivos ambientais na raiz do empreendimento — entregando uma visão integrada que protege o VGV, preserva a margem líquida e assegura o licenciamento.
                 </p>
               </div>
-              <a
-                href="https://wa.me/5511945727148?text=Ol%C3%A1,%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20Consultoria%20Estrat%C3%A9gica%20para%20Incorporadoras."
-                target="_blank" rel="noopener noreferrer"
+              <button
+                onClick={() => handleWhatsAppClick('nlxZCPiY6qAcEMzlgIgD', 'Olá, vim pelo site e gostaria de saber mais sobre a Consultoria Estratégica para Incorporadoras.')}
                 style={{
+                  background: 'none', border: 'none', padding: 0, cursor: 'pointer',
                   display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
                   color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.95rem',
                   textDecoration: 'none', letterSpacing: '0.5px', transition: 'opacity 0.2s ease',
+                  fontFamily: 'inherit'
                 }}
                 onMouseOver={e => e.currentTarget.style.opacity = '0.7'}
                 onMouseOut={e => e.currentTarget.style.opacity = '1'}
               >
                 Solicitar Diagnóstico <ChevronRight size={18} />
-              </a>
+              </button>
             </div>
 
             {/* LADO DIREITO — 3 pilares: Jurídico + Fiscal + Ambiental */}

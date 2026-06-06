@@ -1,1 +1,100 @@
-/* Limpo, estilos movidos para index.css */
+/* LGPD Banner Style - Quiet Luxury */
+.lgpd-banner {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  left: 24px;
+  max-width: 480px;
+  background-color: rgba(28, 28, 28, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 4px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: lgpdFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (min-width: 768px) {
+  .lgpd-banner {
+    left: auto;
+    right: 24px;
+  }
+}
+
+@keyframes lgpdFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lgpd-content {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.lgpd-icon-wrapper {
+  padding: 10px;
+  background-color: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 4px;
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lgpd-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lgpd-title {
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.lgpd-description {
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.lgpd-action {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lgpd-btn {
+  background-color: var(--accent-gold);
+  color: #000;
+  border: none;
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.lgpd-btn:hover {
+  background-color: var(--accent-gold-dark);
+  transform: translateY(-1px);
+}

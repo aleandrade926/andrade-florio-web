@@ -7,20 +7,36 @@ export const LinkedinIcon = ({ size = 24 }) => (
   </svg>
 );
 
-export const trackConversion = (eventLabel = 'nlxZCPiY6qAcEMzlgIgD') => {
+export const trackConversion = (eventLabel, callback) => {
+  if (!eventLabel) {
+    if (callback) callback();
+    return;
+  }
+  
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'conversion', {
       'send_to': `AW-822096588/${eventLabel}`,
       'event_callback': () => {
         console.log(`Conversion ${eventLabel} tracked successfully`);
+        if (callback) callback();
       }
     });
+    
+    // Fallback caso o callback do Google não dispare (timeout de 1s)
+    if (callback) {
+      setTimeout(callback, 1000);
+    }
+  } else if (callback) {
+    callback();
   }
 };
 
-export const handleWhatsAppClick = (eventLabel = 'nlxZCPiY6qAcEMzlgIgD') => {
-  const url = 'https://wa.me/5511945727148?text=Olá,%20vi%20seu%20anúncio%20e%20gostaria%20de%20uma%20consulta%20jurídica';
-  trackConversion(eventLabel);
+export const handleWhatsAppClick = (eventLabel = 'nlxZCPiY6qAcEMzlgIgD', customMessage = '') => {
+  const defaultMsg = 'Olá, vi seu anúncio e gostaria de uma consulta jurídica';
+  const msg = customMessage || defaultMsg;
+  const url = `https://wa.me/5511945727148?text=${encodeURIComponent(msg)}`;
+  
+  if (eventLabel) trackConversion(eventLabel);
   window.open(url, '_blank');
 };
 

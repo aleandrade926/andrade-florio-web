@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { ShieldCheck, Mail, Users, ChevronRight } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { trackConversion } from '../components/Shared';
@@ -30,11 +31,10 @@ const LibiaCapture = () => {
 
       if (error) throw error;
       
-      // 2. Rastreia Conversão no Google Ads
-      trackConversion('nlxZCPiY6qAcEMzlgIgD');
-
-      // 3. Redireciona para a página de VIP (Thank You Page)
-      window.location.href = '/vip-offer';
+      // 2. Dispara a conversão e redireciona após o envio (ou timeout)
+      trackConversion('nlxZCPiY6qAcEMzlgIgD', () => {
+        window.location.href = '/vip-offer';
+      });
       
     } catch (error) {
       console.error('Erro ao salvar lead:', error);
