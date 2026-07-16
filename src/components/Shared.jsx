@@ -56,14 +56,15 @@ export function WhatsAppButton({ text = "Falar com a Dra. Libia", outline = fals
 export function StickyWhatsApp() {
   return (
     <button 
+      className="sticky-wa-btn"
       style={{
         position: 'fixed',
-        bottom: '2rem',
-        right: '2rem',
+        bottom: '24px',
+        right: '24px',
         backgroundColor: '#25D366',
         color: '#fff',
-        width: '60px',
-        height: '60px',
+        width: '56px',
+        height: '56px',
         borderRadius: '50%',
         display: 'flex',
         alignItems: 'center',
@@ -78,13 +79,14 @@ export function StickyWhatsApp() {
       onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
       onClick={handleWhatsAppClick}
     >
-      <MessageCircle size={30} fill="currentColor" />
+      <MessageCircle size={28} fill="currentColor" />
     </button>
   );
 }
 
-export function Navbar() {
+export function Navbar({ showMenu = false }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -92,36 +94,198 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navLinks = [
+    { label: 'Escritório', href: '#apresentacao' },
+    { label: 'Atuação', href: '#frentes' },
+    { label: 'Reforma Tributária', href: '#reforma-tributaria' },
+    { label: 'Dra. Líbia', href: '#dra-libia' },
+    { label: 'Contato', href: '#contato' }
+  ];
+
   return (
-    <header style={{
-      padding: scrolled ? '0.4rem 0' : '0.8rem 0',
-      borderBottom: '1px solid var(--bg-surface-light)',
-      backgroundColor: 'rgba(18, 18, 18, 0.95)',
-      position: 'sticky',
-      top: 0,
-      zIndex: 100,
-      backdropFilter: 'blur(12px)',
-      transition: 'padding 0.4s ease',
-    }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <a href="/" aria-label="Andrade e Florio Advogados - Página Inicial">
-          <img
-            src="/logo-af.png"
-            alt="Andrade e Florio Advogados"
-            style={{
-              height: scrolled ? '80px' : '260px',
-              width: 'auto',
-              display: 'block',
-              transition: 'height 0.4s ease, opacity 0.3s ease',
-            }}
-            onMouseOver={e => e.currentTarget.style.opacity = '0.85'}
-            onMouseOut={e => e.currentTarget.style.opacity = '1'}
-          />
-        </a>
+    <header 
+      className={`site-header ${scrolled ? 'scrolled' : ''}`}
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        transition: 'all 0.4s ease',
+      }}
+    >
+      <div className="container" style={{ 
+        display: 'flex', 
+        justifyContent: showMenu ? 'space-between' : 'center', 
+        alignItems: 'center',
+        flexWrap: 'nowrap',
+        position: 'relative',
+        maxWidth: '1240px',
+        margin: '0 auto',
+        paddingLeft: '32px',
+        paddingRight: '32px'
+      }}>
+        {showMenu ? (
+          <a href="/" aria-label="Andrade e Florio Advogados - Página Inicial" style={{ display: 'flex', alignItems: 'center' }}>
+            <img
+              src="/logo-horizontal.png"
+              alt="Andrade & Florio Advogados"
+              style={{
+                height: scrolled ? '40px' : '65px',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'block',
+                transition: 'height 0.4s ease, opacity 0.3s ease',
+              }}
+              onMouseOver={e => e.currentTarget.style.opacity = '0.85'}
+              onMouseOut={e => e.currentTarget.style.opacity = '1'}
+            />
+          </a>
+        ) : (
+          <a href="/" aria-label="Andrade e Florio Advogados - Página Inicial" style={{ display: 'flex', alignItems: 'center' }}>
+            <img
+              src="/logo-af.png"
+              alt="Andrade e Florio Advogados"
+              className={`nav-logo ${scrolled ? 'scrolled' : ''}`}
+            />
+          </a>
+        )}
+
+        {showMenu && (
+          <>
+            {/* Botão Menu Mobile */}
+            <button 
+              onClick={() => setMenuOpen(!menuOpen)}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: 'var(--accent-gold)',
+                fontSize: '1.8rem',
+                cursor: 'pointer',
+                display: 'none',
+                padding: '0.5rem',
+                zIndex: 102
+              }}
+              className="nav-hamburger"
+            >
+              {menuOpen ? '✕' : '☰'}
+            </button>
+
+            {/* Links de Navegação */}
+            <nav 
+              className={`nav-links-container ${menuOpen ? 'open' : ''}`}
+              style={{
+                display: 'flex',
+                gap: '1.25rem',
+                alignItems: 'center',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              {navLinks.map((link, idx) => (
+                <a 
+                  key={idx}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  style={{
+                    color: 'rgba(255, 255, 255, 0.75)',
+                    textDecoration: 'none',
+                    fontSize: '12.5px',
+                    fontWeight: '550',
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                    transition: 'color 0.3s ease'
+                  }}
+                  onMouseOver={e => e.currentTarget.style.color = 'var(--accent-gold)'}
+                  onMouseOut={e => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.75)'}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </>
+        )}
       </div>
+      
+      <style>{`
+        .site-header {
+          padding: 0.8rem 0;
+          background-color: transparent;
+          border-bottom: 1px solid transparent;
+          backdrop-filter: blur(0px);
+        }
+        .site-header.scrolled {
+          padding: 0.3rem 0;
+          background-color: rgba(18, 18, 18, 0.96);
+          border-bottom: 1px solid var(--bg-surface-light);
+          backdrop-filter: blur(12px);
+        }
+
+        .nav-logo {
+          height: 260px;
+          width: auto;
+          object-fit: contain;
+          display: block;
+          transition: height 0.4s ease, opacity 0.3s ease;
+        }
+        .nav-logo.scrolled {
+          height: 80px;
+        }
+        .nav-logo.with-menu {
+          height: 130px;
+        }
+        .nav-logo.with-menu.scrolled {
+          height: 65px;
+        }
+
+        @media (max-width: 768px) {
+          .site-header {
+            background-color: rgba(18, 18, 18, 0.96) !important;
+            border-bottom: 1px solid var(--bg-surface-light) !important;
+            backdrop-filter: blur(12px) !important;
+            padding: 0.4rem 0;
+          }
+          .nav-hamburger {
+            display: block !important;
+          }
+          .nav-links-container {
+            display: none !important;
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(18, 18, 18, 0.98);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--bg-surface-light);
+            gap: 1.2rem !important;
+            z-index: 101;
+          }
+          .nav-links-container.open {
+            display: flex !important;
+          }
+          .nav-logo {
+            height: 120px !important;
+          }
+          .nav-logo.scrolled {
+            height: 65px !important;
+          }
+          .nav-logo.with-menu {
+            height: 75px !important;
+          }
+          .nav-logo.with-menu.scrolled {
+            height: 50px !important;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .sticky-wa-btn {
+            width: 52px !important;
+            height: 52px !important;
+            bottom: 24px !important;
+            right: 24px !important;
+          }
+        }
+      `}</style>
     </header>
   );
-
 }
 
 

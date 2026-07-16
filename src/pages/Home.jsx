@@ -1,305 +1,388 @@
 import React, { useState } from 'react';
-import { Shield, Home, Search, BookOpen, MessageCircle, CheckCircle2, GraduationCap, Scale, ChevronRight, Building2, ArrowLeftRight, Hammer, Leaf } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { WhatsAppButton, StickyWhatsApp, Footer, Navbar, LinkedinIcon, handleWhatsAppClick } from '../components/Shared';
+import { 
+  Building2, 
+  ScrollText, 
+  Network, 
+  Search,
+  Briefcase,
+  Users,
+  ArrowRight
+} from 'lucide-react';
+import { Footer, Navbar, LinkedinIcon, WhatsAppButton, StickyWhatsApp } from '../components/Shared';
 
-const b2bCardStyles = `
-  .card-b2b {
-    display: flex;
-    flex-direction: row;
-    gap: 3.5rem;
-    align-items: flex-start;
-    margin-top: 2rem;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--accent-gold) !important;
-    background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(212,175,55,0.06) 100%);
-  }
-  .card-b2b-left {
-    flex: 0 0 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .card-b2b-right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-left: 1px solid rgba(212,175,55,0.25);
-    padding-left: 3rem;
+const customStyles = `
+  /* 1. Normalização de Containers */
+  .home-container {
+    width: 100%;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
   }
   @media (max-width: 768px) {
-    .card-b2b {
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .card-b2b-right {
-      border-left: none;
-      border-top: 1px solid rgba(212,175,55,0.25);
-      padding-left: 0;
-      padding-top: 2rem;
-    }
-    .card-b2b-grid {
-      grid-template-columns: 1fr !important;
-      gap: 2rem !important;
-    }
-    .card-b2b-label {
-      font-size: 0.6rem !important;
-      letter-spacing: 1px !important;
+    .home-container {
+      padding-left: 24px;
+      padding-right: 24px;
     }
   }
-  .card-b2b-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1.5rem;
+
+  /* 2. Normalização de Espaçamentos de Seções */
+  .home-section {
+    padding: 80px 0;
   }
-  .card-b2b-label {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+  @media (max-width: 768px) {
+    .home-section {
+      padding: 58px 0;
+    }
+  }
+
+  /* 3. Limite de Largura de Parágrafos Nobres */
+  .home-text-limit {
+    max-width: 820px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 4. Normalização Tipográfica */
+  .home-h1 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: clamp(36px, 3.4vw, 56px);
+    line-height: 1.12;
+    color: var(--text-main);
+  }
+  .home-h2 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: clamp(30px, 2.2vw, 42px);
+    line-height: 1.15;
+    color: var(--text-main);
+  }
+  .home-h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: clamp(21px, 1.5vw, 26px);
+    line-height: 1.18;
+    color: var(--text-main);
+  }
+  .home-p {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: clamp(16px, 1vw, 18px);
+    line-height: 1.62;
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .home-list-item {
+    font-family: var(--font-body);
+    font-size: 17.5px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .home-aux {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  /* 5. Componentes Customizados da Home */
+  .hero-btn-outline {
+    padding: 0.9rem 2rem;
+    border: 1px solid var(--accent-gold);
     color: var(--accent-gold);
-    margin-bottom: 1.75rem;
+    background: transparent;
+    border-radius: 4px;
+    font-weight: 550;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-btn-outline:hover {
+    background: rgba(212,175,55,0.1);
+  }
+  .hero-btn-solid {
+    padding: 0.9rem 2rem;
+    background: var(--accent-gold);
+    color: #000;
+    border: 1px solid var(--accent-gold);
+    border-radius: 4px;
+    font-weight: 550;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-btn-solid:hover {
+    background: #e6c84c;
+    border-color: #e6c84c;
+  }
+  .frente-card {
+    background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(212,175,55,0.02) 100%);
+    border: 1px solid var(--bg-surface-light);
+    padding: 3rem 2rem;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .frente-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-4px);
+  }
+  .transversal-section {
+    background: linear-gradient(90deg, rgba(10,10,12,1) 0%, rgba(10,10,12,0.85) 100%), url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    border-top: 1px solid rgba(212,175,55,0.12);
+    border-bottom: 1px solid rgba(212,175,55,0.12);
+  }
+  .demand-item {
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+  .demand-item:last-child {
+    border-bottom: none;
+  }
+  .atuacao-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .atuacao-block {
+    border-left: 2px solid var(--accent-gold);
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .atuacao-title {
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    font-weight: 550;
+    letter-spacing: 0.5px;
+  }
+  @media (max-width: 768px) {
+    .atuacao-grid {
+      grid-template-columns: 1fr;
+      gap: 2.2rem;
+    }
   }
 `;
 
-export default function HomePage() {
+export default function Home() {
   const [isDiplomaOpen, setIsDiplomaOpen] = useState(false);
 
   return (
     <>
-      <style>{b2bCardStyles}</style>
-      <Navbar />
+      <style>{customStyles}</style>
+      <Navbar showMenu={true} />
 
-      {/* Hero Section */}
-      <section className="section" style={{ paddingTop: '4rem', overflow: 'hidden' }}>
-        <div className="container">
+      {/* 1. HERO INSTITUCIONAL */}
+      <section className="home-section" style={{ paddingTop: '7rem', paddingBottom: '7rem', position: 'relative', overflow: 'hidden' }}>
+        {/* Grafismos de Fundo */}
+        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '40vw', height: '40vw', border: '1px solid rgba(212,175,55,0.06)', borderRadius: '50%', zIndex: 0 }}></div>
+        <div style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '60vw', height: '60vw', border: '1px solid rgba(212,175,55,0.03)', borderRadius: '50%', zIndex: 0 }}></div>
+        
+        <div className="home-container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ maxWidth: '880px', margin: '0 auto', textAlign: 'center' }}>
+            <h1 className="home-h1" style={{ marginBottom: '22px' }}>
+              Advocacia estratégica para empresas, patrimônio e imóveis na nova realidade tributária.
+            </h1>
+            
+            <p className="home-p" style={{ marginBottom: '40px', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}>
+              Estruturação jurídica personalizada para decisões em que contratos, patrimônio, operações empresariais e tributação precisam ser analisados em conjunto.
+            </p>
+            
+            <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="#apresentacao" className="hero-btn-outline">
+                Conheça o escritório
+              </a>
+              <a href="#contato" className="hero-btn-solid">
+                Entre em contato
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. APRESENTAÇÃO */}
+      <section id="apresentacao" className="home-section" style={{ backgroundColor: 'var(--bg-surface)' }}>
+        <div className="home-container">
+          <div style={{ maxWidth: '880px', margin: '0 auto', textAlign: 'center' }}>
+            <Briefcase size={36} color="var(--accent-gold)" style={{ margin: '0 auto 20px auto' }} />
+            <h2 className="home-h2" style={{ marginBottom: '20px' }}>
+              Estratégia jurídica para decisões singulares.
+            </h2>
+            <p className="home-p home-text-limit" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
+              O Andrade Florio integra o Direito Empresarial, Patrimonial e Imobiliário à inteligência tributária para estruturar decisões relevantes, operações complexas e relações de longo prazo. Fugimos de formatos massificados de atendimento para garantir um acompanhamento direto por sócios seniores com visão multidisciplinar e foco absoluto na segurança e perpetuidade das decisões do cliente.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. REFORMA TRIBUTÁRIA E A REALIDADE TRANSVERSAL */}
+      <section id="reforma-tributaria" className="home-section transversal-section">
+        <div className="home-container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '4rem', alignItems: 'center' }}>
-            {/* Texto */}
-            <div style={{ paddingRight: '2rem' }}>
-              <div style={{ 
-                display: 'inline-block', 
-                padding: '0.3rem 1rem', 
-                border: '1px solid var(--accent-gold)', 
-                borderRadius: '50px',
-                color: 'var(--accent-gold)',
-                fontSize: '0.8rem',
-                letterSpacing: '1px',
-                textTransform: 'uppercase',
-                marginBottom: '1.5rem'
-              }}>
-                Consultoria Premium
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '20px' }}>
+                <Network size={32} color="var(--accent-gold)" />
+                <h2 className="home-h2" style={{ margin: 0 }}>Decisões jurídicas em um novo ambiente tributário.</h2>
               </div>
-              <h1 style={{ marginBottom: '1.5rem' }}>
-                Regularize seu patrimônio com a segurança de uma advogada especialista em Direito Imobiliário.
-              </h1>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '2.5rem' }}>
-                Dra. Libia Florio oferece assessoria jurídica imobiliária para transformar imóveis irregulares em ativos seguros. Conte com um escritório de advocacia especializado em direito imobiliário em São Paulo para proteger seu legado.
+              <p className="home-p" style={{ marginBottom: '20px' }}>
+                A Reforma Tributária (IBS e CBS) reconfigura a lógica dos negócios no Brasil. A tributação não pode mais ser analisada de forma retroativa ou isolada; ela precisa participar ativamente da concepção de contratos de longo prazo, de reorganizações societárias e de transações imobiliárias desde o início.
               </p>
-              <WhatsAppButton text="Agendar Consultoria Especializada" />
+              <p className="home-p">
+                Unimos frentes jurídicas distintas a um olhar fiscal contínuo para mitigar riscos imprevistos e assegurar que as estruturas criadas permaneçam eficientes e resilientes.
+              </p>
+            </div>
+            
+            <div style={{ padding: '2.5rem 2.5rem', border: '1px solid var(--accent-gold)', backgroundColor: 'rgba(212,175,55,0.015)', position: 'relative' }}>
+               <div style={{ position: 'absolute', top: 0, left: 0, width: '3px', height: '100%', backgroundColor: 'var(--accent-gold)' }}></div>
+               <h3 className="home-h3" style={{ marginBottom: '16px' }}>A Visão Transversal</h3>
+               <p className="home-p" style={{ fontSize: '16px', lineHeight: '1.6' }}>
+                 A transição tributária exige uma análise integrada de contratos, patrimônio familiar, titularidades e operações imobiliárias. Nenhum ativo ou relação jurídica deve ser avaliado sem considerar a nova carga econômica projetada para os próximos anos.
+               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. TRÊS FRENTES INTEGRADAS */}
+      <section id="frentes" className="home-section" style={{ backgroundColor: 'var(--bg-surface)' }}>
+        <div className="home-container">
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h2 className="home-h2" style={{ marginBottom: '20px' }}>Nossas Frentes de Atuação</h2>
+            <p className="home-p home-text-limit">
+              Integração multidisciplinar voltada aos resultados do seu negócio e patrimônio.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+            
+            <div className="frente-card">
+              <ScrollText size={32} color="var(--accent-gold)" style={{ marginBottom: '1.5rem' }} />
+              <h3 className="home-h3" style={{ marginBottom: '16px' }}>Empresas e Contratos</h3>
+              <p className="home-p" style={{ fontSize: '16.5px' }}>
+                Estruturação de relações empresariais, elaboração de contratos comerciais de alta complexidade, planejamento de reorganizações societárias e apoio a decisões estratégicas corporativas.
+              </p>
             </div>
 
-            {/* Imagem */}
+            <div className="frente-card">
+              <Users size={32} color="var(--accent-gold)" style={{ marginBottom: '1.5rem' }} />
+              <h3 className="home-h3" style={{ marginBottom: '16px' }}>Patrimônio e Sucessão</h3>
+              <p className="home-p" style={{ fontSize: '16.5px' }}>
+                Organização, governança jurídica e estruturação inteligente de patrimônios privados. Constituição de holdings familiares e planejamento sucessório focado na preservação de longo prazo.
+              </p>
+            </div>
+
+            <div className="frente-card">
+              <Building2 size={32} color="var(--accent-gold)" style={{ marginBottom: '1.5rem' }} />
+              <h3 className="home-h3" style={{ marginBottom: '16px' }}>Imóveis e Operações</h3>
+              <p className="home-p" style={{ fontSize: '16.5px' }}>
+                Estruturação jurídica de ativos e grandes operações imobiliárias, incluindo compra, venda, locação estruturada e proteção de titularidade sob rigorosa análise de riscos fiscais.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 5. PERFIL DE CLIENTE E NATUREZA DAS DEMANDAS */}
+      <section id="perfil" className="home-section">
+        <div className="home-container" style={{ maxWidth: '960px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h2 className="home-h2" style={{ marginBottom: '20px' }}>Perfil das Nossas Demandas</h2>
+            <p className="home-p home-text-limit" style={{ fontSize: '17px' }}>
+              O escritório dedica sua capacidade a cenários onde a precisão jurídica e a visão multidisciplinar são fundamentais.
+            </p>
+          </div>
+          
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {[
+              "Decisões com repercussões jurídicas e tributárias de alta relevância",
+              "Operações empresariais ou imobiliárias estruturadas",
+              "Organização, sucessão e proteção de patrimônio familiar",
+              "Estruturação de relações contratuais de longo prazo com mitigação de passivos",
+              "Governança societária e alinhamento de holdings de controle",
+              "Adaptação preventiva de estruturas comerciais à Reforma Tributária",
+              "Demandas singulares que repelem soluções prontas e genéricas"
+            ].map((item, idx) => (
+              <div key={idx} className="demand-item">
+                <ArrowRight color="var(--accent-gold)" size={16} style={{ flexShrink: 0, marginTop: '5px' }} />
+                <span className="home-list-item">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. FORMA DE ATUAÇÃO */}
+      <section id="atuacao" className="home-section" style={{ backgroundColor: 'var(--bg-surface)' }}>
+        <div className="home-container">
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <h2 className="home-h2">Forma de Atuação</h2>
+          </div>
+          
+          <div className="atuacao-grid">
+            <div className="atuacao-block">
+              <span className="atuacao-title">Atendimento Personalizado</span>
+              <p className="home-p" style={{ fontSize: '16.5px' }}>
+                Dedicamos tempo exclusivo a cada estrutura que desenhamos. Cada demanda é tratada de forma cirúrgica e confidencial, respeitando o ritmo e as particularidades de cada operação.
+              </p>
+            </div>
+            <div className="atuacao-block">
+              <span className="atuacao-title">Atuação Sênior Direta</span>
+              <p className="home-p" style={{ fontSize: '16.5px' }}>
+                Garantimos que todas as análises e decisões sejam conduzidas diretamente por especialistas experientes, descartando qualquer forma de delegação massificada de trabalho.
+              </p>
+            </div>
+            <div className="atuacao-block">
+              <span className="atuacao-title">Compreensão Real do Negócio</span>
+              <p className="home-p" style={{ fontSize: '16.5px' }}>
+                Vamos além de pareceres jurídicos convencionais. Entregamos soluções contratuais e societárias de alta conformidade que respeitam a viabilidade e os objetivos do negócio.
+              </p>
+            </div>
+            <div className="atuacao-block">
+              <span className="atuacao-title">Integração Multidisciplinar</span>
+              <p className="home-p" style={{ fontSize: '16.5px' }}>
+                Avaliamos o Direito Societário, Imobiliário e Civil sob uma contínua avaliação tributária. Entendemos que a tributação é indissociável das relações de negócios atuais.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. DRA. LÍBIA FLÓRIO */}
+      <section id="dra-libia" className="home-section">
+        <div className="home-container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+            {/* Foto */}
             <div style={{ position: 'relative' }}>
               <div style={{ 
-                position: 'absolute', top: '-20px', right: '-20px', width: '100%', height: '100%', 
+                position: 'absolute', top: '-16px', left: '-16px', width: '100%', height: '100%', 
                 border: '1px solid var(--accent-gold)', zIndex: 0 
               }}></div>
               <img 
                 src="/dra-libia.png" 
-                alt="Dra. Libia Florio - Advogada Especialista em Direito Imobiliário" 
+                alt="Dra. Libia Florio" 
                 style={{ position: 'relative', zIndex: 1, objectFit: 'cover', width: '100%', height: 'auto', border: '1px solid var(--bg-surface-light)' }} 
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
               />
-              <div style={{
-                display: 'none', position: 'relative', zIndex: 1, width: '100%', aspectRatio: '3/4',
-                backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)',
-                alignItems: 'center', justifyContent: 'center', flexDirection: 'column', color: 'var(--text-muted)'
-              }}>
-                <span style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>[ Coloque a foto como "dra-libia.jpg" na pasta public ]</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Seção de Gancho (Dor e Oportunidade) */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-surface)' }}>
-        <div className="container">
-          <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-            <Shield size={40} color="var(--accent-gold)" style={{ margin: '0 auto 1.5rem auto' }} />
-            <h2 style={{ marginBottom: '2rem', fontSize: '2.2rem' }}>
-              A irregularidade ameaça o seu legado.
-            </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'left' }}>
-              <p style={{ fontSize: '1.2rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                <CheckCircle2 color="var(--accent-gold)" style={{ flexShrink: 0, marginTop: '4px' }} />
-                <span><strong style={{color: 'var(--text-main)'}}>Risco silencioso:</strong> Um imóvel irregular não é apenas um papel faltando; é um patrimônio que perde liquidez a cada dia e gera conflitos iminentes para sua família.</span>
-              </p>
-              <p style={{ fontSize: '1.2rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                <CheckCircle2 color="var(--accent-gold)" style={{ flexShrink: 0, marginTop: '4px' }} />
-                <span><strong style={{color: 'var(--text-main)'}}>Valorização Oculta:</strong> A regularização imediata pode valorizar seu imóvel em até 30% no mercado imobiliário.</span>
-              </p>
-              <p style={{ fontSize: '1.2rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                <CheckCircle2 color="var(--accent-gold)" style={{ flexShrink: 0, marginTop: '4px' }} />
-                <span><strong style={{color: 'var(--text-main)'}}>Sucessão Segura:</strong> Não deixe que burocracias impeçam a venda ou a sucessão pacífica do seu bem. Resolva hoje o que se tornará um litígio amanhã.</span>
-              </p>
-            </div>
-            <div style={{ marginTop: '3rem' }}>
-              <WhatsAppButton text="Proteger meu Patrimônio Hoje" outline={true} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Seção de Serviços ("Peixe Assado") */}
-      <section className="section">
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ marginBottom: '1rem' }}>Soluções Estratégicas</h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
-              Atuamos com precisão cirúrgica nos gargalos jurídicos que impedem a consolidação da sua propriedade.
-            </p>
-          </div>
-
-          {/* Grid 6 serviços — 3 colunas no desktop, 1 no mobile */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-            {[
-              {
-                icon: <Home size={32} color="var(--accent-gold)" />,
-                title: "Regularização de Imóveis",
-                desc: "Transformamos contratos de gaveta em escrituras definitivas com a expertise de uma advogada especialista.",
-              },
-              {
-                icon: <Scale size={32} color="var(--accent-gold)" />,
-                title: "Usucapião Judicial e Extrajudicial",
-                desc: "Atuação especializada em usucapião judicial e extrajudicial para consolidar a propriedade legal do imóvel.",
-              },
-              {
-                icon: <Search size={32} color="var(--accent-gold)" />,
-                title: "Assessoria Jurídica Imobiliária",
-                desc: "Due diligence profunda de riscos para compras, vendas e contratos imobiliários.",
-              },
-              {
-                icon: <BookOpen size={32} color="var(--accent-gold)" />,
-                title: "Inventários e Partilhas",
-                desc: "Gestão jurídica especializada em direitos imobiliários para a transição segura do patrimônio familiar.",
-              },
-              {
-                icon: <ArrowLeftRight size={32} color="var(--accent-gold)" />,
-                title: "Permuta Imobiliária",
-                desc: "Estruturação jurídica de permutas físicas e financeiras — do imóvel familiar à operação entre incorporadoras — com segurança contratual em cada etapa.",
-              },
-              {
-                icon: <Hammer size={32} color="var(--accent-gold)" />,
-                title: "Built to Suit",
-                desc: "Assessoria em contratos atípicos de construção sob encomenda: locação, reversão e entrega de empreendimentos desenhados para o inquilino, com blindagem jurídica completa.",
-              },
-            ].map((srv, idx) => (
-              <div key={idx} className="card-surface">
-                <div style={{ marginBottom: '1.5rem' }}>{srv.icon}</div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>{srv.title}</h3>
-                <p style={{ color: 'var(--text-muted)' }}>{srv.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* ── 5º CARD B2B — BANNER HORIZONTAL FULL-WIDTH ── */}
-          <div className="card-surface card-b2b">
-
-            {/* LADO ESQUERDO — identidade + proposta de valor */}
-            <div className="card-b2b-left">
-              <div>
-                {/* Etiqueta Corporativo — em fluxo, sem sobrepor a coluna Ambiental */}
-                <div style={{
-                  display: 'inline-block',
-                  fontSize: '0.65rem', fontWeight: 700, letterSpacing: '2px',
-                  textTransform: 'uppercase', color: 'var(--accent-gold)',
-                  border: '1px solid var(--accent-gold)', padding: '0.2rem 0.7rem',
-                  borderRadius: '2px', marginBottom: '1.5rem',
-                }}>Corporativo</div>
-
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <Building2 size={36} color="var(--accent-gold)" />
-                </div>
-                <h3 style={{ fontSize: '1.5rem', lineHeight: '1.35', marginBottom: '0.4rem' }}>
-                  Consultoria Estratégica
-                </h3>
-                <p className="card-b2b-label">
-                  Jurídico · Fiscal · Ambiental · Para Incorporadoras
-                </p>
-                <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: '1.8', marginBottom: '2rem' }}>
-                  Uma atuação de tripla entrada: mapeamos os riscos contratuais, as ineficiências tributárias <em>e</em> os passivos ambientais na raiz do empreendimento — entregando uma visão integrada que protege o VGV, preserva a margem líquida e assegura o licenciamento.
-                </p>
-              </div>
-              <button
-                onClick={() => handleWhatsAppClick('nlxZCPiY6qAcEMzlgIgD', 'Olá, vim pelo site e gostaria de saber mais sobre a Consultoria Estratégica para Incorporadoras.')}
-                style={{
-                  background: 'none', border: 'none', padding: 0, cursor: 'pointer',
-                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                  color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.95rem',
-                  textDecoration: 'none', letterSpacing: '0.5px', transition: 'opacity 0.2s ease',
-                  fontFamily: 'inherit'
-                }}
-                onMouseOver={e => e.currentTarget.style.opacity = '0.7'}
-                onMouseOut={e => e.currentTarget.style.opacity = '1'}
-              >
-                Solicitar Diagnóstico <ChevronRight size={18} />
-              </button>
             </div>
 
-            {/* LADO DIREITO — 3 pilares: Jurídico + Fiscal + Ambiental */}
-            <div className="card-b2b-right">
-              <div className="card-b2b-grid">
-                {[
-                  {
-                    label: 'Jurídico',
-                    items: ['Blindagem contratual', 'Auditoria de incorporação', 'Contratos de permuta', 'Distrato e entrega'],
-                  },
-                  {
-                    label: 'Fiscal',
-                    items: ['Engenharia tributária', 'Passivos ocultos', 'Reforma tributária 2026', 'Regimes SPE'],
-                  },
-                  {
-                    label: 'Ambiental',
-                    icon: <Leaf size={14} color="var(--accent-gold)" style={{ display: 'inline', marginLeft: '0.4rem', verticalAlign: 'middle' }} />,
-                    items: ['Licenciamento ambiental', 'EIA/RIMA estratégico', 'Compensações e passivos', 'Adequação regulatória'],
-                  },
-                ].map(({ label, icon, items }) => (
-                  <div key={label} style={{ borderLeft: '2px solid var(--accent-gold)', paddingLeft: '1rem' }}>
-                    <div style={{
-                      fontSize: '0.68rem', fontWeight: 700, letterSpacing: '2px',
-                      textTransform: 'uppercase', color: 'var(--accent-gold)', marginBottom: '1rem',
-                      display: 'flex', alignItems: 'center',
-                    }}>{label}{icon}</div>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
-                      {items.map(i => (
-                        <li key={i} style={{ fontSize: '0.85rem', color: 'var(--text-muted)', display: 'flex', gap: '0.4rem', lineHeight: '1.5' }}>
-                          <span style={{ color: 'var(--accent-gold)', flexShrink: 0, fontWeight: 700 }}>—</span>{i}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* Autoridade (Bio Boutique) */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-surface)' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
-            <div style={{ order: 2 }}>
-               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
-                 <h2 style={{ fontSize: '2.5rem', margin: 0 }}>Dra. Libia Florio</h2>
+            {/* Biografia */}
+            <div>
+               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '8px' }}>
+                 <h2 className="home-h2" style={{ margin: 0 }}>Dra. Libia Florio</h2>
                  <a 
                    href="https://www.linkedin.com/in/libiaflorio/" target="_blank" rel="noopener noreferrer" 
                    style={{ color: 'var(--accent-gold)', display: 'flex', transition: 'opacity 0.2s ease' }} 
@@ -307,107 +390,71 @@ export default function HomePage() {
                    onMouseOut={e => e.currentTarget.style.opacity = '1'}
                    aria-label="LinkedIn Dra. Libia Florio"
                  >
-                   <LinkedinIcon size={32} />
+                   <LinkedinIcon size={28} />
                  </a>
                </div>
-               <p style={{ color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.85rem', marginBottom: '2rem' }}>
-                 Advogada Especialista em Direito Imobiliário
+               <p style={{ color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14.5px', marginBottom: '24px', fontWeight: '500' }}>
+                 Advogada
                </p>
-               <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
-                 A Dra. Libia Cristiane Correa e Andrade e Florio é <strong>Mestre em Direito pela Universidade de São Paulo (USP)</strong> e especialista em <strong>Direito Notarial e Registral</strong> pela Legale Educacional. É referência como advogada de direito imobiliário em São Paulo, atuando com excelência.
+               <p className="home-p" style={{ marginBottom: '16px' }}>
+                 A Dra. Libia Cristiane Correa e Andrade e Florio é <strong>Mestre em Direito pela Universidade de São Paulo (USP)</strong> e especialista em Direito Notarial e Registral. Lidera a estruturação de negócios imobiliários, patrimoniais e familiares do escritório com excelência técnica reconhecida.
                </p>
-               <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
-                 Com mais de três décadas de experiência prestando assessoria jurídica imobiliária, une a profundidade acadêmica à especialização em advocacia imobiliária. Membro Efetivo da Comissão Especial de Direito Imobiliário da OAB/SP, oferece soluções e segurança focada nos direitos imobiliários de seus clientes.
+               <p className="home-p" style={{ marginBottom: '24px' }}>
+                 Com mais de três décadas de prática profissional em estruturas contratuais, une a precisão e a profundidade acadêmica à experiência indispensável para a tomada de decisões de alto valor e complexidade jurídica.
                </p>
                
-               <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem', borderTop: '1px solid var(--bg-surface-light)', paddingTop: '2rem' }}>
-                  <div>
-                    <strong style={{ fontSize: '1.5rem', color: 'var(--text-main)', display: 'block' }}>USP</strong>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Formação de Excelência</span>
+               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '24px', borderTop: '1px solid var(--bg-surface-light)', paddingTop: '24px', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', gap: '2rem' }}>
+                    <div>
+                      <strong style={{ fontSize: '1.5rem', color: 'var(--text-main)', display: 'block', fontWeight: '500' }}>USP</strong>
+                      <span className="home-aux">Mestrado em Direito</span>
+                    </div>
+                    <div>
+                      <strong style={{ fontSize: '1.5rem', color: 'var(--text-main)', display: 'block', fontWeight: '500' }}>30+</strong>
+                      <span className="home-aux">Anos de Prática</span>
+                    </div>
                   </div>
-                  <div>
-                    <strong style={{ fontSize: '1.5rem', color: 'var(--text-main)', display: 'block' }}>30+</strong>
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Anos de Prática</span>
+
+                  {/* Diploma USP */}
+                  <div 
+                    style={{ 
+                      position: 'relative', padding: '0.4rem', background: 'var(--bg-surface-light)', 
+                      border: '1px solid var(--accent-gold)', cursor: 'pointer', overflow: 'hidden'
+                    }}
+                    onClick={() => setIsDiplomaOpen(true)}
+                    onMouseOver={e => e.currentTarget.lastChild.style.opacity = '1'}
+                    onMouseOut={e => e.currentTarget.lastChild.style.opacity = '0'}
+                  >
+                    <img 
+                      src="/diploma-usp.jpg" 
+                      alt="Diploma de Mestrado na USP - Dra. Libia Florio" 
+                      style={{ width: '100%', height: 'auto', display: 'block', border: '1px solid var(--bg-surface)' }}
+                    />
+                    <div style={{
+                      position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+                      background: 'rgba(17, 17, 17, 0.7)', display: 'flex', flexDirection: 'column',
+                      alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.3s ease', pointerEvents: 'none'
+                    }}>
+                      <Search size={20} color="var(--accent-gold)" style={{ marginBottom: '0.2rem' }} />
+                      <span style={{ color: 'var(--accent-gold)', letterSpacing: '1px', textTransform: 'uppercase', fontSize: '0.65rem' }}>Ampliar</span>
+                    </div>
                   </div>
                </div>
-            </div>
-            <div style={{ order: 1 }}>
-               {/* Diploma USP */}
-               <div 
-                 style={{ 
-                   position: 'relative', padding: '1rem', background: 'var(--bg-surface-light)', 
-                   border: '1px solid var(--accent-gold)', cursor: 'pointer', overflow: 'hidden'
-                 }}
-                 onClick={() => setIsDiplomaOpen(true)}
-                 onMouseOver={e => e.currentTarget.lastChild.style.opacity = '1'}
-                 onMouseOut={e => e.currentTarget.lastChild.style.opacity = '0'}
-               >
-                 <img 
-                   src="/diploma-usp.jpg" 
-                   alt="Diploma de Mestrado na USP - Dra. Libia Florio" 
-                   style={{ width: '100%', height: 'auto', display: 'block', border: '1px solid var(--bg-surface)' }}
-                 />
-                 <div style={{
-                   position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-                   background: 'rgba(17, 17, 17, 0.7)', display: 'flex', flexDirection: 'column',
-                   alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.3s ease', pointerEvents: 'none'
-                 }}>
-                   <Search size={40} color="var(--accent-gold)" style={{ marginBottom: '0.5rem' }} />
-                   <span style={{ color: 'var(--accent-gold)', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem' }}>Ampliar</span>
-                 </div>
-               </div>
-               <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '1rem', fontStyle: 'italic' }}>
-                 Mestrado em Direito Comercial - Universidade de São Paulo (USP)
-               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Artigos e Análises Jurídicas (NOVA SESSÃO) */}
-      <section className="section">
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ marginBottom: '1rem' }}>Artigos e Análises Jurídicas</h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
-              Insights práticos e estratégicos sobre Direito Imobiliário.
-            </p>
-          </div>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2rem' }}>
-            <Link to="/artigos/distrato-de-locacao" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <div 
-                className="card-surface" 
-                style={{ height: '100%', display: 'flex', flexDirection: 'column', cursor: 'pointer', transition: 'transform 0.3s ease, border-color 0.3s ease' }}
-                onMouseOver={e => { e.currentTarget.style.transform = 'translateY(-5px)'; e.currentTarget.style.borderColor = 'var(--accent-gold)' }}
-                onMouseOut={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'var(--bg-surface-light)' }}
-              >
-                <div style={{ fontSize: '0.85rem', color: 'var(--accent-gold)', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                  Artigo Especialista • 18 Abr 2026
-                </div>
-                <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem', lineHeight: '1.4' }}>
-                  Dicas para Distrato de Locação: Segurança Jurídica em Transações
-                </h3>
-                <p style={{ color: 'var(--text-muted)', flexGrow: 1, marginBottom: '2rem' }}>
-                  A extinção das relações locatícias por meio do distrato representa um dos momentos de maior complexidade. Descubra como criar uma regra própria que protege seu patrimônio.
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', color: 'var(--accent-gold)', fontWeight: 'bold', gap: '0.5rem' }}>
-                  Ler Análise Completa <ChevronRight size={18} />
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Final */}
-      <section className="section" style={{ textAlign: 'center', backgroundColor: 'var(--bg-surface)', borderBottom: '1px solid var(--bg-surface-light)', borderTop: '1px solid var(--bg-surface-light)' }}>
-        <div className="container">
-           <h2 style={{ marginBottom: '1.5rem' }}>O momento da decisão.</h2>
-           <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
-             Agende sua consultoria estratégica agora e dê o primeiro passo definitivo para a segurança total do seu patrimônio.
+      {/* 8. CONTATO */}
+      <section id="contato" className="home-section transversal-section" style={{ textAlign: 'center' }}>
+        <div className="home-container">
+           <h2 className="home-h2" style={{ marginBottom: '20px' }}>Questões relevantes exigem uma análise integrada.</h2>
+           <p className="home-p home-text-limit" style={{ marginBottom: '40px' }}>
+             Entre em contato com o Andrade Florio para apresentar sua demanda e entender como nossa estruturação jurídica pode proteger seus interesses.
            </p>
-           <WhatsAppButton text="Quero regularizar meu imóvel" />
+           <div style={{ display: 'inline-flex' }}>
+              <WhatsAppButton text="Apresentar uma demanda" outline={true} />
+           </div>
         </div>
       </section>
 

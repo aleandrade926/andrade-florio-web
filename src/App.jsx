@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { ShieldCheck } from 'lucide-react';
 import Home from './pages/Home';
+import Regularizacao from './pages/Regularizacao';
 import Article from './pages/Article';
 import Usucapiao from './pages/Usucapiao';
 import Inventarios from './pages/Inventarios';
@@ -53,6 +54,7 @@ function App() {
       <PageViewTracker />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/regularizacao" element={<Regularizacao />} />
         <Route path="/inscricao" element={<LibiaCapture />} />
         <Route path="/vip-offer" element={<LibiaVipOffer />} />
         <Route path="/artigos/distrato-de-locacao" element={<Article />} />
