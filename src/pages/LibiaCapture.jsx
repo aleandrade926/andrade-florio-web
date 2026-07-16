@@ -176,7 +176,7 @@ const LibiaCapture = () => {
 
       {/* HEADER LOGO */}
       <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '2rem'}}>
-        <h1 style={{fontSize: '1.5rem', fontWeight: '900', letterSpacing: '0.2rem'}}>ANDRADE FLORIO</h1>
+        <h1 style={{fontSize: '1.5rem', fontWeight: '900', letterSpacing: '0.2rem'}}>ANDRADE E FLORIO</h1>
       </div>
 
       <div className="capture-container">

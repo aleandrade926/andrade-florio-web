@@ -223,7 +223,7 @@ export default function Home() {
               Estratégia jurídica para decisões singulares.
             </h2>
             <p className="home-p home-text-limit" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
-              O Andrade Florio integra o Direito Empresarial, Patrimonial e Imobiliário à inteligência tributária para estruturar decisões relevantes, operações complexas e relações de longo prazo. Fugimos de formatos massificados de atendimento para garantir um acompanhamento direto por sócios seniores com visão multidisciplinar e foco absoluto na segurança e perpetuidade das decisões do cliente.
+              O Andrade e Florio integra o Direito Empresarial, Patrimonial e Imobiliário à inteligência tributária para estruturar decisões relevantes, operações complexas e relações de longo prazo. Fugimos de formatos massificados de atendimento para garantir um acompanhamento direto por sócios seniores com visão multidisciplinar e foco absoluto na segurança e perpetuidade das decisões do cliente.
             </p>
           </div>
         </div>
@@ -450,7 +450,7 @@ export default function Home() {
         <div className="home-container">
            <h2 className="home-h2" style={{ marginBottom: '20px' }}>Questões relevantes exigem uma análise integrada.</h2>
            <p className="home-p home-text-limit" style={{ marginBottom: '40px' }}>
-             Entre em contato com o Andrade Florio para apresentar sua demanda e entender como nossa estruturação jurídica pode proteger seus interesses.
+             Entre em contato com o Andrade e Florio para apresentar sua demanda e entender como nossa estruturação jurídica pode proteger seus interesses.
            </p>
            <div style={{ display: 'inline-flex' }}>
               <WhatsAppButton text="Apresentar uma demanda" outline={true} />

@@ -279,7 +279,7 @@ const LibiaVipOffer = () => {
       </div>
 
       <div className="footer">
-        <p>Andrade Florio © 2026. Todos os direitos reservados.</p>
+        <p>Andrade e Florio © 2026. Todos os direitos reservados.</p>
       </div>
     </div>
   );
