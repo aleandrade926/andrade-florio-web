@@ -101,7 +101,7 @@ export function Navbar({ showMenu = false }) {
   const navLinks = [
     { label: 'Escritório', href: '/#apresentacao' },
     { label: 'Atuação', href: '/#frentes' },
-    { label: 'Para Imobiliárias', href: '/imobiliarias' },
+    { label: 'Reforma Tributária', href: '/#reforma-tributaria' },
     { label: 'Dra. Líbia', href: '/#dra-libia' },
     { label: 'Contato', href: '/#contato' }
   ];

@@ -288,24 +288,9 @@ export default function Home() {
             <div className="frente-card">
               <Building2 size={32} color="var(--accent-gold)" style={{ marginBottom: '1.5rem' }} />
               <h3 className="home-h3" style={{ marginBottom: '16px' }}>Imóveis e Operações</h3>
-              <p className="home-p" style={{ fontSize: '16.5px', marginBottom: '1.2rem' }}>
-                Estruturação jurídica de ativos e operações imobiliárias, auditoria contratual célere, regularização fundiária e retaguarda sob demanda para imobiliárias e corretores.
+              <p className="home-p" style={{ fontSize: '16.5px' }}>
+                Estruturação jurídica de ativos e grandes operações imobiliárias, incluindo compra, venda, locação estruturada e proteção de titularidade sob rigorosa análise de riscos fiscais.
               </p>
-              <a 
-                href="/imobiliarias" 
-                style={{ 
-                  color: 'var(--accent-gold)', 
-                  textDecoration: 'none', 
-                  fontSize: '14px', 
-                  fontWeight: '550', 
-                  display: 'inline-flex', 
-                  alignItems: 'center', 
-                  gap: '6px',
-                  marginTop: 'auto'
-                }}
-              >
-                Conheça a retaguarda para imobiliárias →
-              </a>
             </div>
 
           </div>
