@@ -15,6 +15,7 @@ import Sammarone from './pages/Sammarone';
 import LibiaVipOffer from './pages/LibiaVipOffer';
 import LibiaCapture from './pages/LibiaCapture';
 import HEgidio from './pages/HEgidio';
+import Imobiliarias from './pages/Imobiliarias';
 
 // Componente para rastrear mudanças de página no Google Ads (SPA)
 function PageViewTracker() {
@@ -65,6 +66,7 @@ function App() {
         <Route path="/manual-usucapiao" element={<ManualUsucapiao />} />
         <Route path="/proposta/sammarone" element={<Sammarone />} />
         <Route path="/proposta/hegidio" element={<HEgidio />} />
+        <Route path="/imobiliarias" element={<Imobiliarias />} />
       </Routes>
 
       {showLgpdBanner && (
