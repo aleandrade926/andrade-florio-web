@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   ShieldCheck, 
   Clock, 
@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { Navbar, Footer, WhatsAppButton, StickyWhatsApp, handleWhatsAppClick, LinkedinIcon } from '../components/Shared';
 
-const customStyles = 
+const customStyles = `
   .imob-hero-badge {
     display: inline-flex;
     align-items: center;
@@ -72,7 +72,7 @@ const customStyles =
     position: relative;
     overflow: hidden;
   }
-;
+`;
 
 export default function Imobiliarias() {
   const [isDiplomaOpen, setIsDiplomaOpen] = useState(false);
