@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Regularizacao from './pages/Regularizacao';
 import Article from './pages/Article';
 import Usucapiao from './pages/Usucapiao';
+import Inventario from './pages/Inventario';
 import Inventarios from './pages/Inventarios';
 import Atendimento from './pages/Atendimento';
 import OnePager from './pages/OnePager';
@@ -56,6 +57,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/regularizacao" element={<Regularizacao />} />
+        <Route path="/inventario" element={<Inventario />} />
+        <Route path="/inventarios" element={<Inventario />} />
         <Route path="/inscricao" element={<LibiaCapture />} />
         <Route path="/vip-offer" element={<LibiaVipOffer />} />
         <Route path="/artigos/distrato-de-locacao" element={<Article />} />
