@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { 
   Lock, ChevronRight, ChevronLeft, ShieldCheck, 
   Download, Copy, Check, MessageCircle, FileText,
-  Sparkles, Printer, AlertTriangle, Eye, Edit3, Sliders
+  Sparkles, Printer, AlertTriangle, Eye, Edit3, Sliders, CheckCircle2
 } from 'lucide-react';
 import contratosData from '../data/contratosData.json';
 import { handleWhatsAppClick } from '../components/Shared';
@@ -125,13 +125,15 @@ export default function AcervoContratos() {
   const [showLiveEditor, setShowLiveEditor] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // IA do Gemini
+  // Assistente Jurídico Inteligente da Banca
   const [aiPrompt, setAiPrompt] = useState('');
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState(null);
   const [customizedContracts, setCustomizedContracts] = useState({});
+  const [customizedSummaries, setCustomizedSummaries] = useState({});
+  const [showHighlights, setShowHighlights] = useState(true);
 
-  // Dados universais que alimentam e deixam QUALQUER um dos 30 contratos vivo em tempo real!
+  // Dados universais que alimentam e deixam QUALQUER um dos 60 contratos vivo em tempo real!
   const [liveData, setLiveData] = useState({
     parte1Nome: '',
     parte1Cpf: '',
@@ -225,12 +227,19 @@ export default function AcervoContratos() {
           ...prev,
           [currentItem.id]: data.customizedText
         }));
+        if (data.summaryOfChanges && data.summaryOfChanges.length > 0) {
+          setCustomizedSummaries(prev => ({
+            ...prev,
+            [currentItem.id]: data.summaryOfChanges
+          }));
+        }
+        setShowHighlights(true);
         setAiPrompt('');
       } else {
-        setAiError(data.error || 'Erro ao processar personalização com a IA');
+        setAiError(data.error || 'Erro ao processar personalização da minuta');
       }
     } catch (err) {
-      setAiError('Falha ao comunicar com o servidor da IA: ' + err.message);
+      setAiError('Falha ao comunicar com o servidor: ' + err.message);
     } finally {
       setAiLoading(false);
     }
@@ -242,11 +251,18 @@ export default function AcervoContratos() {
       delete updated[currentItem.id];
       return updated;
     });
+    setCustomizedSummaries(prev => {
+      const updated = { ...prev };
+      delete updated[currentItem.id];
+      return updated;
+    });
     setAiError(null);
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(contratoFormatadoAoVivo);
+    // Copia o texto limpo para assinatura (sem os marcadores visuais internos)
+    const cleanText = contratoFormatadoAoVivo.replace(/\[CLÁUSULA ADAPTADA\]\s*/g, '');
+    navigator.clipboard.writeText(cleanText);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -505,7 +521,7 @@ export default function AcervoContratos() {
             </div>
           </div>
 
-          {/* ASSISTENTE JURÍDICO IA COM GOOGLE GEMINI */}
+          {/* ASSISTENTE JURÍDICO INTELIGENTE DA BANCA */}
           {!isInstruction && (
             <div style={{
               backgroundColor: 'rgba(212, 175, 55, 0.05)',
@@ -518,13 +534,13 @@ export default function AcervoContratos() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                   <Sparkles size={20} color="var(--accent-gold)" />
                   <span style={{ fontWeight: 700, color: 'var(--accent-gold)', fontSize: '0.95rem', textTransform: 'uppercase' }}>
-                    Assistente Jurídico IA • Google Gemini
+                    Assistente Jurídico Inteligente • Andrade & Florio
                   </span>
                 </div>
                 {customizedContracts[currentItem.id] && (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <span style={{ fontSize: '0.78rem', color: '#4ade80', backgroundColor: 'rgba(74, 222, 128, 0.1)', padding: '0.2rem 0.6rem', borderRadius: '4px', fontWeight: 600 }}>
-                      ✓ Minuta Personalizada com IA
+                      ✓ Minuta Personalizada
                     </span>
                     <button
                       onClick={handleResetAi}
@@ -545,7 +561,7 @@ export default function AcervoContratos() {
               </div>
 
               <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', marginBottom: '0.75rem', lineHeight: 1.5 }}>
-                Deseja adaptar cláusulas à sua realidade? Digite suas instruções em linguagem simples (ex: <em>"proibir animais"</em>, <em>"reajuste semestral"</em>, <em>"adicionar cláusula de fiador com renúncia ao benefício de ordem"</em>) e a IA da banca reescreverá a minuta mantendo a segurança jurídica.
+                Deseja adaptar cláusulas à sua realidade? Digite suas instruções em linguagem simples (ex: <em>"proibir animais"</em>, <em>"reajuste semestral"</em>, <em>"adicionar cláusula de fiador com renúncia ao benefício de ordem"</em>) e o assistente da banca reescreverá a minuta mantendo a segurança jurídica.
               </p>
 
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
@@ -584,13 +600,50 @@ export default function AcervoContratos() {
                   }}
                 >
                   <Sparkles size={16} />
-                  {aiLoading ? 'Processando com IA...' : 'Personalizar com IA'}
+                  {aiLoading ? 'Processando Adaptação...' : 'Adaptar Minuta'}
                 </button>
               </div>
 
               {aiError && (
                 <div style={{ color: '#ef4444', fontSize: '0.82rem', marginTop: '0.6rem' }}>
                   ⚠️ {aiError}
+                </div>
+              )}
+
+              {/* QUADRO DE RESUMO DAS ALTERAÇÕES REALIZADAS */}
+              {customizedSummaries[currentItem.id] && customizedSummaries[currentItem.id].length > 0 && (
+                <div style={{
+                  marginTop: '1.25rem',
+                  backgroundColor: 'rgba(212, 175, 55, 0.08)',
+                  border: '1px solid var(--accent-gold)',
+                  borderRadius: '6px',
+                  padding: '1.15rem 1.25rem'
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.6rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.92rem' }}>
+                      <CheckCircle2 size={18} color="var(--accent-gold)" />
+                      Alterações Incorporadas na Minuta:
+                    </div>
+                    <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', color: 'var(--text-muted)', cursor: 'pointer' }}>
+                      <input 
+                        type="checkbox" 
+                        checked={showHighlights} 
+                        onChange={(e) => setShowHighlights(e.target.checked)} 
+                        style={{ cursor: 'pointer' }}
+                      />
+                      Destacar alterações no texto abaixo
+                    </label>
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: '1.25rem', color: '#E0E0E0', fontSize: '0.88rem', lineHeight: 1.6 }}>
+                    {customizedSummaries[currentItem.id].map((change, idx) => (
+                      <li key={idx} style={{ marginBottom: '0.25rem' }}>
+                        {change}
+                      </li>
+                    ))}
+                  </ul>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.6rem' }}>
+                    💡 As cláusulas adaptadas estão identificadas abaixo com o selo <strong>✦ Cláusula Adaptada</strong>. Ao copiar, o texto é copiado limpo para assinatura formal.
+                  </div>
                 </div>
               )}
             </div>
@@ -722,12 +775,62 @@ export default function AcervoContratos() {
             fontFamily: isInstruction ? 'var(--font-body)' : 'serif',
             fontSize: isInstruction ? '1.05rem' : '1.02rem',
             lineHeight: 1.85,
-            whiteSpace: 'pre-line',
             flex: 1,
             border: isInstruction ? '1px solid var(--bg-surface-light)' : '1px solid #E5E7EB',
             boxShadow: isInstruction ? 'none' : '0 15px 35px rgba(0,0,0,0.5)'
           }}>
-            {contratoFormatadoAoVivo}
+            {isInstruction ? (
+              <div style={{ whiteSpace: 'pre-line' }}>
+                {contratoFormatadoAoVivo}
+              </div>
+            ) : (
+              contratoFormatadoAoVivo.split('\n\n').map((paragraph, pIdx) => {
+                const isAdapted = paragraph.includes('[CLÁUSULA ADAPTADA]');
+                const cleanParagraph = paragraph.replace(/\[CLÁUSULA ADAPTADA\]\s*/g, '');
+
+                if (isAdapted && showHighlights) {
+                  return (
+                    <div 
+                      key={pIdx} 
+                      style={{ 
+                        backgroundColor: 'rgba(212, 175, 55, 0.12)', 
+                        borderLeft: '4px solid var(--accent-gold)', 
+                        padding: '1.1rem 1.4rem', 
+                        margin: '1.25rem 0',
+                        borderRadius: '0 6px 6px 0',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
+                      }}
+                    >
+                      <div style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        backgroundColor: 'var(--accent-gold)',
+                        color: '#000',
+                        fontSize: '0.74rem',
+                        fontWeight: 800,
+                        padding: '0.2rem 0.6rem',
+                        borderRadius: '4px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px',
+                        marginBottom: '0.5rem'
+                      }}>
+                        ✦ Cláusula Adaptada
+                      </div>
+                      <div style={{ color: '#111827', fontWeight: 500, whiteSpace: 'pre-line' }}>
+                        {cleanParagraph}
+                      </div>
+                    </div>
+                  );
+                }
+
+                return (
+                  <p key={pIdx} style={{ margin: '0 0 1.25rem 0', whiteSpace: 'pre-line' }}>
+                    {cleanParagraph}
+                  </p>
+                );
+              })
+            )}
           </div>
 
           {/* RODAPÉ DO CONTRATO COM SUPORTE DA BANCA */}
