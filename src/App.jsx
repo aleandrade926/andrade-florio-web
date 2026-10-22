@@ -18,6 +18,7 @@ import LibiaVipOffer from './pages/LibiaVipOffer';
 import LibiaCapture from './pages/LibiaCapture';
 import HEgidio from './pages/HEgidio';
 import Imobiliarias from './pages/Imobiliarias';
+import KitContratos from './pages/KitContratos';
 
 // Componente para rastrear mudanças de página no Google Ads (SPA)
 function PageViewTracker() {
@@ -73,6 +74,9 @@ function App() {
         <Route path="/proposta/sammarone" element={<Sammarone />} />
         <Route path="/proposta/hegidio" element={<HEgidio />} />
         <Route path="/imobiliarias" element={<Imobiliarias />} />
+        <Route path="/kit-contratos" element={<KitContratos />} />
+        <Route path="/modelos-contratos" element={<KitContratos />} />
+        <Route path="/contratos" element={<KitContratos />} />
       </Routes>
 
       {showLgpdBanner && (
