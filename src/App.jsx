@@ -20,6 +20,7 @@ import HEgidio from './pages/HEgidio';
 import Imobiliarias from './pages/Imobiliarias';
 import KitContratos from './pages/KitContratos';
 import AcervoContratos from './pages/AcervoContratos';
+import GeradorContratos from './pages/GeradorContratos';
 
 // Componente para rastrear mudanças de página no Google Ads (SPA)
 function PageViewTracker() {
@@ -81,6 +82,7 @@ function App() {
         <Route path="/acervo-contratos" element={<AcervoContratos />} />
         <Route path="/portal-contratos" element={<AcervoContratos />} />
         <Route path="/area-membros-contratos" element={<AcervoContratos />} />
+        <Route path="/gerador-contratos" element={<GeradorContratos />} />
       </Routes>
 
       {showLgpdBanner && (
