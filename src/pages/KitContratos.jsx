@@ -8,7 +8,6 @@ import { Navbar, Footer, handleWhatsAppClick } from '../components/Shared';
 
 export default function KitContratos() {
   const [openFaq, setOpenFaq] = useState(null);
-  const [includeOrderBump, setIncludeOrderBump] = useState(true);
 
   // Link da Kiwify ou Checkout direto (pode ser substituído pela URL final gerada)
   const KIWIFY_CHECKOUT_URL = "https://pay.kiwify.com.br/LINK_DO_SEU_PRODUTO"; 
@@ -292,59 +291,6 @@ export default function KitContratos() {
               </div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ORDER BUMP */}
-      <section style={{ 
-        backgroundColor: 'var(--bg-surface)', 
-        borderTop: '1px solid var(--bg-surface-light)',
-        borderBottom: '1px solid var(--bg-surface-light)',
-        padding: '4.5rem 1.5rem' 
-      }}>
-        <div style={{ maxWidth: '850px', margin: '0 auto' }}>
-          <div style={{
-            border: '2px dashed var(--accent-gold)',
-            borderRadius: '10px',
-            padding: '2.25rem',
-            backgroundColor: 'rgba(212, 175, 55, 0.04)'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem' }}>
-              <input 
-                type="checkbox" 
-                id="bumpBox"
-                checked={includeOrderBump}
-                onChange={(e) => setIncludeOrderBump(e.target.checked)}
-                style={{ width: '24px', height: '24px', marginTop: '0.2rem', cursor: 'pointer', accentColor: 'var(--accent-gold)' }}
-              />
-              <div>
-                <label htmlFor="bumpBox" style={{ cursor: 'pointer' }}>
-                  <span style={{ 
-                    display: 'inline-block',
-                    backgroundColor: 'var(--accent-gold)', 
-                    color: '#000000', 
-                    fontWeight: 800, 
-                    fontSize: '0.8rem', 
-                    padding: '0.25rem 0.65rem', 
-                    borderRadius: '4px',
-                    marginBottom: '0.6rem',
-                    textTransform: 'uppercase'
-                  }}>
-                    ⚠️ Adicionar o Guia de Alerta de Riscos e Cláusulas Nulas (+ R$ 19,90)
-                  </span>
-                  <h4 style={{ fontSize: '1.3rem', color: '#FFFFFF', margin: '0.25rem 0 0.75rem', fontFamily: 'var(--font-heading)' }}>
-                    O Guia de Alerta de Riscos e Cláusulas Nulas
-                  </h4>
-                </label>
-                <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.6, margin: '0 0 1rem' }}>
-                  Não corra riscos na hora de preencher. Leve também nosso guia rápido mostrando os maiores erros fatais que anulam contratos no Brasil e saiba exatamente o que nunca alterar nas minutas.
-                </p>
-                <span style={{ fontSize: '0.88rem', color: 'var(--accent-gold)', fontWeight: 600 }}>
-                  ✓ Ative na tela de pagamento da Kiwify em 1 clique
-                </span>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
