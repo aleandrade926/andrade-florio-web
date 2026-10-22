@@ -86,7 +86,7 @@ const Gatekeeper = ({ onLogin }) => {
             />
             {error && (
               <span style={{ color: '#ef4444', fontSize: '0.85rem', display: 'block', marginTop: '0.6rem', textAlign: 'center' }}>
-                Chave de acesso incorreta. Verifique o código recebido no e-mail de confirmação da compra.
+                Chave de acesso incorreta. Verifique a chave disponível na sua área de membros.
               </span>
             )}
           </div>
