@@ -4,6 +4,7 @@ import { ShieldCheck } from 'lucide-react';
 import Home from './pages/Home';
 import Regularizacao from './pages/Regularizacao';
 import Article from './pages/Article';
+import InventarioGuia2026 from './pages/InventarioGuia2026';
 import Usucapiao from './pages/Usucapiao';
 import Inventario from './pages/Inventario';
 import Inventarios from './pages/Inventarios';
@@ -62,6 +63,8 @@ function App() {
         <Route path="/inscricao" element={<LibiaCapture />} />
         <Route path="/vip-offer" element={<LibiaVipOffer />} />
         <Route path="/artigos/distrato-de-locacao" element={<Article />} />
+        <Route path="/artigos/inventario-guia-completo-2026" element={<InventarioGuia2026 />} />
+        <Route path="/guia-inventario" element={<InventarioGuia2026 />} />
         <Route path="/servicos/usucapiao" element={<Usucapiao />} />
         <Route path="/servicos/inventarios" element={<Inventarios />} />
         <Route path="/atendimento" element={<Atendimento />} />
