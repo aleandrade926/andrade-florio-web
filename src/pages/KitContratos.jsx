@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { 
   FileText, ShieldCheck, Download, CheckCircle2, AlertTriangle, 
   ArrowRight, Lock, Clock, HelpCircle, Star, Scale, Building2, 
-  ChevronDown, MessageCircle, Sparkles, Check, FileCheck
+  ChevronDown, MessageCircle, Sparkles, Check, FileCheck, Layers
 } from 'lucide-react';
 import { Navbar, Footer, handleWhatsAppClick } from '../components/Shared';
 
@@ -21,56 +21,80 @@ export default function KitContratos() {
     if (KIWIFY_CHECKOUT_URL.includes("LINK_DO_SEU_PRODUTO")) {
       handleWhatsAppClick(
         'nlxZCPiY6qAcEMzlgIgD',
-        'Olá! Quero baixar agora o Acervo Definitivo de Contratos da Andrade & Florio (R$ 67 no Pix) com liberação imediata dos arquivos Word.'
+        'Olá! Quero baixar agora o Acervo Definitivo de 30 Contratos da Andrade & Florio (R$ 19,90 no Pix) com liberação imediata da chave de acesso.'
       );
     } else {
       window.open(KIWIFY_CHECKOUT_URL, '_blank');
     }
   };
 
-  const arquivos = [
+  const modulos = [
     {
-      title: "Contrato de Compra e Venda de Imóvel",
-      badge: "Blindagem Total",
-      desc: "Com cláusulas de proteção contra fraudes e vícios ocultos. Inclui cláusula de arras/sinal, exigência de certidões prévias obrigatórias e cláusula resolutiva expressa contra calote.",
-      tags: ["Proteção contra Fraudes", "Cláusula de Sinal e Arras", "Cláusula Resolutiva Expressa"]
+      titulo: "MÓDULO 1: Transações Imobiliárias",
+      foco: "Onde o dinheiro e o risco estão concentrados",
+      itens: [
+        "01. Contrato de Compra e Venda de Imóvel (à vista e parcelado com arras)",
+        "02. Contrato de Locação Residencial (com 3 opções de garantia e vistoria)",
+        "03. Contrato de Locação Comercial (com proteção de ponto e regras PJ)",
+        "04. Contrato de Comodato de Imóvel (Blindagem anti-usucapião com posse precária)",
+        "05. Termo de Vistoria de Imóvel (Laudo de Entrada e Saída)",
+        "06. Aditivo Contratual de Locação (Reajuste, novo fiador ou prorrogação)",
+        "07. Distrato de Locação (Encerramento amigável e devolução de caução)",
+        "08. Notificação Extrajudicial para Despejo / Cobrança de Aluguel",
+        "09. Recibo de Sinal e Princípio de Pagamento (Arras confirmatórias)",
+        "10. Contrato de Corretagem Imobiliária (Comissão de corretor com exclusividade)",
+        "11. Contrato de Empreitada / Reforma de Imóvel (Blindagem contra passivo trabalhista)"
+      ]
     },
     {
-      title: "Contratos de Locação (Residencial e Comercial)",
-      badge: "Lei 8.245/91",
-      desc: "Estrutura blindada para garantias e despejo rápido, se necessário. Opções flexíveis para caução, fiador ou seguro, com laudo de vistoria e regras de conservação.",
-      tags: ["3 Opções de Garantias", "Despejo Rápido sem Brechas", "Laudo de Vistoria de Entrada"]
+      titulo: "MÓDULO 2: Negócios e Prestação de Serviços",
+      foco: "Volume massivo e segurança para autônomos, PJs e empresas",
+      itens: [
+        "12. Contrato de Prestação de Serviços Simples e Direto",
+        "13. Contrato de Prestação de Serviços PJ / Freelancer (Blindagem anti-CLT)",
+        "14. Acordo de Confidencialidade e Não Divulgação (NDA com multa)",
+        "15. Contrato de Parceria Comercial / Joint Venture Simples (Divisão de lucros)",
+        "16. Contrato de Representação Comercial Autônoma (Lei 4.886/65)",
+        "17. Termo de Quitação e Encerramento Pleno de Serviços",
+        "18. Distrato de Prestação de Serviços (Rescisão bilateral sem ônus)",
+        "19. Contrato de Licenciamento de Uso de Marca (Com royalties)",
+        "20. Contrato de Cessão Total de Direitos Autorais e Imagem (Design, código e vídeos)"
+      ]
     },
     {
-      title: "Contrato de Comodato de Imóvel",
-      badge: "Anti-Usucapião",
-      desc: "Empréstimo de bens com segurança total de devolução. Fixa posse precária (Art. 1.208 do CC) e destrói sumariamente qualquer alegação de usucapião por parte do ocupante.",
-      tags: ["Posse Precária Comprovada", "Segurança Total de Devolução", "Aluguel-Pena por Retenção"]
-    },
-    {
-      title: "Contrato de Prestação de Serviços",
-      badge: "Blindagem Trabalhista",
-      desc: "Escopo definido, multas de rescisão e segurança de recebimento. Blindagem contra subordinação jurídica e passivos na Justiça do Trabalho.",
-      tags: ["Escopo e Medição Fechados", "Multas de Rescisão", "Segurança de Recebimento"]
+      titulo: "MÓDULO 3: Vida Civil, Veículos e Finanças",
+      foco: "Respaldo jurídico para o dia a dia e proteção de patrimônio",
+      itens: [
+        "21. Contrato de Compra e Venda de Veículo Usado (Carros e motos com vistoria)",
+        "22. Termo de Confissão de Dívida e Parcelamento (Título executivo extrajudicial)",
+        "23. Contrato de Mútuo Financeiro (Empréstimo particular de dinheiro)",
+        "24. Termo de Acordo Extrajudicial e Transação (Fim amigável de litígios)",
+        "25. Notificação Extrajudicial de Cobrança com Prazo",
+        "26. Procuração de Plenos Poderes (Ad Negotia)",
+        "27. Procuração com Poderes Específicos para Venda de Imóvel",
+        "28. Declaração de Hipossuficiência Financeira (Isenção de taxas e justiça gratuita)",
+        "29. Contrato de Doação de Bens com Reserva de Usufruto Vitalício",
+        "30. Recibo de Pagamento Geral e Quitação Plena Irrevogável"
+      ]
     }
   ];
 
   const faqs = [
     {
-      q: "Em qual formato recebo os contratos?",
-      a: "Você recebe todos os arquivos em formato Word (.docx) 100% editáveis no computador ou celular, além do formato PDF de consulta rápida. É só abrir, preencher os campos sinalizados e imprimir para assinar."
+      q: "Em qual formato recebo os 30 contratos?",
+      a: "Todos os 30 documentos são entregues em formato Word (.docx) 100% editáveis no seu computador, celular ou Google Docs. É só abrir, preencher os dados entre colchetes [NOME, CPF, VALOR] e assinar."
     },
     {
-      q: "Por que esses modelos são superiores aos modelos genéricos da internet?",
-      a: "Modelos gratuitos do Google estão repletos de cláusulas nulas que a jurisprudência derruba no primeiro mês de processo. Este acervo foi estruturado, revisado e validado pela banca Andrade & Florio diretamente para a prática jurídica real."
+      q: "Por que esses modelos custam apenas R$ 19,90 se foram feitos por advogados?",
+      a: "Porque criamos um acervo padronizado de escala para a internet. Enquanto uma única consulta para redigir um contrato individual na banca custa no mínimo R$ 800,00, este acervo digital entrega a estrutura pronta por um valor acessível e irrecusável."
     },
     {
-      q: "Como é feita a entrega dos arquivos após o pagamento?",
-      a: "A liberação é 100% imediata. Assim que o Pix ou Cartão for aprovado, o link para baixar o acervo completo é enviado para o seu e-mail e liberado na tela."
+      q: "Como funciona o acesso após a compra?",
+      a: "Assim que o Pix for aprovado, você recebe no seu e-mail a chave de acesso instantânea e o link para o nosso portal exclusivo (andradeflorio.com.br/acervo-contratos). Lá você pode ler todos os contratos na tela e baixar um por um ou o pacote completo em .zip."
     },
     {
-      q: "E se eu precisar de uma análise ou suporte jurídico individual?",
-      a: "Os compradores contam com canal direto de WhatsApp com a banca Andrade & Florio para agendamento de análises expressas de minutas e due diligence de imóveis."
+      q: "E se eu precisar de suporte jurídico individual?",
+      a: "Dentro do portal você conta com um botão direto de WhatsApp com a banca Andrade & Florio para agendar análises expressas de minutas de alto valor."
     }
   ];
 
@@ -81,7 +105,7 @@ export default function KitContratos() {
       {/* HERO SECTION DE ALTO IMPACTO */}
       <section style={{ 
         padding: '5rem 1.5rem 3.5rem', 
-        maxWidth: '1050px', 
+        maxWidth: '1100px', 
         margin: '0 auto', 
         textAlign: 'center' 
       }}>
@@ -102,7 +126,7 @@ export default function KitContratos() {
           letterSpacing: '1px'
         }}>
           <ShieldCheck size={18} />
-          Banca Andrade & Florio
+          Banca Andrade & Florio • 30 Minutas Completas
         </div>
 
         {/* HEADLINE */}
@@ -114,46 +138,65 @@ export default function KitContratos() {
           fontWeight: 600,
           color: '#FFFFFF'
         }}>
-          O Acervo Definitivo de Contratos Imobiliários e Comerciais: Minutas Editáveis Prontas para Preencher, Assinar e Fechar Negócio.
+          O Acervo Definitivo de Contratos: 30 Minutas Editáveis em Word Prontas para Preencher e Assinar.
         </h1>
 
         {/* SUB-HEADLINE */}
         <p style={{ 
           fontSize: 'clamp(1.1rem, 2.2vw, 1.3rem)', 
           color: '#D1D5DB', 
-          maxWidth: '850px', 
+          maxWidth: '880px', 
           margin: '0 auto 2.5rem',
           lineHeight: 1.6
         }}>
-          Chega de amadorismo e risco jurídico. Baixe agora os modelos exatos utilizados por especialistas para blindar locações, compra e venda e prestação de serviços. Arquivos em Word (.docx) liberados imediatamente.
+          Chega de amadorismo e risco jurídico. Baixe agora o pacote completo com os <strong>30 modelos mais utilizados no Brasil</strong> para blindar compra e venda, locações, serviços PJ, veículos e vida civil.
         </p>
 
-        {/* CALL TO ACTION PRINCIPAL */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem', marginBottom: '3rem' }}>
+        {/* ANCORAGEM E OFERTA R$ 19,90 */}
+        <div style={{
+          backgroundColor: 'var(--bg-surface)',
+          border: '2px solid var(--accent-gold)',
+          borderRadius: '12px',
+          padding: '2.5rem 2rem',
+          maxWidth: '680px',
+          margin: '0 auto 3rem',
+          boxShadow: '0 20px 50px rgba(0,0,0,0.6)'
+        }}>
+          <span style={{ textDecoration: 'line-through', color: '#9CA3AF', fontSize: '1.3rem' }}>
+            De R$ 67,00
+          </span>
+          <div style={{ fontSize: 'clamp(2.8rem, 6vw, 4.2rem)', fontWeight: 800, color: 'var(--accent-gold)', margin: '0.2rem 0' }}>
+            R$ 19,90
+          </div>
+          <p style={{ color: '#E5E7EB', fontSize: '1rem', marginBottom: '1.75rem', fontWeight: 500 }}>
+            Pagamento único no Pix • Menos que um lanche para blindar todo o seu patrimônio
+          </p>
+
           <button 
             onClick={handleCheckout}
             className="btn-gold"
             style={{
+              width: '100%',
               fontSize: '1.25rem',
-              padding: '1.2rem 2.8rem',
+              padding: '1.25rem 2rem',
               borderRadius: '6px',
               cursor: 'pointer',
               fontWeight: 700,
               display: 'inline-flex',
               alignItems: 'center',
+              justifyContent: 'center',
               gap: '0.75rem',
               boxShadow: '0 12px 35px rgba(212, 175, 55, 0.35)',
               border: 'none',
-              textTransform: 'uppercase',
-              letterSpacing: '0.5px'
+              textTransform: 'uppercase'
             }}
           >
             <Download size={24} />
-            QUERO BAIXAR OS CONTRATOS AGORA
+            QUERO BAIXAR OS 30 CONTRATOS POR R$ 19,90
           </button>
-          <span style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-            (Acesso imediato enviado para o seu e-mail)
-          </span>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.9rem', marginBottom: 0 }}>
+            (Chave de acesso imediata enviada para o seu e-mail)
+          </p>
         </div>
 
         {/* TRUST ICONS */}
@@ -166,18 +209,18 @@ export default function KitContratos() {
           color: 'var(--text-muted)'
         }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <CheckCircle2 size={18} color="var(--accent-gold)" /> 100% Editável no Word e Docs
+            <CheckCircle2 size={18} color="var(--accent-gold)" /> 30 Arquivos Word (.docx) Editáveis
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <CheckCircle2 size={18} color="var(--accent-gold)" /> Notas Técnicas de Preenchimento
+            <CheckCircle2 size={18} color="var(--accent-gold)" /> Portal com Leitor Online Interativo
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <CheckCircle2 size={18} color="var(--accent-gold)" /> Pagamento Único via Pix de R$ 67
+            <CheckCircle2 size={18} color="var(--accent-gold)" /> Download Individual ou Pacote Zip
           </span>
         </div>
       </section>
 
-      {/* BLOCO DE AUTORIDADE - O FATOR DE CONVERSÃO */}
+      {/* BLOCO DE AUTORIDADE */}
       <section style={{ 
         backgroundColor: 'var(--bg-surface)', 
         borderTop: '1px solid var(--bg-surface-light)',
@@ -189,239 +232,157 @@ export default function KitContratos() {
           <h2 style={{ fontSize: '1.9rem', color: 'var(--accent-gold)', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>
             Segurança Jurídica de Alto Nível
           </h2>
-          <p style={{ color: 'var(--text-main)', fontSize: '1.15rem', lineHeight: 1.7, margin: 0, fontWeight: 400 }}>
-            Você não está baixando um modelo genérico da internet. Todos os contratos deste acervo foram estruturados, revisados e validados pela banca <strong>Andrade e Florio</strong>. É a engenharia jurídica de um escritório atuante diretamente na sua mesa, por uma fração do custo.
+          <p style={{ color: 'var(--text-main)', fontSize: '1.15rem', lineHeight: 1.7, margin: 0 }}>
+            Contratar um advogado para redigir apenas <strong>UM</strong> destes contratos custaria no mínimo R$ 800,00. Hoje, você leva o acervo completo com <strong>30 documentos editáveis por apenas R$ 19,90</strong>. É a engenharia jurídica de um escritório atuante diretamente na sua mesa.
           </p>
         </div>
       </section>
 
-      {/* OS ARQUIVOS QUE VOCÊ VAI RECEBER AGORA */}
-      <section style={{ padding: '5rem 1.5rem', maxWidth: '1050px', margin: '0 auto' }}>
+      {/* OS 30 DOCUMENTOS EM 3 MÓDULOS */}
+      <section style={{ padding: '5rem 1.5rem', maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <h2 style={{ fontSize: '2.2rem', marginBottom: '0.75rem', color: '#FFFFFF', fontFamily: 'var(--font-heading)' }}>
-            Os Arquivos que Você Vai Receber Agora
+          <h2 style={{ fontSize: '2.3rem', marginBottom: '0.75rem', color: '#FFFFFF', fontFamily: 'var(--font-heading)' }}>
+            Conheça os 30 Documentos Inclusos no Acervo
           </h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '650px', margin: '0 auto' }}>
-            Minutas completas com campos destacados para preenchimento ágil e seguro.
+          <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '700px', margin: '0 auto' }}>
+            Organizados em 3 módulos de fácil consulta para você encontrar o modelo exato em segundos.
           </p>
         </div>
 
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
-          gap: '2rem' 
-        }}>
-          {arquivos.map((item, idx) => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+          {modulos.map((mod, idx) => (
             <div 
               key={idx}
               style={{
                 backgroundColor: 'var(--bg-surface)',
                 border: '1px solid var(--bg-surface-light)',
-                borderRadius: '8px',
-                padding: '2.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                boxShadow: '0 10px 25px rgba(0,0,0,0.3)'
+                borderRadius: '10px',
+                padding: '2.5rem',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.3)'
               }}
             >
-              <div>
-                <div style={{ 
-                  display: 'inline-block', 
+              <div style={{ marginBottom: '1.5rem', borderBottom: '1px solid var(--bg-surface-light)', paddingBottom: '1rem' }}>
+                <span style={{ 
                   backgroundColor: 'rgba(212, 175, 55, 0.15)', 
-                  color: 'var(--accent-gold)',
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  padding: '0.3rem 0.75rem',
+                  color: 'var(--accent-gold)', 
+                  fontWeight: 700, 
+                  fontSize: '0.8rem', 
+                  padding: '0.3rem 0.75rem', 
                   borderRadius: '4px',
-                  marginBottom: '1.25rem',
                   textTransform: 'uppercase'
                 }}>
-                  {item.badge}
-                </div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: '#FFFFFF', lineHeight: 1.3, fontFamily: 'var(--font-heading)' }}>
-                  {item.title}
+                  {mod.foco}
+                </span>
+                <h3 style={{ fontSize: '1.5rem', color: '#FFFFFF', marginTop: '0.75rem', fontFamily: 'var(--font-heading)' }}>
+                  {mod.titulo}
                 </h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.96rem', lineHeight: 1.6, marginBottom: '1.75rem' }}>
-                  {item.desc}
-                </p>
               </div>
 
-              <div style={{ borderTop: '1px solid var(--bg-surface-light)', paddingTop: '1.25rem' }}>
-                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                  {item.tags.map((tag, i) => (
-                    <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', color: 'var(--text-main)' }}>
-                      <Check size={16} color="var(--accent-gold)" />
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))', 
+                gap: '1rem' 
+              }}>
+                {mod.itens.map((item, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontSize: '0.94rem', color: '#E5E7EB' }}>
+                    <Check size={18} color="var(--accent-gold)" style={{ minWidth: '18px', marginTop: '2px' }} />
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ANCORAGEM E PREÇO */}
+      {/* ORDER BUMP */}
       <section style={{ 
         backgroundColor: 'var(--bg-surface)', 
         borderTop: '1px solid var(--bg-surface-light)',
         borderBottom: '1px solid var(--bg-surface-light)',
-        padding: '5rem 1.5rem' 
+        padding: '4.5rem 1.5rem' 
       }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2.1rem', color: '#FFFFFF', marginBottom: '1.25rem', fontFamily: 'var(--font-heading)' }}>
-            Proteção Jurídica Imediata sem Custos Excessivos
-          </h2>
-          
+        <div style={{ maxWidth: '850px', margin: '0 auto' }}>
           <div style={{
-            backgroundColor: 'rgba(239, 68, 68, 0.08)',
-            border: '1px solid rgba(239, 68, 68, 0.25)',
-            borderRadius: '8px',
-            padding: '1.75rem',
-            marginBottom: '2.5rem',
-            textAlign: 'left'
+            border: '2px dashed var(--accent-gold)',
+            borderRadius: '10px',
+            padding: '2.25rem',
+            backgroundColor: 'rgba(212, 175, 55, 0.04)'
           }}>
-            <p style={{ color: '#F87171', fontSize: '1.05rem', lineHeight: 1.6, margin: 0 }}>
-              Um único erro em um contrato imobiliário pode custar dezenas de milhares de reais e anos de litígio na justiça. Uma consulta básica de revisão contratual não sai por menos de R$ 800,00.
-            </p>
-          </div>
-
-          <div style={{
-            backgroundColor: 'var(--bg-color)',
-            border: '2px solid var(--accent-gold)',
-            borderRadius: '12px',
-            padding: '3rem 2rem',
-            boxShadow: '0 20px 45px rgba(0,0,0,0.6)'
-          }}>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', margin: 0 }}>
-              Hoje, você leva o acervo completo, pronto para uso imediato, por apenas:
-            </p>
-
-            <div style={{ fontSize: '3.8rem', fontWeight: 800, color: 'var(--accent-gold)', margin: '0.5rem 0' }}>
-              R$ 67,00
-            </div>
-
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '2rem' }}>
-              Pagamento único • Sem mensalidades • Acesso vitalício aos arquivos
-            </p>
-
-            <button 
-              onClick={handleCheckout}
-              className="btn-gold"
-              style={{
-                width: '100%',
-                maxWidth: '520px',
-                fontSize: '1.3rem',
-                padding: '1.25rem 2rem',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                fontWeight: 700,
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.75rem',
-                boxShadow: '0 12px 30px rgba(212, 175, 55, 0.35)',
-                border: 'none',
-                textTransform: 'uppercase'
-              }}
-            >
-              <Download size={24} />
-              QUERO BAIXAR OS CONTRATOS AGORA
-            </button>
-            <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginTop: '1rem' }}>
-              (Acesso imediato enviado para o seu e-mail)
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ORDER BUMP - APRESENTAÇÃO */}
-      <section style={{ padding: '4.5rem 1.5rem', maxWidth: '850px', margin: '0 auto' }}>
-        <div style={{
-          border: '2px dashed var(--accent-gold)',
-          borderRadius: '10px',
-          padding: '2.25rem',
-          backgroundColor: 'rgba(212, 175, 55, 0.04)'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem' }}>
-            <input 
-              type="checkbox" 
-              id="bumpBox"
-              checked={includeOrderBump}
-              onChange={(e) => setIncludeOrderBump(e.target.checked)}
-              style={{ width: '24px', height: '24px', marginTop: '0.2rem', cursor: 'pointer', accentColor: 'var(--accent-gold)' }}
-            />
-            <div>
-              <label htmlFor="bumpBox" style={{ cursor: 'pointer' }}>
-                <span style={{ 
-                  display: 'inline-block',
-                  backgroundColor: 'var(--accent-gold)', 
-                  color: '#000000', 
-                  fontWeight: 800, 
-                  fontSize: '0.8rem', 
-                  padding: '0.25rem 0.65rem', 
-                  borderRadius: '4px',
-                  marginBottom: '0.6rem',
-                  textTransform: 'uppercase'
-                }}>
-                  ⚠️ Adicionar o Guia de Alerta de Riscos e Cláusulas Nulas (+ R$ 49,90)
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem' }}>
+              <input 
+                type="checkbox" 
+                id="bumpBox"
+                checked={includeOrderBump}
+                onChange={(e) => setIncludeOrderBump(e.target.checked)}
+                style={{ width: '24px', height: '24px', marginTop: '0.2rem', cursor: 'pointer', accentColor: 'var(--accent-gold)' }}
+              />
+              <div>
+                <label htmlFor="bumpBox" style={{ cursor: 'pointer' }}>
+                  <span style={{ 
+                    display: 'inline-block',
+                    backgroundColor: 'var(--accent-gold)', 
+                    color: '#000000', 
+                    fontWeight: 800, 
+                    fontSize: '0.8rem', 
+                    padding: '0.25rem 0.65rem', 
+                    borderRadius: '4px',
+                    marginBottom: '0.6rem',
+                    textTransform: 'uppercase'
+                  }}>
+                    ⚠️ Adicionar o Guia de Alerta de Riscos e Cláusulas Nulas (+ R$ 19,90)
+                  </span>
+                  <h4 style={{ fontSize: '1.3rem', color: '#FFFFFF', margin: '0.25rem 0 0.75rem', fontFamily: 'var(--font-heading)' }}>
+                    O Guia de Alerta de Riscos e Cláusulas Nulas
+                  </h4>
+                </label>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.6, margin: '0 0 1rem' }}>
+                  Não corra riscos na hora de preencher. Leve também nosso guia rápido mostrando os maiores erros fatais que anulam contratos no Brasil e saiba exatamente o que nunca alterar nas minutas.
+                </p>
+                <span style={{ fontSize: '0.88rem', color: 'var(--accent-gold)', fontWeight: 600 }}>
+                  ✓ Ative na tela de pagamento da Kiwify em 1 clique
                 </span>
-                <h4 style={{ fontSize: '1.3rem', color: '#FFFFFF', margin: '0.25rem 0 0.75rem', fontFamily: 'var(--font-heading)' }}>
-                  O Guia de Alerta de Riscos e Cláusulas Nulas
-                </h4>
-              </label>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1rem', lineHeight: 1.6, margin: '0 0 1rem' }}>
-                Não corra riscos na hora de preencher. Leve também nosso guia rápido mostrando os maiores erros fatais que anulam contratos no Brasil e saiba exatamente o que nunca alterar nas minutas.
-              </p>
-              <span style={{ fontSize: '0.88rem', color: 'var(--accent-gold)', fontWeight: 600 }}>
-                ✓ Ative na tela de pagamento da Kiwify em 1 clique
-              </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* BACK-END HIGH TICKET DA BANCA */}
-      <section style={{ 
-        backgroundColor: 'rgba(212, 175, 55, 0.05)', 
-        borderTop: '1px solid rgba(212, 175, 55, 0.2)',
-        borderBottom: '1px solid rgba(212, 175, 55, 0.2)',
-        padding: '4rem 1.5rem' 
-      }}>
-        <div style={{ maxWidth: '850px', margin: '0 auto', textAlign: 'center' }}>
-          <Building2 size={36} color="var(--accent-gold)" style={{ margin: '0 auto 1rem' }} />
-          <h2 style={{ fontSize: '1.85rem', color: '#FFFFFF', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>
-            Precisa de Revisão Expressa ou Auditoria de Imóvel?
-          </h2>
-          <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, maxWidth: '720px', margin: '0 auto 2rem', fontSize: '1.05rem' }}>
-            Caso você esteja fechando um imóvel de alto valor, enfrentando partilha/inventário ou queira uma auditoria completa de certidões (Due Diligence), a banca <strong>Andrade e Florio</strong> analisa sua documentação com agilidade executiva.
-          </p>
-          <button 
-            onClick={() => handleWhatsAppClick(
-              'nlxZCPiY6qAcEMzlgIgD',
-              'Olá! Comprei o Acervo de Contratos e gostaria de agendar uma análise expressa / auditoria de imóvel com a banca Andrade & Florio.'
-            )}
-            className="btn-outline"
-            style={{
-              padding: '1rem 2.2rem',
-              borderRadius: '6px',
-              fontSize: '1rem',
-              cursor: 'pointer',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.6rem',
-              fontWeight: 600
-            }}
-          >
-            <MessageCircle size={20} />
-            Falar com a Banca para Análise Expressa
-          </button>
-        </div>
+      {/* SEGUNDO CTA DE FECHAMENTO */}
+      <section style={{ padding: '5rem 1.5rem', maxWidth: '750px', margin: '0 auto', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '2.2rem', color: '#FFFFFF', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>
+          Acesso Imediato aos 30 Modelos
+        </h2>
+        <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginBottom: '2rem' }}>
+          De R$ 67,00 por apenas <strong>R$ 19,90 no Pix</strong>. Liberação instantânea da sua chave.
+        </p>
+        <button 
+          onClick={handleCheckout}
+          className="btn-gold"
+          style={{
+            width: '100%',
+            maxWidth: '520px',
+            fontSize: '1.3rem',
+            padding: '1.25rem 2rem',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            fontWeight: 700,
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.75rem',
+            boxShadow: '0 12px 35px rgba(212, 175, 55, 0.35)',
+            border: 'none',
+            textTransform: 'uppercase'
+          }}
+        >
+          <Download size={24} />
+          BAIXAR OS 30 CONTRATOS AGORA
+        </button>
       </section>
 
       {/* FAQ SECTION */}
-      <section style={{ padding: '5rem 1.5rem', maxWidth: '850px', margin: '0 auto' }}>
+      <section style={{ padding: '4rem 1.5rem 5rem', maxWidth: '850px', margin: '0 auto' }}>
         <h2 style={{ fontSize: '2.1rem', textAlign: 'center', marginBottom: '2.5rem', color: 'var(--accent-gold)', fontFamily: 'var(--font-heading)' }}>
           Dúvidas Frequentes
         </h2>

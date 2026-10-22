@@ -1,58 +1,250 @@
 [
   {
     "id": "instrucoes",
-    "title": "Instruções Iniciais e Guia de Preenchimento",
-    "badge": "Comece por Aqui",
-    "downloadFile": "Acervo_Contratos_Andrade_Florio.zip",
-    "downloadLabel": "Baixar Pacote Completo (.zip)",
-    "content": "Seja muito bem-vindo ao Acervo Definitivo de Contratos Imobiliários e Comerciais da banca Andrade & Florio Sociedade de Advogados.\n\nEste acervo foi desenvolvido para que você tenha em mãos a exata engenharia jurídica utilizada por advogados especialistas, pronta para preencher, assinar e imprimir em minutos com total segurança patrimonial.\n\nCOMO UTILIZAR ESTE ACERVO:\n\n1. Escolha o contrato desejado no menu lateral à esquerda.\n2. Você pode ler o contrato completo diretamente nesta tela ou clicar no botão dourado 'Baixar Minuta em Word (.docx)' para abrir no seu computador, celular ou Google Docs.\n3. Todos os campos que você precisa preencher estão devidamente sinalizados entre colchetes em caixa alta: [NOME], [CPF], [VALOR], [ENDEREÇO].\n4. Atente-se rigorosamente às 'NOTAS TÉCNICAS DO ADVOGADO' presentes ao final de cada cláusula principal. Elas explicam o porquê de cada dispositivo e evitam que você altere cláusulas essenciais de proteção.\n\nSUPORTE E REVISÃO EXPRESSA:\nSe a sua transação envolver valores muito elevados ou particularidades com certidões positivas, nossa banca está à disposição para realizar uma Análise Expressa de Minuta ou Due Diligence Registral antes da sua assinatura."
+    "title": "Instruções Iniciais e Como Usar as Minutas",
+    "badge": "Comece Aqui",
+    "downloadFile": "Acervo_30_Contratos_Andrade_Florio.zip",
+    "downloadLabel": "Baixar Todos os 30 Contratos (.zip)",
+    "content": "Seja bem-vindo ao Acervo Definitivo de Contratos Imobiliários e Comerciais da banca Andrade & Florio Sociedade de Advogados.\n\nEste acervo completo contém 30 documentos essenciais organizados em 3 módulos estratégicos:\n• Módulo 1: Transações Imobiliárias (11 documentos)\n• Módulo 2: Negócios e Prestação de Serviços (9 documentos)\n• Módulo 3: Vida Civil, Veículos e Finanças (10 documentos)\n\nCOMO BAIXAR:\nVocê pode ler as cláusulas de cada contrato diretamente na tela ou clicar no botão dourado 'Baixar Minuta em Word (.docx)' no topo de cada documento.\n\nPara baixar todo o acervo zipado de uma única vez, use o botão no rodapé do menu lateral ou no botão acima."
   },
   {
-    "id": "compra-venda",
-    "title": "Contrato de Promessa de Compra e Venda de Imóvel com Arras e Cláusula Resolutiva",
-    "badge": "Mais Procurado",
-    "downloadFile": "01_Contrato_Compra_e_Venda_Imovel_Blindado.docx",
+    "id": "contrato-01",
+    "title": "01. Contrato de Compra e Venda de Imóvel (À Vista e Parcelado)",
+    "badge": "Mais Buscado",
+    "downloadFile": "01_Contrato_Compra_e_Venda_Imovel.docx",
     "downloadLabel": "Baixar Minuta em Word (.docx)",
-    "content": "INSTRUMENTO PARTICULAR DE PROMESSA DE COMPRA E VENDA DE IMÓVEL COM ARRAS E CLÁUSULA RESOLUTIVA EXPRESSA\n\n💡 NOTA PRÉVIA DO ADVOGADO: Antes de assinar este instrumento ou pagar qualquer quantia a título de sinal (arras), é OBRIGATÓRIA a obtenção da Matrícula Atualizada com Certidão de Ônus Reais vintenária no Cartório de Registro de Imóveis (CRI), além das certidões cíveis e de débitos fiscais do Vendedor.\n\nDAS PARTES CONTRATANTES:\n\nVENDEDOR(A): [NOME COMPLETO DO VENDEDOR], [nacionalidade], [estado civil - se casado, qualificar cônjuge e regime de bens], [profissão], portador(a) da Cédula de Identidade RG nº [NÚMERO], inscrito(a) no CPF/MF sob o nº [NÚMERO], residente e domiciliado(a) na [ENDEREÇO COMPLETO COM CEP], doravante denominado(a) simplesmente VENDEDOR.\n\nCOMPRADOR(A): [NOME COMPLETO DO COMPRADOR], [nacionalidade], [estado civil - se casado, qualificar cônjuge], [profissão], portador(a) da Cédula de Identidade RG nº [NÚMERO], inscrito(a) no CPF/MF sob o nº [NÚMERO], residente e domiciliado(a) na [ENDEREÇO COMPLETO COM CEP], doravante denominado(a) simplesmente COMPRADOR.\n\nCLÁUSULA PRIMEIRA – DO OBJETO DO CONTRATO\nO presente instrumento tem por objeto a promessa de compra e venda irrevogável e irretratável do bem imóvel situado na [ENDEREÇO COMPLETO DO IMÓVEL, BAIRRO, CIDADE, ESTADO, CEP], com área total de [ÁREA] m², devidamente matriculado sob o nº [NÚMERO DA MATRÍCULA] perante o [NÚMERO DO OFÍCIO] Cartório de Registro de Imóveis da Comarca de [CIDADE/UF], com inscrição municipal de IPTU nº [NÚMERO DO IPTU].\nParágrafo Único: O imóvel será entregue completamente livre e desembaraçado de quaisquer dúvidas, dívidas, hipotecas, penhoras, litígios judiciais, tributos, condomínio ou gravames de qualquer natureza até a data da transmissão da posse.\n\nCLÁUSULA SEGUNDA – DO PREÇO E CONDIÇÕES DE PAGAMENTO\nO preço total, certo e ajustado para a compra e venda do imóvel acima descrito é de R$ [VALOR TOTAL POR EXTENSO], a ser pago pelo COMPRADOR nas seguintes condições:\na) SINAL E PRINCÍPIO DE PAGAMENTO (ARRAS): R$ [VALOR POR EXTENSO], pago nesta data através de [Transferência Bancária PIX / TED para a conta de titularidade do Vendedor: Banco [NOME], Agência [Nº], Conta [Nº], Chave Pix [CHAVE]], servindo o comprovante como recibo de quitação deste sinal;\nb) PARCELA RESTANTE / SALDO FINAL: O valor de R$ [VALOR DO SALDO POR EXTENSO] será pago [à vista no ato da lavratura da Escritura Pública Definitiva / mediante liberação de financiamento bancário habitacional obtido junto ao agente financeiro no prazo máximo de [30/60] dias].\n\n💡 NOTA DO ADVOGADO: As arras aqui pactuadas têm natureza confirmatória (Art. 417 do Código Civil). Se o COMPRADOR desistir, perde o sinal em favor do Vendedor. Se o VENDEDOR der causa ao desfazimento, restituirá o sinal em dobro acrescido de atualização monetária.\n\nCLÁUSULA TERCEIRA – DA POSSE E DA TRANSMISSÃO DEFINITIVA\nA posse direta do imóvel será transferida ao COMPRADOR na data de [DATA OU CONDIÇÃO - EX: quitação integral do preço / compensação do sinal], momento no qual o VENDEDOR entregará as respectivas chaves, facultando ao COMPRADOR o direito de uso, gozo e livre disposição do bem.\n\nCLÁUSULA QUARTA – DA CLÁUSULA RESOLUTIVA EXPRESSA (ART. 474 DO CC)\nO inadimplemento culposo de quaisquer das parcelas ou a falta de pagamento do saldo final ajustado na Cláusula Segunda ensejará a imediata resolução de pleno direito deste contrato, mediante prévia notificação extrajudicial com prazo de 15 (quinze) dias para purga da mora, sem prejuízo da retenção das arras e apuração de perdas e danos.\n\n💡 NOTA DO ADVOGADO: A cláusula resolutiva expressa é fundamental para proteger o Vendedor contra inadimplência: sem ela, o proprietário muitas vezes precisa entrar com uma ação judicial de rescisão de 3 a 5 anos antes de poder vender o imóvel para outro.\n\nCLÁUSULA QUINTA – DAS CERTIDÕES E GARANTIA JURÍDICA\nO VENDEDOR obriga-se a apresentar, no prazo de [15/30] dias a contar da assinatura deste contrato e às suas expensas, as certidões negativas de: a) Feitos ajuizados cíveis, executivos fiscais e trabalhistas; b) Débitos fiscais federais, estaduais e municipais; c) Quitação condominial emitida pelo síndico; d) Matrícula atualizada com certidão de ônus e ações reipersecutórias.\nParágrafo Único: Caso seja apontada qualquer certidão positiva capaz de comprometer a segurança da aquisição ou ensejar risco de fraude contra credores/execução, o COMPRADOR poderá rescindir de imediato este contrato, com a devolução integral de todo e qualquer valor pago, sem ônus.\n\nCLÁUSULA SEXTA – DAS DESPESAS CARTORÁRIAS E TRIBUTÁRIAS\nTodas as despesas relativas à transferência definitiva do imóvel, tais como Imposto de Transmissão de Bens Imóveis (ITBI), custas e emolumentos de Cartório de Notas para a Escritura Pública e registro perante o Cartório de Imóveis, correrão exclusivamente por conta do COMPRADOR.\n\nCLÁUSULA SÉTIMA – DO FORO\nPara dirimir quaisquer controvérsias oriundas do presente instrumento, as partes elegem expressamente o Foro da Comarca de [CIDADE DA SITUAÇÃO DO IMÓVEL/ESTADO], com renúncia expressa a qualquer outro.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_________________________________________\nVENDEDOR(A) / CÔNJUGE\n\n_________________________________________\nCOMPRADOR(A) / CÔNJUGE\n\nTESTEMUNHAS:\n1. Nome: ____________________ CPF: ______________\n2. Nome: ____________________ CPF: ______________"
+    "content": "CONTRATO DE COMPRA E VENDA DE IMÓVEL (À VISTA E PARCELADO)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Antes do pagamento do sinal, exija Matrícula Atualizada com Certidão de Ônus Reais vintenária e certidões negativas de ações cíveis e trabalhistas do Vendedor.\n\nQUALIFICAÇÃO DAS PARTES:\nVENDEDOR(A): [NOME COMPLETO], [nacionalidade], [estado civil], RG nº [RG], CPF nº [CPF], residente na [ENDEREÇO COMPLETO].\nCOMPRADOR(A): [NOME COMPLETO], [nacionalidade], [estado civil], RG nº [RG], CPF nº [CPF], residente na [ENDEREÇO COMPLETO].\n\nCLÁUSULA PRIMEIRA – DO OBJETO\nO presente contrato tem por objeto a promessa de compra e venda irrevogável e irretratável do bem imóvel situado na [ENDEREÇO COMPLETO DO IMÓVEL], Matrícula nº [NÚMERO], do Cartório de Registro de Imóveis da Comarca de [CIDADE/UF].\n\nCLÁUSULA SEGUNDA – DO PREÇO E CONDIÇÕES\nO preço total ajustado é de R$ [VALOR POR EXTENSO], pago da seguinte forma: Sinal de R$ [VALOR] nesta data via PIX, e o saldo restante de R$ [VALOR] no ato da Escritura Pública ou mediante financiamento bancário no prazo de [XX] dias.\n\nCLÁUSULA TERCEIRA – DAS ARRAS (SINAL)\nAs arras têm natureza confirmatória (Art. 417 do CC). A desistência pelo Comprador acarreta perda do sinal; a desistência pelo Vendedor enseja devolução em dobro com juros.\n\nCLÁUSULA QUARTA – CLÁUSULA RESOLUTIVA EXPRESSA (ART. 474 DO CC)\nO não pagamento de qualquer parcela faculta a rescisão imediata de pleno direito, independentemente de ação judicial prévia, após notificação de 15 dias.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
   },
   {
-    "id": "locacao",
-    "title": "Contrato de Locação Residencial / Comercial com Garantias e Vistoria",
+    "id": "contrato-02",
+    "title": "02. Contrato de Locação Residencial com Garantias",
     "badge": "Lei do Inquilinato",
-    "downloadFile": "02_Contrato_Locacao_Residencial_e_Comercial.docx",
+    "downloadFile": "02_Contrato_Locacao_Residencial.docx",
     "downloadLabel": "Baixar Minuta em Word (.docx)",
-    "content": "CONTRATO DE LOCAÇÃO RESIDENCIAL / COMERCIAL COM GARANTIA E VISTORIA\n\n💡 ALERTA LEGAL DA LEI 8.245/91: É expressamente PROIBIDO exigir mais de uma modalidade de garantia para o mesmo contrato de aluguel (Art. 37, parágrafo único). Escolha apenas UMA opção na Cláusula Quarta.\n\nQUALIFICAÇÃO DAS PARTES:\n\nLOCADOR(A): [NOME COMPLETO], [nacionalidade], [estado civil], [profissão], RG nº [RG], CPF nº [CPF], residente na [ENDEREÇO COMPLETO], doravante denominado simplesmente LOCADOR.\n\nLOCATÁRIO(A): [NOME COMPLETO], [nacionalidade], [estado civil], [profissão], RG nº [RG], CPF nº [CPF], doravante denominado simplesmente LOCATÁRIO.\n\nCLÁUSULA PRIMEIRA – DO OBJETO E DESTINAÇÃO\nO presente contrato tem por objeto a locação do imóvel localizado na [ENDEREÇO COMPLETO, BAIRRO, CIDADE, ESTADO, CEP], destinando-se [EXCLUSIVAMENTE PARA FINS RESIDENCIAIS / PARA FINS COMERCIAIS], sendo vedada a mudança de destinação, empréstimo, cessão ou sublocação total ou parcial sem o consentimento prévio e por escrito do LOCADOR.\n\nCLÁUSULA SEGUNDA – DO PRAZO DA LOCAÇÃO\nO prazo de locação é de [30 (trinta) meses / 12 (doze) meses], iniciando-se em [DATA DE INÍCIO] e terminando em [DATA DE TÉRMINO], data em que o LOCATÁRIO se obriga a restituir o imóvel completamente desocupado e nas mesmas condições em que o recebeu.\nParágrafo Único: Findo o prazo estipulado, se o LOCATÁRIO continuar na posse do imóvel por mais de 30 (trinta) dias sem oposição do LOCADOR, presumir-se-á prorrogada a locação por tempo indeterminado.\n\nCLÁUSULA TERCEIRA – DO VALOR DO ALUGUEL E REAJUSTE\nO aluguel mensal inicial é fixado em R$ [VALOR POR EXTENSO], a ser pago impreterivelmente até o dia [DIA DO VENCIMENTO] de cada mês subsequente ao vencido, mediante [PIX / Depósito bancário / Boleto bancário].\n§ 1º: O atraso no pagamento acarretará multa moratória de 10% (dez por cento) sobre o valor do débito, juros moratórios de 1% (um por cento) ao mês e correção monetária pelo [IPCA/IBGE ou IGP-M/FGV].\n§ 2º: O valor do aluguel será reajustado anualmente com base na variação acumulada do [IPCA ou IGP-M], ou por outro índice oficial que venha a substituí-lo em caso de extinção.\n\nCLÁUSULA QUARTA – DA GARANTIA LOCATÍCIA (ESCOLHA UMA OPÇÃO)\n[OPÇÃO 1 - CAUÇÃO EM DINHEIRO]: Para garantia fiel das obrigações contraídas neste contrato, o LOCATÁRIO deposita, a título de caução, a quantia equivalente a [3 (três)] meses de aluguel, totalizando R$ [VALOR], que será devolvida ao término da locação após a vistoria final e quitação de eventuais débitos.\n\n[OPÇÃO 2 - FIADOR]: Assina também este contrato, na condição de FIADOR e principal pagador, com renúncia expressa ao benefício de ordem (Art. 827 do CC): [NOME DO FIADOR], RG nº [RG], CPF nº [CPF], residente na [ENDEREÇO], proprietário do imóvel matriculado sob o nº [MATRÍCULA] no CRI de [COMARCA].\n\n[OPÇÃO 3 - SEGURO FIANÇA]: A locação é garantida por Apólice de Seguro Fiança Locatícia contratada pelo LOCATÁRIO junto à seguradora [NOME DA SEGURADORA], Apólice nº [NÚMERO].\n\nCLÁUSULA QUINTA – DOS ENCARGOS, TRIBUTOS E CONDOMÍNIO\nAlém do aluguel, correrão por conta exclusiva do LOCATÁRIO durante a vigência da locação: despesas de consumo de água, energia elétrica, gás canalizado, taxa de condomínio ordinária e o IPTU proporcional.\n\nCLÁUSULA SEXTA – DA VISTORIA E BENFEITORIAS\nO imóvel é entregue nas condições descritas no Laudo de Vistoria de Entrada anexo a este instrumento, contendo registro fotográfico assinado pelas partes. Qualquer benfeitoria necessária, útil ou voluptuária dependerá de prévia autorização escrita do LOCADOR e não gerará direito de retenção ou indenização.\n\nCLÁUSULA SÉTIMA – DA MULTA RESCISÓRIA PROPORCIONAL\nFica estipulada a multa rescisória equivalente a 03 (três) meses de aluguel para a parte que infringir qualquer cláusula deste contrato. Se a desocupação for solicitada pelo LOCATÁRIO antes do termo final, a multa será cobrada de forma estritamente proporcional ao tempo restante de cumprimento do contrato, nos termos do Art. 4º da Lei nº 8.245/91.\n\nCLÁUSULA OITAVA – DO FORO\nFica eleito o Foro da Comarca de [CIDADE/UF DO IMÓVEL] para dirimir toda e qualquer questão judicial decorrente deste pacto.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_________________________________________\nLOCADOR(A)\n\n_________________________________________\nLOCATÁRIO(A)\n\n_________________________________________\nFIADOR(A) (SE HOUVER)"
+    "content": "CONTRATO DE LOCAÇÃO RESIDENCIAL COM GARANTIAS\n\n💡 NOTA TÉCNICA DO ADVOGADO: É expressamente proibido exigir mais de uma modalidade de garantia para o mesmo contrato (Art. 37, parágrafo único, Lei 8.245/91).\n\nQUALIFICAÇÃO DAS PARTES:\nLOCADOR(A): [NOME COMPLETO], RG [RG], CPF [CPF], residente em [ENDEREÇO].\nLOCATÁRIO(A): [NOME COMPLETO], RG [RG], CPF [CPF], residente em [ENDEREÇO].\n\nCLÁUSULA PRIMEIRA – DO IMÓVEL E DESTINAÇÃO\nLocação exclusiva para moradia no imóvel localizado em [ENDEREÇO COMPLETO], sendo vedada cessão ou sublocação.\n\nCLÁUSULA SEGUNDA – DO VALOR E REAJUSTE\nAluguel mensal de R$ [VALOR], vencível todo dia [DIA], corrigido anualmente pelo IPCA/IBGE.\n\nCLÁUSULA TERCEIRA – DA GARANTIA\nPara garantia das obrigações, o Locatário presta Caução em dinheiro correspondente a [3] meses de aluguel, totalizando R$ [VALOR], depositada em conta poupança vinculada.\n\nCLÁUSULA QUARTA – MULTA RESCISÓRIA PROPORCIONAL\nMulta equivalente a 3 aluguéis, cobrada de forma estritamente proporcional ao período cumprido (Art. 4º da Lei 8.245/91).\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
   },
   {
-    "id": "comodato",
-    "title": "Contrato de Comodato de Imóvel com Cláusula Anti-Usucapião Expressa",
-    "badge": "Escudo Patrimonial",
-    "downloadFile": "03_Contrato_Comodato_Imovel_Anti_Usucapiao.docx",
+    "id": "contrato-03",
+    "title": "03. Contrato de Locação Comercial com Regras de Ponto",
+    "badge": "Comercial / PJ",
+    "downloadFile": "03_Contrato_Locacao_Comercial.docx",
     "downloadLabel": "Baixar Minuta em Word (.docx)",
-    "content": "CONTRATO DE COMODATO DE BEM IMÓVEL COM CLÁUSULA ANTI-USUCAPIÃO EXPRESSA\n\n💡 ALERTA MÁXIMO DE SEGURANÇA: Emprestar imóvel 'de boca' para parentes, caseiros ou conhecidos é a causa nº 1 de perda de patrimônio por Usucapião no Brasil. Este contrato formaliza juridicamente que a posse é PRECÁRIA por ato de mera tolerância (Art. 1.208 do CC), destruindo qualquer alegação de 'ânimo de dono'.\n\nQUALIFICAÇÃO DAS PARTES:\n\nCOMODANTE (PROPRIETÁRIO): [NOME COMPLETO], [nacionalidade], [estado civil], [profissão], RG nº [RG], CPF nº [CPF], residente na [ENDEREÇO COMPLETO], legítimo proprietário e titular do domínio do imóvel.\n\nCOMODATÁRIO (BENEFICIÁRIO): [NOME COMPLETO], [nacionalidade], [estado civil], [profissão], RG nº [RG], CPF nº [CPF], doravante denominado simplesmente COMODATÁRIO.\n\nCLÁUSULA PRIMEIRA – DO OBJETO E NATUREZA GRATUITA\nO presente contrato tem por objeto o empréstimo gratuito (comodato) do imóvel de propriedade do COMODANTE, situado na [ENDEREÇO COMPLETO], matriculado sob o nº [MATRÍCULA] perante o CRI de [CIDADE/UF].\nParágrafo Único: O presente empréstimo é realizado a título estritamente gratuito, sem qualquer cobrança pecuniária ou contraprestação onerosa pelo uso.\n\nCLÁUSULA SEGUNDA – DA POSSE PRECÁRIA E CLÁUSULA ANTI-USUCAPIÃO (ART. 1.208 DO CC)\nO COMODATÁRIO declara expressamente ter plena ciência de que sua permanência e ocupação no imóvel decorrem de mera permissão e tolerância do COMODANTE, possuindo natureza de POSSE PRECÁRIA.\n§ 1º: Fica expressamente vedada e juridicamente ineficaz qualquer pretensão do COMODATÁRIO de pleitear a aquisição originária do imóvel por meio de USUCAPIÃO (extrajudicial ou judicial), reconhecendo a posse mansa, pacífica e exclusiva do COMODANTE sobre o domínio.\n§ 2º: O COMODATÁRIO obriga-se a não alterar as características essenciais do imóvel nem transferir a posse a outrem, mantendo a destinação original.\n\n💡 NOTA DO ADVOGADO: Esta cláusula é o escudo supremo do proprietário: o Art. 1.208 do Código Civil determina expressamente que 'Não induzem posse os atos de mera permissão ou tolerância'. Ter isso assinado e com firma reconhecida encerra sumariamente qualquer tentativa de usucapião.\n\nCLÁUSULA TERCEIRA – DO PRAZO E NOTIFICAÇÃO PARA DESOCUPAÇÃO\nO presente comodato vigerá pelo prazo de [XX] meses, com início em [DATA] e encerramento em [DATA].\nParágrafo Único: O COMODANTE poderá requerer a restituição do imóvel a qualquer tempo, mesmo antes do termo final, mediante simples notificação prévia com prazo improrrogável de 30 (trinta) dias para a integral desocupação.\n\nCLÁUSULA QUARTA – DO ALUGUEL-PENA POR ATRASO (ART. 582 DO CC)\nCaso o COMODATÁRIO não restitua o imóvel na data estipulada ou após o decurso do prazo da notificação, ficará automaticamente constituído em mora, incidindo multa diária e aluguel-pena mensal no valor de R$ [VALOR POR EXTENSO - EX: R$ 2.000,00] por todo o período que mantiver a posse indevida, além de responder por quaisquer perdas e danos e ação de reintegração de posse.\n\nCLÁUSULA QUINTA – DA MANUTENÇÃO, ENCARGOS E BENFEITORIAS\nO COMODATÁRIO obriga-se a manter o imóvel em perfeito estado de conservação e limpeza, arcando pontualmente com todas as despesas decorrentes de sua ocupação (água, energia elétrica, gás e despesas ordinárias).\nParágrafo Único: Nenhuma obra, reforma ou benfeitoria poderá ser realizada sem autorização prévia por escrito do COMODANTE, ficando ajustado que as benfeitorias incorporadas não darão direito a qualquer indenização ou retenção do imóvel.\n\nCLÁUSULA SEXTA – DO FORO\nFica eleito o Foro da Comarca de [CIDADE/UF DO IMÓVEL] para processar e julgar quaisquer ações relativas a este contrato.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_________________________________________\nCOMODANTE (PROPRIETÁRIO)\n\n_________________________________________\nCOMODATÁRIO\n\nTESTEMUNHAS:\n1. Nome: ____________________ CPF: ______________\n2. Nome: ____________________ CPF: ______________"
+    "content": "CONTRATO DE LOCAÇÃO COMERCIAL COM REGRAS DE PONTO\n\n💡 NOTA TÉCNICA DO ADVOGADO: Atenção ao prazo: contratos comerciais de 5 anos ininterruptos com mesmo ramo de atividade por 3 anos dão direito à Ação Renovatória de Aluguel (Art. 51 Lei 8.245/91).\n\nQUALIFICAÇÃO DAS PARTES:\nLOCADOR: [RAZÃO SOCIAL OU NOME], CNPJ/CPF [NÚMERO].\nLOCATÁRIO: [RAZÃO SOCIAL OU NOME], CNPJ/CPF [NÚMERO].\n\nCLÁUSULA PRIMEIRA – DA DESTINAÇÃO EMPRESARIAL\nImóvel destinado exclusivamente à exploração comercial do ramo de [ATIVIDADE], vedada mudança sem anuência escrita.\n\nCLÁUSULA SEGUNDA – DO VALOR E ENCARGOS\nAluguel mensal de R$ [VALOR], respondendo o locatário por todas as tarifas, tributos municipais e alvarás inerentes à atividade.\n\nCLÁUSULA TERCEIRA – DAS REFORMAS E BENFEITORIAS\nQualquer alteração física exige prévia autorização e fica incorporada ao imóvel sem direito de retenção ou indenização.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
   },
   {
-    "id": "prestacao-servicos",
-    "title": "Contrato de Prestação de Serviços Técnicos e PJ (Blindagem Trabalhista)",
-    "badge": "Segurança PJ",
-    "downloadFile": "04_Contrato_Prestacao_Servicos_Autonomos.docx",
+    "id": "contrato-04",
+    "title": "04. Contrato de Comodato de Imóvel (Anti-Usucapião)",
+    "badge": "Proteção Patrimonial",
+    "downloadFile": "04_Contrato_Comodato_Imovel.docx",
     "downloadLabel": "Baixar Minuta em Word (.docx)",
-    "content": "CONTRATO DE PRESTAÇÃO DE SERVIÇOS TÉCNICOS / AUTÔNOMOS COM BLINDAGEM TRABALHISTA\n\n💡 NOTA DO ADVOGADO: Para que um contrato com prestador autônomo (PJ ou PF) não gere passivo na Justiça do Trabalho, é crucial demonstrar a ausência dos requisitos do Art. 3º da CLT (especialmente subordinação jurídica, controle estrito de horário e exclusividade). Esta minuta foi desenhada para afastar essas presunções.\n\nDAS PARTES:\n\nCONTRATANTE: [NOME OU RAZÃO SOCIAL], [CNPJ/CPF nº], com sede/domicílio na [ENDEREÇO COMPLETO], representada neste ato na forma de seus atos constitutivos por [NOME DO REPRESENTANTE LEGAL].\n\nCONTRATADA (PRESTADORA): [NOME OU RAZÃO SOCIAL], [CNPJ/CPF nº], com sede/domicílio na [ENDEREÇO COMPLETO], doravante denominada simplesmente CONTRATADA.\n\nCLÁUSULA PRIMEIRA – DO OBJETO E ESCOPO DOS SERVIÇOS\nO presente contrato tem por objeto a prestação, pela CONTRATADA à CONTRATANTE, dos seguintes serviços profissionais especializados: [DESCREVER DETALHADAMENTE O ESCOPO DOS SERVIÇOS E ENTREGÁVEIS].\nParágrafo Único: A prestação de serviços se limita estritamente ao escopo previsto nesta cláusula, sendo que quaisquer serviços adicionais deverão ser objeto de aditivo contratual escrito e orçamento prévio.\n\nCLÁUSULA SEGUNDA – DA AUTONOMIA TÉCNICA E AUSÊNCIA DE VÍNCULO EMPREGATÍCIO\nA CONTRATADA executará suas atividades com total autonomia técnica, operacional e de horários, sem qualquer tipo de subordinação jurídica, pessoalidade obrigatória ou controle de jornada por parte da CONTRATANTE.\n§ 1º: A CONTRATADA poderá prestar serviços a outros clientes e empresas simultaneamente, não existindo qualquer cláusula de exclusividade.\n§ 2º: As partes reconhecem expressamente a natureza estritamente civil e comercial deste pacto, declarando a inocorrência de relação de emprego sob a égide da CLT.\n\nCLÁUSULA TERCEIRA – DO PREÇO, FORMA DE PAGAMENTO E NOTAS FISCAIS\nPelos serviços contratados, a CONTRATANTE pagará à CONTRATADA o valor de R$ [VALOR POR EXTENSO], a ser pago na seguinte condição: [à vista / em [X] parcelas de R$ [VALOR] todo dia [XX] / conforme medição de entregáveis].\n§ 1º: O pagamento será efetuado mediante a apresentação prévia da respectiva Nota Fiscal de Prestação de Serviços emitida pela CONTRATADA.\n§ 2º: O atraso injustificado no pagamento ensejará a incidência de multa moratória de 2% (dois por cento) sobre o valor da fatura em atraso, além de juros de mora de 1% ao mês e atualização monetária.\n\nCLÁUSULA QUARTA – DO PRAZO E RESCISÃO IMOTIVADA\nEste contrato vigorará pelo prazo de [XX] meses a contar da data de sua assinatura. Qualquer das partes poderá rescindi-lo imotivadamente a qualquer tempo, mediante aviso prévio formal e escrito com antecedência mínima de 30 (trinta) dias, sem incidência de multa compensatória, quitando-se proporcionalmente os serviços até então executados.\n\nCLÁUSULA QUINTA – DO SIGILO E CONFIDENCIALIDADE (NDA)\nAs partes comprometem-se a manter sob sigilo absoluto todas as informações técnicas, comerciais, financeiras e estratégicas a que tiverem acesso em virtude deste contrato.\n\nCLÁUSULA SEXTA – DO FORO\nAs partes elegem o Foro da Comarca de [CIDADE/UF] para dirimir quaisquer litígios oriundos deste contrato.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_________________________________________\nCONTRATANTE\n\n_________________________________________\nCONTRATADA\n\nTESTEMUNHAS:\n1. Nome: ____________________ CPF: ______________\n2. Nome: ____________________ CPF: ______________"
+    "content": "CONTRATO DE COMODATO DE IMÓVEL (ANTI-USUCAPIÃO)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Empréstimo gratuito deve comprovar Posse Precária (Art. 1.208 do CC) para impedir que o comodatário ingresse com usucapião no futuro.\n\nQUALIFICAÇÃO DAS PARTES:\nCOMODANTE: [PROPRIETÁRIO], CPF [CPF].\nCOMODATÁRIO: [BENEFICIÁRIO], CPF [CPF].\n\nCLÁUSULA PRIMEIRA – DO OBJETO E GRATUIDADE\nEmpréstimo a título estritamente gratuito do imóvel situado na [ENDEREÇO], Matrícula [Nº].\n\nCLÁUSULA SEGUNDA – DA POSSE PRECÁRIA ANTI-USUCAPIÃO\nO Comodatário reconhece expressamente que sua ocupação é de posse precária por mera tolerância, renunciando a qualquer pleito de usucapião.\n\nCLÁUSULA TERCEIRA – NOTIFICAÇÃO E ALUGUEL-PENA\nO proprietário pode reaver o imóvel mediante notificação prévia de 30 dias. Findo o prazo, incidirá aluguel-pena de R$ [VALOR]/mês.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
   },
   {
-    "id": "guia-riscos",
-    "title": "Guia de Alerta de Riscos e Cláusulas Nulas (Order Bump)",
-    "badge": "Material Estratégico",
-    "downloadFile": "05_Guia_Alertas_de_Risco_e_Clausulas_Nulas_OrderBump.docx",
-    "downloadLabel": "Baixar Guia em Word (.docx)",
-    "content": "GUIA DE ALERTA DE RISCOS E CLÁUSULAS NULAS: COMO BLINDAR NEGÓCIOS IMOBILIÁRIOS E COMERCIAIS\n\nPor que 68% dos contratos baixados da internet geram processos na Justiça?\nA maioria das pessoas comete o erro de copiar modelos genéricos sem compreender que certas cláusulas são nulas de pleno direito perante o Poder Judiciário. Este guia prático foi elaborado por advogados atuantes para proteger seu patrimônio.\n\nRISCO 1: O ERRO FATAL DO 'CONTRATO DE GAVETA' SEM CERTIDÕES PRÉVIAS\nComprar imóvel apenas com contrato particular sem tirar certidões prévias do vendedor é assumir o risco de perder 100% do dinheiro investido. Se o vendedor tiver dívidas trabalhistas ou fiscais em andamento, a Justiça pode anular a venda como FRAUDE CONTRA CREDORES ou FRAUDE À EXECUÇÃO. O comprador perde o imóvel e não recupera o valor pago.\nA REGRA DE OURO: Nunca pague mais de 5% de sinal antes de ter em mãos a Matrícula Atualizada com Certidão de Ônus Reais vintenária e a Certidão Negativa de Ações Cíveis e Trabalhistas do Vendedor.\n\nRISCO 2: CLÁUSULAS DE DUPLA GARANTIA EM LOCAÇÃO SÃO NULAS E CONSTITUEM CONTRAVENÇÃO\nMuitos proprietários e imobiliárias exigem fiador E depósito caução no mesmo contrato. O Art. 37, parágrafo único, da Lei 8.245/91 proíbe expressamente a duplicidade de garantia no mesmo contrato. Além de a segunda garantia ser considerada nula pelo juiz, a prática configura contravenção penal punível com prisão simples de 5 dias a 6 meses ou multa.\n\nRISCO 3: COMODATO VERBAL: A PORTA ABERTA PARA A USUCAPIÃO\nCeder casa, lote ou sítio para alguém morar sem contrato assinado cria uma brecha perigosa. Passados alguns anos, o ocupante alega que cuidou do imóvel como dono e ingressa com AÇÃO DE USUCAPIÃO. O contrato escrito de comodato com cláusula explícita de POSSE PRECÁRIA destrói essa possibilidade porque comprova o ato de mera tolerância previsto no Art. 1.208 do Código Civil.\n\nRISCO 4: O FANTASMA DO VÍNCULO EMPREGATÍCIO EM CONTRATOS PJ\nContratar um profissional como 'PJ', mas exigir que ele cumpra horário fixo, receba advertências e não atenda outros clientes gera passivo trabalhista devastador. O juiz aplica o 'Princípio da Primazia da Realidade': se houver subordinação e horário fixo, o contrato civil é desconsiderado e a empresa é condenada a pagar FGTS, férias, 13º e rescisão retroativa.\n\nRISCO 5: MULTA RESCISÓRIA ABUSIVA EM LOCAÇÃO\nCobrar a integralidade da multa de 3 meses quando o inquilino sai aos 28 meses de um contrato de 30 meses é ilegal. O Art. 4º da Lei do Inquilinato exige que a multa seja cobrada proporcionalmente ao tempo restante de cumprimento do contrato."
+    "id": "contrato-05",
+    "title": "05. Termo de Vistoria de Imóvel (Entrada e Saída)",
+    "badge": "Essencial para Locação",
+    "downloadFile": "05_Termo_Vistoria_Imovel.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "TERMO DE VISTORIA DE IMÓVEL (ENTRADA E SAÍDA)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Sem laudo de vistoria com fotos assinado no início do contrato, o locador perde 90% das ações de cobrança de danos e pintura ao final da locação.\n\nQUALIFICAÇÃO DAS PARTES:\nVISTORIADOR: [NOME DO LOCADOR OU IMOBILIÁRIA].\nLOCATÁRIO: [NOME DO INQUILINO].\n\n1. ESTADO DE CONSERVAÇÃO\nPintura nova sem manchas, piso em cerâmica intacto, portas e fechaduras em perfeito funcionamento.\n\n2. INSTALAÇÕES ELÉTRICAS E HIDRÁULICAS\nTorneiras, descargas, registros e interruptores testados e sem vazamentos nesta data.\n\n3. REGISTRO FOTOGRÁFICO\nAnexam-se [XX] fotografias datadas e rubricadas pelas partes comprovando o estado fático do bem.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
   },
   {
-    "id": "revisao-expressa",
-    "title": "Consultoria Expressa & Due Diligence com a Banca Andrade & Florio",
-    "badge": "Atendimento VIP",
-    "downloadFile": "Acervo_Contratos_Andrade_Florio.zip",
-    "downloadLabel": "Baixar Todo o Acervo (.zip)",
-    "content": "ANÁLISE JURÍDICA EXPRESSA E DUE DILIGENCE IMOBILIÁRIA\n\nVocê preencheu o seu modelo de contrato, mas a transação envolve valores expressivos, particularidades de inventário, partilha ou certidões positivas que exigem uma chancela técnica individual?\n\nA banca Andrade & Florio Sociedade de Advogados oferece o serviço de Análise Jurídica Expressa de Minutas e Due Diligence Imobiliária:\n\n• Auditoria completa de certidões cíveis, fiscais e trabalhistas do vendedor;\n• Análise da matrícula e verificação de riscos de fraude contra credores;\n• Ajuste sob medida de cláusulas especiais para o seu caso;\n• Emissão de Parecer Técnico de Risco antes de você transferir qualquer valor.\n\nCOMO AGENDAR:\nClique no botão de WhatsApp na parte inferior ou entre em contato com nossa equipe jurídica:\n📱 WhatsApp Institucional: (11) 97867-1067\n🌐 www.andradeflorio.com.br"
+    "id": "contrato-06",
+    "title": "06. Termo Aditivo de Contrato de Locação (Prorrogação/Reajuste)",
+    "badge": "Prorrogação Segura",
+    "downloadFile": "06_Aditivo_Contratual_Locacao.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "TERMO ADITIVO DE CONTRATO DE LOCAÇÃO (PRORROGAÇÃO/REAJUSTE)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Aditivo serve para formalizar reajustes ou novos prazos sem necessidade de fazer um novo contrato do zero.\n\nQUALIFICAÇÃO DAS PARTES:\nLOCADOR E LOCATÁRIO do Contrato originário firmado em [DATA].\n\nCLÁUSULA PRIMEIRA – DA PRORROGAÇÃO DO PRAZO\nO contrato originário fica prorrogado por mais [12/24/30] meses, com término fixado para [NOVA DATA].\n\nCLÁUSULA SEGUNDA – DA REPACTUAÇÃO DO ALUGUEL\nO novo valor mensal passa a ser de R$ [NOVO VALOR], mantidas inalteradas todas as demais cláusulas e garantias.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-07",
+    "title": "07. Distrato de Contrato de Locação (Encerramento Amigável)",
+    "badge": "Quitação Total",
+    "downloadFile": "07_Distrato_de_Locacao.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "DISTRATO DE CONTRATO DE LOCAÇÃO (ENCERRAMENTO AMIGÁVEL)\n\n💡 NOTA TÉCNICA DO ADVOGADO: O distrato encerra formalmente as responsabilidades e exonera o fiador ou autoriza a devolução da caução sem pendências futuras.\n\nQUALIFICAÇÃO DAS PARTES:\nLOCADOR E LOCATÁRIO dão plena e mútua quitação.\n\nCLÁUSULA PRIMEIRA – DA RESCISÃO E ENTREGA DE CHAVES\nAs partes rescindem de pleno acordo a locação, devolvendo-se as chaves nesta data após vistoria satisfatória.\n\nCLÁUSULA SEGUNDA – DA DEVOLUÇÃO DA CAUÇÃO E QUITAÇÃO\nRestitui-se o saldo da caução no valor de R$ [VALOR], dando-se mútua, geral e irrevogável quitação de débitos.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-08",
+    "title": "08. Notificação Extrajudicial para Desocupação / Cobrança de Aluguel",
+    "badge": "Pré-Processual",
+    "downloadFile": "08_Notificacao_Extrajudicial_Despejo.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "NOTIFICAÇÃO EXTRAJUDICIAL PARA DESOCUPAÇÃO / COBRANÇA DE ALUGUEL\n\n💡 NOTA TÉCNICA DO ADVOGADO: A notificação extrajudicial com prazo de purga de mora é a prova documental obrigatória que instrui a ação de despejo.\n\nQUALIFICAÇÃO DAS PARTES:\nNOTIFICANTE: [LOCADOR/PROPRIETÁRIO].\nNOTIFICADO: [LOCATÁRIO/INQUILINO].\n\nDO DÉBITO PENDENTE\nConstata-se inadimplência referente aos aluguéis e encargos dos meses de [MESES], totalizando R$ [VALOR ATUALIZADO].\n\nDO PRAZO IMPRORROGÁVEL\nFica V. Sa. notificado a purgar a mora no prazo de 15 (quinze) dias ou desocupar o imóvel, sob pena de ajuizamento imediato de Ação de Despejo.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-09",
+    "title": "09. Recibo de Sinal e Princípio de Pagamento (Arras de Imóvel)",
+    "badge": "Garantia de Negócio",
+    "downloadFile": "09_Recibo_Sinal_e_Arras.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "RECIBO DE SINAL E PRINCÍPIO DE PAGAMENTO (ARRAS DE IMÓVEL)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Usado para travar a negociação de um imóvel no mesmo dia enquanto os advogados conferem certidões e redigem a minuta principal.\n\nQUALIFICAÇÃO DAS PARTES:\nVENDEDOR declara receber do COMPRADOR quantia a título de sinal.\n\nVALOR RECEBIDO\nRecebido o valor de R$ [VALOR] via PIX a título de arras confirmatórias para reserva da compra do imóvel sito em [ENDEREÇO].\n\nCONDIÇÃO RESOLUTIVA\nCaso as certidões de ônus e ações do vendedor apresentem impedimentos legais, o sinal será integralmente devolvido ao comprador sem penalidades.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-10",
+    "title": "10. Contrato de Corretagem Imobiliária e Intermediação",
+    "badge": "Comissão de Corretor",
+    "downloadFile": "10_Contrato_Corretagem_Imobiliaria.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE CORRETAGEM IMOBILIÁRIA E INTERMEDIAÇÃO\n\n💡 NOTA TÉCNICA DO ADVOGADO: Garante o direito aos honorários do corretor (CRECI) mesmo se as partes concluírem o negócio diretamente após a apresentação (Art. 727 do CC).\n\nQUALIFICAÇÃO DAS PARTES:\nCONTRATANTE: [PROPRIETÁRIO].\nCORRETOR(A): [NOME COMPLETO], CRECI nº [NÚMERO].\n\nCLÁUSULA PRIMEIRA – DA INTERMEDIAÇÃO\nAutorização de intermediação com exclusividade pelo prazo de [XX] dias para o imóvel sito em [ENDEREÇO], pelo valor de R$ [VALOR].\n\nCLÁUSULA SEGUNDA – DA COMISSÃO\nComissão estipulada em 6% (seis por cento) sobre o valor total da venda, devida no momento do fechamento formal.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-11",
+    "title": "11. Contrato de Empreitada e Reforma de Imóvel",
+    "badge": "Obras e Reformas",
+    "downloadFile": "11_Contrato_Empreitada_Reforma.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE EMPREITADA E REFORMA DE IMÓVEL\n\n💡 NOTA TÉCNICA DO ADVOGADO: Contrato essencial para evitar que reformas estourem orçamento ou gerem acusações de vínculo trabalhista com pedreiros/mão de obra.\n\nQUALIFICAÇÃO DAS PARTES:\nCONTRATANTE: [PROPRIETÁRIO DO IMÓVEL].\nEMPREITEIRO: [PRESTADOR/RESPONSÁVEL PELA OBRA].\n\nCLÁUSULA PRIMEIRA – DO ESCOPO DA OBRA\nExecução da reforma conforme memorial descritivo anexo, abrangendo instalações elétricas, hidráulicas, pisos e pintura.\n\nCLÁUSULA SEGUNDA – DOS PRAZOS E MEDIÇÕES\nObra com início em [DATA] e entrega em [DATA], com pagamentos liberados estritamente por medição de etapas concluídas.\n\nCLÁUSULA TERCEIRA – DA RESPONSABILIDADE TRABALHISTA\nO Empreiteiro responde civil e trabalhisticamente por todos os funcionários que alocar na obra.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-12",
+    "title": "12. Contrato de Prestação de Serviços Geral",
+    "badge": "Uso Geral",
+    "downloadFile": "12_Contrato_Prestacao_Servicos_Simples.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE PRESTAÇÃO DE SERVIÇOS GERAL\n\n💡 NOTA TÉCNICA DO ADVOGADO: Minuta padrão civil para contratação de qualquer tipo de serviço eventual com definição de valor e prazos.\n\nQUALIFICAÇÃO DAS PARTES:\nCONTRATANTE: [NOME/EMPRESA].\nCONTRATADA: [NOME/EMPRESA].\n\nCLÁUSULA PRIMEIRA – DOS SERVIÇOS\nA Contratada prestará os serviços de [DESCREVER], entregando os resultados previstos até o dia [DATA].\n\nCLÁUSULA SEGUNDA – DO PAGAMENTO\nValor fixado em R$ [VALOR], pago em [X] parcelas de R$ [VALOR], mediante emissão de recibo ou nota fiscal.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-13",
+    "title": "13. Contrato de Prestação de Serviços PJ / Freelancer (Anti-CLT)",
+    "badge": "Blindagem Trabalhista",
+    "downloadFile": "13_Contrato_Servicos_PJ_Freelancer.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE PRESTAÇÃO DE SERVIÇOS PJ / FREELANCER (ANTI-CLT)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Afasta os requisitos do Art. 3º da CLT (subordinação, pessoalidade e controle de jornada), evitando passivo trabalhista milionário.\n\nQUALIFICAÇÃO DAS PARTES:\nCONTRATANTE: [EMPRESA PJ].\nCONTRATADA: [PRESTADOR PJ / MEI].\n\nCLÁUSULA PRIMEIRA – DA AUTONOMIA TÉCNICA\nA prestação de serviços ocorrerá sem qualquer subordinação jurídica, pessoalidade obrigatória ou controle de horários.\n\nCLÁUSULA SEGUNDA – DA NÃO EXCLUSIVIDADE\nA Contratada é livre para manter outros contratos comerciais concomitantemente com quaisquer terceiros.\n\nCLÁUSULA TERCEIRA – DA INEXISTÊNCIA DE VÍNCULO\nAs partes reconhecem a natureza exclusivamente civil e comercial, sem incidência de legislação trabalhista.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-14",
+    "title": "14. Acordo de Confidencialidade e Não Divulgação (NDA)",
+    "badge": "Segredo Comercial",
+    "downloadFile": "14_Acordo_Confidencialidade_NDA.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "ACORDO DE CONFIDENCIALIDADE E NÃO DIVULGAÇÃO (NDA)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Protege listas de clientes, códigos-fonte, fórmulas, ideias e segredos de negócio antes de qualquer reunião ou parceria.\n\nQUALIFICAÇÃO DAS PARTES:\nPARTE REVELADORA: [EMPRESA/PESSOA].\nPARTE RECEPTORA: [EMPRESA/PESSOA].\n\nCLÁUSULA PRIMEIRA – DAS INFORMAÇÕES CONFIDENCIAIS\nSão confidenciais todos os dados comerciais, estratégias, softwares e planos compartilhados entre as partes.\n\nCLÁUSULA SEGUNDA – DA MULTA POR VAZAMENTO\nA violação culposa ou dolosa do sigilo ensejará multa penal de R$ [VALOR - EX: R$ 50.000,00] além de perdas e danos.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-15",
+    "title": "15. Contrato de Parceria Comercial e Joint Venture",
+    "badge": "Sociedade de Projeto",
+    "downloadFile": "15_Contrato_Parceria_Comercial.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE PARCERIA COMERCIAL E JOINT VENTURE\n\n💡 NOTA TÉCNICA DO ADVOGADO: Permite que duas empresas ou profissionais se unam para um projeto específico dividindo lucros sem criar uma nova sociedade formal.\n\nQUALIFICAÇÃO DAS PARTES:\nPARCEIRO A: [EMPRESA/NOME].\nPARCEIRO B: [EMPRESA/NOME].\n\nCLÁUSULA PRIMEIRA – DO OBJETO DA PARCERIA\nUnião de esforços para comercialização e execução do projeto [NOME DO PROJETO].\n\nCLÁUSULA SEGUNDA – DA DIVISÃO DE RESULTADOS\nAs receitas líquidas auferidas serão partilhadas na proporção de [50%] para o Parceiro A e [50%] para o Parceiro B.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-16",
+    "title": "16. Contrato de Representação Comercial Autônoma",
+    "badge": "Lei 4.886/65",
+    "downloadFile": "16_Contrato_Representacao_Comercial.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE REPRESENTAÇÃO COMERCIAL AUTÔNOMA\n\n💡 NOTA TÉCNICA DO ADVOGADO: Regulamenta o percentual de comissões e zona de atuação de vendedores autônomos e representantes.\n\nQUALIFICAÇÃO DAS PARTES:\nREPRESENTADA: [EMPRESA].\nREPRESENTANTE: [PROFISSIONAL COM CORE].\n\nCLÁUSULA PRIMEIRA – DA ZONA DE ATUAÇÃO\nAtuação delimitada no território de [ESTADO OU REGIÃO], sem exclusividade territorial.\n\nCLÁUSULA SEGUNDA – DAS COMISSÕES\nComissão de [XX%] sobre os pedidos faturados e quitados pelos clientes intermediados.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-17",
+    "title": "17. Termo de Encerramento e Quitação Plena de Serviços",
+    "badge": "Proteção contra Ações",
+    "downloadFile": "17_Termo_Quitacao_Servicos.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "TERMO DE ENCERRAMENTO E QUITAÇÃO PLENA DE SERVIÇOS\n\n💡 NOTA TÉCNICA DO ADVOGADO: Documento assinado no fim de um projeto confirmando que tudo foi entregue satisfatoriamente e nenhum valor a mais é devido.\n\nQUALIFICAÇÃO DAS PARTES:\nCONTRATANTE E CONTRATADA declaram extinção contratual.\n\nCLÁUSULA PRIMEIRA – DA ENTREGA SATISFATÓRIA\nO Contratante declara ter recebido todos os entregáveis em perfeito estado técnico.\n\nCLÁUSULA SEGUNDA – DA QUITAÇÃO PLENA\nA Contratada declara recebidos todos os pagamentos acordados, conferindo plena e irrevogável quitação.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-18",
+    "title": "18. Distrato de Contrato de Prestação de Serviços",
+    "badge": "Rescisão Amigável",
+    "downloadFile": "18_Distrato_Prestacao_Servicos.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "DISTRATO DE CONTRATO DE PRESTAÇÃO DE SERVIÇOS\n\n💡 NOTA TÉCNICA DO ADVOGADO: Encerra o contrato antes do prazo estipulado fixando eventuais indenizações ou ausência de multas recíprocas.\n\nQUALIFICAÇÃO DAS PARTES:\nAS PARTES ajustam a resilição consensual.\n\nCLÁUSULA PRIMEIRA – DA RESILIÇÃO BILATERAL\nFica rescindido nesta data o contrato firmado em [DATA], cessando deveres futuros.\n\nCLÁUSULA SEGUNDA – DO ACERTO FINANCEIRO\nAs partes declaram nada mais ter a reclamar uma da outra a que título for.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-19",
+    "title": "19. Contrato de Licenciamento de Uso de Marca",
+    "badge": "Propriedade Intelectual",
+    "downloadFile": "19_Licenciamento_Uso_Marca.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE LICENCIAMENTO DE USO DE MARCA\n\n💡 NOTA TÉCNICA DO ADVOGADO: Autoriza terceiros a utilizarem sua marca em produtos, lojas ou cursos mantendo a propriedade protegida.\n\nQUALIFICAÇÃO DAS PARTES:\nLICENCIANTE: [TITULAR DA MARCA NO INPI].\nLICENCIATÁRIA: [EMPRESA AUTORIZADA].\n\nCLÁUSULA PRIMEIRA – DA AUTORIZAÇÃO\nLicença não exclusiva e temporária de uso da marca [NOME DA MARCA], Processo INPI nº [Nº].\n\nCLÁUSULA SEGUNDA – DOS ROYALTIES\nPagamento de royalties de [XX%] sobre o faturamento bruto das vendas efetuadas sob a marca.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-20",
+    "title": "20. Contrato de Cessão Total de Direitos Autorais e Imagem",
+    "badge": "Design, Código e Vídeo",
+    "downloadFile": "20_Cessao_Direitos_Autorais.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE CESSÃO TOTAL DE DIREITOS AUTORAIS E IMAGEM\n\n💡 NOTA TÉCNICA DO ADVOGADO: Sem contrato de cessão, o autor original (designer, programador, fotógrafo) continua sendo o dono dos direitos patrimoniais da obra.\n\nQUALIFICAÇÃO DAS PARTES:\nCEDENTE: [CRIADOR/AUTOR].\nCESSIONÁRIO: [COMPRADOR DOS DIREITOS].\n\nCLÁUSULA PRIMEIRA – DA CESSÃO DEFINITIVA\nCessão total, irrevogável e definitiva de todos os direitos patrimoniais sobre a obra [DESCRIÇÃO DA OBRA].\n\nCLÁUSULA SEGUNDA – DO USO IRRESTRITO\nO Cessionário poderá comercializar, reproduzir, modificar e licenciar a obra sem qualquer restrição.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-21",
+    "title": "21. Contrato de Compra e Venda de Veículo Usado (Com Vistoria)",
+    "badge": "Carros e Motos",
+    "downloadFile": "21_Contrato_Compra_Venda_Veiculo.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE COMPRA E VENDA DE VEÍCULO USADO (COM VISTORIA)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Protege o vendedor contra multas e acidentes ocorridos após a entrega e assegura o comprador quanto a multas e bloqueios anteriores.\n\nQUALIFICAÇÃO DAS PARTES:\nVENDEDOR: [NOME], CPF [CPF].\nCOMPRADOR: [NOME], CPF [CPF].\n\nCLÁUSULA PRIMEIRA – DO VEÍCULO\nVeículo Marca [MARCA], Modelo [MODELO], Ano [ANO], Placa [PLACA], Renavam [RENAVAM].\n\nCLÁUSULA SEGUNDA – DA TRANSMISSÃO E MULTAS\nO Comprador assume total responsabilidade civil, criminal e de trânsito a partir da entrega das chaves nesta data às [HORA].\n\nCLÁUSULA TERCEIRA – DA COMUNICAÇÃO DE VENDA\nO Comprador obriga-se a transferir o veículo junto ao DETRAN no prazo improrrogável de 30 dias.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-22",
+    "title": "22. Termo de Confissão de Dívida e Parcelamento",
+    "badge": "Título Executivo",
+    "downloadFile": "22_Confissao_de_Divida.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "TERMO DE CONFISSÃO DE DÍVIDA E PARCELAMENTO\n\n💡 NOTA TÉCNICA DO ADVOGADO: Com a assinatura de 2 testemunhas, este termo constitui Título Executivo Extrajudicial (Art. 784, III do CPC), permitindo penhora de bens direta sem anos de processo.\n\nQUALIFICAÇÃO DAS PARTES:\nCREDOR: [NOME/EMPRESA].\nDEVEDOR: [NOME/PESSOA], CPF/CNPJ [Nº].\n\nCLÁUSULA PRIMEIRA – DO VALOR DA DÍVIDA\nO Devedor reconhece e confessa dever a quantia líquida, certa e exigível de R$ [VALOR TOTAL].\n\nCLÁUSULA SEGUNDA – DO PARCELAMENTO\nA dívida será quitada em [XX] parcelas mensais de R$ [VALOR], vencendo-se a primeira em [DATA].\n\nCLÁUSULA TERCEIRA – DO VENCIMENTO ANTECIPADO\nO inadimplemento de qualquer parcela acarreta o vencimento antecipado de toda a dívida com multa de 10% e juros de mora.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-23",
+    "title": "23. Contrato de Mútuo Financeiro (Empréstimo de Dinheiro)",
+    "badge": "Empréstimo Particular",
+    "downloadFile": "23_Contrato_Mutuo_Emprestimo.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE MÚTUO FINANCEIRO (EMPRÉSTIMO DE DINHEIRO)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Evita alegações de doação perante a Receita Federal e documenta o empréstimo legítimo entre particulares.\n\nQUALIFICAÇÃO DAS PARTES:\nMUTUANTE: [QUEM EMPRESTA].\nMUTUÁRIO: [QUEM RECEBE].\n\nCLÁUSULA PRIMEIRA – DO VALOR MUTUADO\nO Mutuante empresta ao Mutuário a quantia de R$ [VALOR], entregue via transferência bancária PIX nesta data.\n\nCLÁUSULA SEGUNDA – DO PAGAMENTO E ENCARGOS\nO valor será restituído até o dia [DATA], acrescido de atualização monetária pelo IPCA.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-24",
+    "title": "24. Termo de Acordo Extrajudicial e Transação",
+    "badge": "Fim de Litígios",
+    "downloadFile": "24_Termo_Acordo_Extrajudicial.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "TERMO DE ACORDO EXTRAJUDICIAL E TRANSAÇÃO\n\n💡 NOTA TÉCNICA DO ADVOGADO: Coloca fim a desavenças entre vizinhos, ex-sócios ou partes com renúncia expressa a ações judiciais futuras.\n\nQUALIFICAÇÃO DAS PARTES:\nPRIMEIRO TRANSIGENTE E SEGUNDO TRANSIGENTE ajustam acordo.\n\nCLÁUSULA PRIMEIRA – DA TRANSAÇÃO\nAs partes transacionam amigavelmente acerca da controvérsia relativa a [DESCREVER FATO].\n\nCLÁUSULA SEGUNDA – DA RENÚNCIA A AÇÕES\nCumpridas as obrigações deste termo, as partes renunciam a qualquer pleito de indenização perante a Justiça.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-25",
+    "title": "25. Notificação Extrajudicial de Cobrança com Prazo",
+    "badge": "Cobrança Prévia",
+    "downloadFile": "25_Notificacao_Extrajudicial_Cobranca.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "NOTIFICAÇÃO EXTRAJUDICIAL DE COBRANÇA COM PRAZO\n\n💡 NOTA TÉCNICA DO ADVOGADO: Constitui o devedor em mora e serve como prova para protesto em cartório ou ação monitória/execução.\n\nQUALIFICAÇÃO DAS PARTES:\nCREDOR NOTIFICANTE notifica DEVEDOR NOTIFICADO.\n\nDO DÉBITO\nNotifica-se da pendência de pagamento no valor de R$ [VALOR], vencido desde [DATA].\n\nDO PRAZO PARA QUITAÇÃO\nConcede-se o prazo impreterível de 48 (quarenta e oito) horas para regularização antes do protesto e medidas judiciais cabíveis.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-26",
+    "title": "26. Procuração de Plenos Poderes (Ad Negotia)",
+    "badge": "Representação Geral",
+    "downloadFile": "26_Procuracao_Plenos_Poderes.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "PROCURAÇÃO DE PLENOS PODERES (AD NEGOTIA)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Autoriza terceiros a representarem você perante bancos, repartições públicas, concessionárias e prefeituras.\n\nQUALIFICAÇÃO DAS PARTES:\nOUTORGANTE: [NOME COMPLETO], CPF [CPF].\nOUTORGADO: [NOME DO PROCURADOR], CPF [CPF].\n\nPODERES CONCEDIDOS\nConfere amplos poderes para gerir negócios, assinar documentos em repartições públicas, requerer certidões e movimentar interesses do Outorgante.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-27",
+    "title": "27. Procuração com Poderes Específicos para Venda de Imóvel",
+    "badge": "Poderes Restritos",
+    "downloadFile": "27_Procuracao_Especifica_Venda.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "PROCURAÇÃO COM PODERES ESPECÍFICOS PARA VENDA DE IMÓVEL\n\n💡 NOTA TÉCNICA DO ADVOGADO: Segurança máxima: limita os poderes do procurador exclusivamente para vender o imóvel descrito sem abrir mão de outros bens.\n\nQUALIFICAÇÃO DAS PARTES:\nOUTORGANTE confere poderes específicos ao OUTORGADO.\n\nPODERES ESPECÍFICOS\nPoderes restritos e exclusivos para negociar, assinar escritura e dar quitação da venda do imóvel matriculado sob nº [MATRÍCULA] no CRI de [COMARCA].\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-28",
+    "title": "28. Declaração de Hipossuficiência Financeira (Justiça Gratuita)",
+    "badge": "Isenção de Custas",
+    "downloadFile": "28_Declaracao_Hipossuficiencia.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "DECLARAÇÃO DE HIPOSSUFICIÊNCIA FINANCEIRA (JUSTIÇA GRATUITA)\n\n💡 NOTA TÉCNICA DO ADVOGADO: Documento necessário para requerer isenção de taxas cartorárias ou gratuidade da justiça (Art. 98 do CPC).\n\nQUALIFICAÇÃO DAS PARTES:\nDECLARANTE: [NOME COMPLETO], CPF [CPF], residente em [ENDEREÇO].\n\nDECLARAÇÃO FORMAL\nDeclara, sob as penas da lei (Art. 2º da Lei 1.060/50), não possuir condições financeiras de arcar com custas sem prejuízo do sustento próprio e familiar.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-29",
+    "title": "29. Contrato de Doação de Bens com Reserva de Usufruto",
+    "badge": "Planejamento Sucessório",
+    "downloadFile": "29_Contrato_Doacao_de_Bens.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "CONTRATO DE DOAÇÃO DE BENS COM RESERVA DE USUFRUTO\n\n💡 NOTA TÉCNICA DO ADVOGADO: Permite doar bens para filhos ou herdeiros mantendo o direito de morar e usufruir da renda até o falecimento.\n\nQUALIFICAÇÃO DAS PARTES:\nDOADOR: [PROPRIETÁRIO].\nDONATÁRIO: [HERDEIRO/BENEFICIÁRIO].\n\nCLÁUSULA PRIMEIRA – DA DOAÇÃO\nO Doador transfere gratuitamente ao Donatário o bem descrito em [DESCRIÇÃO DO BEM].\n\nCLÁUSULA SEGUNDA – DA RESERVA DE USUFRUTO\nReserva-se em favor do Doador o usufruto vitalício do imóvel, assegurando a posse e rendimentos até sua morte.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
+  },
+  {
+    "id": "contrato-30",
+    "title": "30. Recibo de Pagamento Geral e Quitação Plena",
+    "badge": "Proteção Final",
+    "downloadFile": "30_Recibo_Geral_Quitacao_Plena.docx",
+    "downloadLabel": "Baixar Minuta em Word (.docx)",
+    "content": "RECIBO DE PAGAMENTO GERAL E QUITAÇÃO PLENA\n\n💡 NOTA TÉCNICA DO ADVOGADO: O recibo perfeito para encerrar qualquer pagamento em dinheiro ou PIX sem dar margem a cobranças futuras.\n\nQUALIFICAÇÃO DAS PARTES:\nCREDOR declara ter recebido do PAGADOR quantia pecuniária integral.\n\nDO VALOR E QUITAÇÃO\nRecebi de [NOME DO PAGADOR] a quantia de R$ [VALOR], referente a [MOTIVO DO PAGAMENTO], conferindo a mais ampla, geral e irrevogável quitação de dívida.\n\n[CIDADE/UF], [DIA] de [MÊS] de 202[X].\n\n_____________________\nPRIMEIRA PARTE\n\n_____________________\nSEGUNDA PARTE"
   }
 ]
