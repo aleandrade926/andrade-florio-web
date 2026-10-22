@@ -124,6 +124,12 @@ export default function AcervoContratos() {
   const [copied, setCopied] = useState(false);
   const [showLiveEditor, setShowLiveEditor] = useState(true);
 
+  // IA do Gemini
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState(null);
+  const [customizedContracts, setCustomizedContracts] = useState({});
+
   // Dados universais que alimentam e deixam QUALQUER um dos 30 contratos vivo em tempo real!
   const [liveData, setLiveData] = useState({
     parte1Nome: '',
@@ -155,10 +161,10 @@ export default function AcervoContratos() {
   const currentItem = contratosData[activeSlide] || contratosData[0];
   const isInstruction = currentItem.id === 'instrucoes';
 
-  // Motor Inteligente que injeta os dados reais do usuário dentro de QUALQUER um dos 30 contratos!
+  // Motor que injeta os dados ou adaptações da IA dentro do contrato selecionado
   const contratoFormatadoAoVivo = useMemo(() => {
     if (isInstruction) return currentItem.content;
-    let txt = currentItem.content;
+    let txt = customizedContracts[currentItem.id] || currentItem.content;
 
     // Substituições Dinâmicas
     if (liveData.parte1Nome) {
@@ -196,7 +202,47 @@ export default function AcervoContratos() {
     txt = txt.replace(/\[DIA\] de \[MÊS\] de 202\[X\]/g, dataHoje);
 
     return txt;
-  }, [currentItem, liveData, isInstruction]);
+  }, [currentItem, liveData, isInstruction, customizedContracts]);
+
+  const handleAiCustomize = async () => {
+    if (!aiPrompt.trim()) return;
+    setAiLoading(true);
+    setAiError(null);
+    try {
+      const res = await fetch('/api/personalizar-contrato', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contractTitle: currentItem.title,
+          contractText: currentItem.content,
+          userInstructions: aiPrompt
+        })
+      });
+      const data = await res.json();
+      if (res.ok && data.customizedText) {
+        setCustomizedContracts(prev => ({
+          ...prev,
+          [currentItem.id]: data.customizedText
+        }));
+        setAiPrompt('');
+      } else {
+        setAiError(data.error || 'Erro ao processar personalização com a IA');
+      }
+    } catch (err) {
+      setAiError('Falha ao comunicar com o servidor da IA: ' + err.message);
+    } finally {
+      setAiLoading(false);
+    }
+  };
+
+  const handleResetAi = () => {
+    setCustomizedContracts(prev => {
+      const updated = { ...prev };
+      delete updated[currentItem.id];
+      return updated;
+    });
+    setAiError(null);
+  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(contratoFormatadoAoVivo);
@@ -426,6 +472,97 @@ export default function AcervoContratos() {
               </a>
             </div>
           </div>
+
+          {/* ASSISTENTE JURÍDICO IA COM GOOGLE GEMINI */}
+          {!isInstruction && (
+            <div style={{
+              backgroundColor: 'rgba(212, 175, 55, 0.05)',
+              border: '1px solid rgba(212, 175, 55, 0.4)',
+              borderRadius: '8px',
+              padding: '1.5rem',
+              marginBottom: '1.75rem'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.85rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <Sparkles size={20} color="var(--accent-gold)" />
+                  <span style={{ fontWeight: 700, color: 'var(--accent-gold)', fontSize: '0.95rem', textTransform: 'uppercase' }}>
+                    Assistente Jurídico IA • Google Gemini
+                  </span>
+                </div>
+                {customizedContracts[currentItem.id] && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span style={{ fontSize: '0.78rem', color: '#4ade80', backgroundColor: 'rgba(74, 222, 128, 0.1)', padding: '0.2rem 0.6rem', borderRadius: '4px', fontWeight: 600 }}>
+                      ✓ Minuta Personalizada com IA
+                    </span>
+                    <button
+                      onClick={handleResetAi}
+                      style={{
+                        fontSize: '0.78rem',
+                        backgroundColor: 'transparent',
+                        border: '1px solid var(--text-muted)',
+                        color: 'var(--text-muted)',
+                        padding: '0.2rem 0.6rem',
+                        borderRadius: '4px',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      Restaurar Original
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', marginBottom: '0.75rem', lineHeight: 1.5 }}>
+                Deseja adaptar cláusulas à sua realidade? Digite suas instruções em linguagem simples (ex: <em>"proibir animais"</em>, <em>"reajuste semestral"</em>, <em>"adicionar cláusula de fiador com renúncia ao benefício de ordem"</em>) e a IA da banca reescreverá a minuta mantendo a segurança jurídica.
+              </p>
+
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                <input
+                  type="text"
+                  value={aiPrompt}
+                  onChange={(e) => setAiPrompt(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === 'Enter') handleAiCustomize(); }}
+                  placeholder="Ex: Quero adicionar exigência de seguro contra incêndio e tolerância de 5 dias no pagamento..."
+                  disabled={aiLoading}
+                  style={{
+                    flex: 1,
+                    minWidth: '280px',
+                    padding: '0.85rem 1rem',
+                    backgroundColor: 'var(--bg-surface)',
+                    border: '1px solid var(--bg-surface-light)',
+                    borderRadius: '6px',
+                    color: '#fff',
+                    fontSize: '0.9rem',
+                    outline: 'none'
+                  }}
+                />
+                <button
+                  onClick={handleAiCustomize}
+                  disabled={aiLoading || !aiPrompt.trim()}
+                  className="btn-gold"
+                  style={{
+                    padding: '0.85rem 1.4rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 700,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    cursor: aiLoading || !aiPrompt.trim() ? 'not-allowed' : 'pointer',
+                    opacity: aiLoading || !aiPrompt.trim() ? 0.6 : 1
+                  }}
+                >
+                  <Sparkles size={16} />
+                  {aiLoading ? 'Processando com IA...' : 'Personalizar com IA'}
+                </button>
+              </div>
+
+              {aiError && (
+                <div style={{ color: '#ef4444', fontSize: '0.82rem', marginTop: '0.6rem' }}>
+                  ⚠️ {aiError}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* PAINEL DE PERSONALIZAÇÃO AO VIVO (FAZ O CONTRATO FICAR VIVO!) */}
           {!isInstruction && showLiveEditor && (
