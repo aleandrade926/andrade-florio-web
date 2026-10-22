@@ -304,11 +304,13 @@ export default function AcervoContratos() {
             overflow: visible !important;
           }
           .no-print,
+          .bloco-orientacao-tecnica,
           .portal-sidebar,
           .portal-header,
           .portal-ai-box,
           .portal-live-panel,
           .portal-support-footer,
+          .portal-nav-footer,
           .lgpd-banner,
           button,
           input,
@@ -875,8 +877,33 @@ export default function AcervoContratos() {
               </div>
             ) : (
               contratoFormatadoAoVivo.split('\n\n').map((paragraph, pIdx) => {
+                const isOrientacao = paragraph.includes('ORIENTAÇÃO TÉCNICA');
                 const isAdapted = paragraph.includes('[CLÁUSULA ADAPTADA]');
                 const cleanParagraph = paragraph.replace(/\[CLÁUSULA ADAPTADA\]\s*/g, '');
+
+                if (isOrientacao) {
+                  return (
+                    <div 
+                      key={pIdx} 
+                      className="bloco-orientacao-tecnica no-print"
+                      style={{ 
+                        backgroundColor: 'rgba(212, 175, 55, 0.08)', 
+                        borderLeft: '4px solid var(--accent-gold)', 
+                        padding: '1rem 1.25rem', 
+                        margin: '0 0 1.75rem 0',
+                        borderRadius: '0 6px 6px 0',
+                        fontSize: '0.92rem',
+                        lineHeight: 1.6,
+                        color: '#92400E',
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: 500,
+                        whiteSpace: 'pre-line'
+                      }}
+                    >
+                      {cleanParagraph}
+                    </div>
+                  );
+                }
 
                 if (isAdapted && showHighlights) {
                   return (
@@ -969,7 +996,7 @@ export default function AcervoContratos() {
           </div>
 
           {/* CONTROLES DE NAVEGAÇÃO ANTERIOR / PRÓXIMO */}
-          <div style={{ 
+          <div className="no-print portal-nav-footer" style={{ 
             marginTop: '2.5rem', 
             paddingTop: '1.5rem', 
             borderTop: '1px solid var(--bg-surface-light)', 
