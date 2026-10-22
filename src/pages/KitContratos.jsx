@@ -68,6 +68,60 @@ export default function KitContratos() {
         "29. Contrato de Doação de Bens com Reserva de Usufruto Vitalício",
         "30. Recibo de Pagamento Geral e Quitação Plena Irrevogável"
       ]
+    },
+    {
+      titulo: "MÓDULO 4: Trabalhista e RH / CLT (Reforma Trabalhista)",
+      foco: "Segurança total para contratações e rotina de funcionários",
+      itens: [
+        "31. Contrato de Trabalho Intermitente (Art. 452-A CLT com regras de convocação)",
+        "32. Contrato de Trabalho por Experiência / Determinado (Limite de 90 dias)",
+        "33. Termo Aditivo de Teletrabalho / Home Office (Equipamentos e ajuda de custo)",
+        "34. Acordo Individual de Banco de Horas e Compensação Semestral",
+        "35. Acordo de Rescisão de Trabalho por Mútuo Consentimento (Art. 484-A CLT)",
+        "36. Termo de Advertência Disciplinar por Falta Funcional (Gradação de penas)",
+        "37. Termo de Confidencialidade e Não Concorrência de Empregado"
+      ]
+    },
+    {
+      titulo: "MÓDULO 5: Societário, Startups e Família",
+      foco: "Governança corporativa e blindagem de patrimônio pessoal",
+      itens: [
+        "38. Acordo de Sócios e Quotistas de Sociedade Limitada (Tag Along e Drag Along)",
+        "39. Memorando de Entendimentos (MoU) com Cláusulas Vinculantes de Sigilo",
+        "40. Contrato de Convivência e União Estável com Separação Total de Bens",
+        "41. Termo de Dissolução Amigável de União Estável e Partilha de Bens"
+      ]
+    },
+    {
+      titulo: "MÓDULO 6: Sucessões e Direito Digital",
+      foco: "Planejamento sucessório e conformidade digital",
+      itens: [
+        "42. Testamento Particular Válido com 3 Testemunhas (Art. 1.876 CC)",
+        "43. Termos de Uso e Condições Gerais para Plataformas Digitais e SaaS",
+        "44. Política de Privacidade e Proteção de Dados (LGPD - Lei 13.709/2018)",
+        "45. Contrato de Gestão de Tráfego Pago, Mídia de Performance e Marketing"
+      ]
+    },
+    {
+      titulo: "MÓDULO 7: Rural, Agronegócio e Contratos Especiais",
+      foco: "Contratos de nicho com alta demanda e proteção específica",
+      itens: [
+        "46. Contrato de Arrendamento Rural (Estatuto da Terra - Lei 4.504/64)",
+        "47. Contrato de Trespasse e Alienação de Ponto Comercial / Estabelecimento",
+        "48. Compromisso de Compra e Venda de Terreno / Lote Urbano Parcelado",
+        "49. Contrato de Permuta de Imóveis (com ou sem Torna Financeira)",
+        "50. Promessa de Cessão de Direitos Hereditários (Antes da Partilha)",
+        "51. Contrato de Gaveta (Cessão de Imóvel Financiado Caixa com Procuração)",
+        "52. Contrato de Honorários Advocatícios com Cláusula Quota Litis (Êxito)",
+        "53. Contrato de Sublocação Residencial ou Comercial com Autorização",
+        "54. Compra e Venda com Reserva de Domínio de Máquinas e Equipamentos",
+        "55. Contrato de Locação por Temporada (Até 90 Dias com Pagamento Adiantado)",
+        "56. Contrato de Namoro (Declaração Formal de Inexistência de União Estável)",
+        "57. Contrato de Consignação e Venda de Veículo em Garagem / Loja",
+        "58. Contrato de Prestação de Serviços de Pedreiro, Construção e Obras",
+        "59. Contrato de Prestação de Serviços de Fotografia e Cobertura de Eventos",
+        "60. Contrato de Personal Trainer e Consultoria Esportiva Individualizada"
+      ]
     }
   ];
 
@@ -118,7 +172,7 @@ export default function KitContratos() {
           letterSpacing: '1px'
         }}>
           <ShieldCheck size={18} />
-          Banca Andrade & Florio • 30 Minutas Completas
+          Banca Andrade & Florio • 60+ Minutas Blindadas + IA Integrada
         </div>
 
         {/* HEADLINE */}
@@ -130,7 +184,7 @@ export default function KitContratos() {
           fontWeight: 600,
           color: '#FFFFFF'
         }}>
-          O Acervo Definitivo de Contratos: 30 Minutas Editáveis em Word Prontas para Preencher e Assinar.
+          O Acervo Definitivo de Contratos: 60+ Minutas Editáveis em Word + Assistente Jurídico com IA.
         </h1>
 
         {/* SUB-HEADLINE */}
@@ -141,7 +195,7 @@ export default function KitContratos() {
           margin: '0 auto 2.5rem',
           lineHeight: 1.6
         }}>
-          Chega de amadorismo e risco jurídico. Baixe agora o pacote completo com os <strong>30 modelos mais utilizados no Brasil</strong> para blindar compra e venda, locações, serviços PJ, veículos e vida civil.
+          Chega de amadorismo e risco jurídico. Tenha em mãos o acervo com mais de <strong>60 modelos que cobrem Imobiliário, Trabalhista/CLT, Empresarial, Rural, Digital, Família e Veículos</strong> — com assistente de IA da banca para personalizar cláusulas em segundos.
         </p>
 
         {/* ANCORAGEM E OFERTA R$ 19,90 */}
@@ -184,7 +238,7 @@ export default function KitContratos() {
             }}
           >
             <Download size={24} />
-            QUERO BAIXAR OS 30 CONTRATOS POR R$ 19,90
+            QUERO O ACERVO COMPLETO DE CONTRATOS POR R$ 19,90
           </button>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.9rem', marginBottom: 0 }}>
             (Chave de acesso imediata enviada para o seu e-mail)
@@ -225,19 +279,19 @@ export default function KitContratos() {
             Segurança Jurídica de Alto Nível
           </h2>
           <p style={{ color: 'var(--text-main)', fontSize: '1.15rem', lineHeight: 1.7, margin: 0 }}>
-            Contratar um advogado para redigir apenas <strong>UM</strong> destes contratos custaria no mínimo R$ 800,00. Hoje, você leva o acervo completo com <strong>30 documentos editáveis por apenas R$ 19,90</strong>. É a engenharia jurídica de um escritório atuante diretamente na sua mesa.
+            Contratar um advogado para redigir apenas <strong>UM</strong> destes contratos custaria no mínimo R$ 800,00. Hoje, você leva o acervo completo com <strong>60+ documentos editáveis e IA integrada por apenas R$ 19,90</strong>. É a engenharia jurídica de um escritório atuante diretamente na sua mesa.
           </p>
         </div>
       </section>
 
-      {/* OS 30 DOCUMENTOS EM 3 MÓDULOS */}
+      {/* OS 60 DOCUMENTOS EM 7 MÓDULOS */}
       <section style={{ padding: '5rem 1.5rem', maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <h2 style={{ fontSize: '2.3rem', marginBottom: '0.75rem', color: '#FFFFFF', fontFamily: 'var(--font-heading)' }}>
-            Conheça os 30 Documentos Inclusos no Acervo
+            Conheça os 60 Documentos Inclusos em 7 Grandes Módulos
           </h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', maxWidth: '700px', margin: '0 auto' }}>
-            Organizados em 3 módulos de fácil consulta para você encontrar o modelo exato em segundos.
+            Organizados em 7 módulos práticos para você encontrar qualquer minuta em segundos ou personalizar via Inteligência Artificial.
           </p>
         </div>
 

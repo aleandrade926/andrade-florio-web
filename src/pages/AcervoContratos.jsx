@@ -123,6 +123,7 @@ export default function AcervoContratos() {
   const [activeSlide, setActiveSlide] = useState(1); // Inicia no Contrato 1
   const [copied, setCopied] = useState(false);
   const [showLiveEditor, setShowLiveEditor] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // IA do Gemini
   const [aiPrompt, setAiPrompt] = useState('');
@@ -254,6 +255,16 @@ export default function AcervoContratos() {
     window.print();
   };
 
+  const filteredContracts = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return contratosData.map((item, idx) => ({ ...item, originalIndex: idx }));
+    }
+    const q = searchQuery.toLowerCase();
+    return contratosData
+      .map((item, idx) => ({ ...item, originalIndex: idx }))
+      .filter(item => item.title.toLowerCase().includes(q) || (item.badge && item.badge.toLowerCase().includes(q)));
+  }, [searchQuery]);
+
   return (
     <div style={{
       backgroundColor: 'var(--bg-color)',
@@ -289,13 +300,34 @@ export default function AcervoContratos() {
             Portal Andrade & Florio
           </h1>
           <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginTop: '0.25rem' }}>
-            Selecione qualquer contrato para personalizar
+            Acervo Completo de 60 Minutas com IA
           </p>
         </div>
 
-        {/* Lista com os 30 Contratos */}
+        {/* Campo de Busca Rápida */}
+        <div style={{ padding: '0.75rem 1.25rem', borderBottom: '1px solid var(--bg-surface-light)', backgroundColor: 'rgba(0,0,0,0.2)' }}>
+          <input 
+            type="text" 
+            placeholder="🔍 Buscar contratos (ex: intermitente, aluguel)..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{
+              width: '100%',
+              padding: '0.65rem 0.85rem',
+              backgroundColor: 'var(--bg-color)',
+              border: '1px solid var(--bg-surface-light)',
+              borderRadius: '6px',
+              color: '#FFFFFF',
+              fontSize: '0.82rem',
+              outline: 'none'
+            }}
+          />
+        </div>
+
+        {/* Lista com os Contratos */}
         <div style={{ overflowY: 'auto', flex: 1, padding: '0.5rem 0' }}>
-          {contratosData.map((item, index) => {
+          {filteredContracts.map((item) => {
+            const index = item.originalIndex;
             const isActive = activeSlide === index;
             return (
               <button
@@ -332,7 +364,7 @@ export default function AcervoContratos() {
         {/* Rodapé da Sidebar com Download Geral em Zip */}
         <div style={{ padding: '1.25rem', borderTop: '1px solid var(--bg-surface-light)', backgroundColor: 'var(--bg-color)' }}>
           <a
-            href="/downloads/Acervo_30_Contratos_Andrade_Florio.zip"
+            href="/downloads/Acervo_Contratos_Andrade_Florio.zip"
             download
             className="btn-outline"
             style={{
@@ -347,7 +379,7 @@ export default function AcervoContratos() {
               textAlign: 'center'
             }}
           >
-            <Download size={16} /> Baixar Todos em Word (.zip)
+            <Download size={16} /> Baixar Todos os 60 Contratos (.zip)
           </a>
         </div>
       </aside>
