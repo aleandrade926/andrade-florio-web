@@ -56,7 +56,7 @@ const Gatekeeper = ({ onLogin }) => {
             Acesso Restrito
           </h2>
           <p style={{ color: 'var(--text-muted)', marginTop: '0.6rem', fontSize: '0.95rem' }}>
-            Acervo Oficial de 30 Contratos Jurídicos Blindados
+            Acervo Oficial de 60 Contratos Jurídicos Blindados
           </p>
           <span style={{ fontSize: '0.8rem', color: '#D4AF37', display: 'block', marginTop: '0.25rem' }}>
             Andrade & Florio Sociedade de Advogados
@@ -86,7 +86,7 @@ const Gatekeeper = ({ onLogin }) => {
             />
             {error && (
               <span style={{ color: '#ef4444', fontSize: '0.85rem', display: 'block', marginTop: '0.6rem', textAlign: 'center' }}>
-                Chave incorreta. Digite CONTRATOS2026 recebida na Kiwify.
+                Chave de acesso incorreta. Verifique o código recebido no e-mail de confirmação da compra.
               </span>
             )}
           </div>
