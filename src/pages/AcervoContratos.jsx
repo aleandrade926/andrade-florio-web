@@ -282,15 +282,102 @@ export default function AcervoContratos() {
   }, [searchQuery]);
 
   return (
-    <div style={{
+    <div className="portal-layout" style={{
       backgroundColor: 'var(--bg-color)',
       color: 'var(--text-main)',
       minHeight: '100vh',
       display: 'flex',
       fontFamily: 'var(--font-body)'
     }}>
-      {/* SIDEBAR NAVEGAÇÃO DOS 30 CONTRATOS VIVOS */}
-      <aside style={{
+      <style>{`
+        @media print {
+          @page {
+            size: A4 portrait;
+            margin: 20mm 15mm 20mm 15mm;
+          }
+          html, body {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            height: auto !important;
+            overflow: visible !important;
+          }
+          .no-print,
+          .portal-sidebar,
+          .portal-header,
+          .portal-ai-box,
+          .portal-live-panel,
+          .portal-support-footer,
+          .lgpd-banner,
+          button,
+          input,
+          select,
+          nav,
+          header,
+          footer {
+            display: none !important;
+          }
+          .portal-layout {
+            display: block !important;
+            background: #ffffff !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            min-height: auto !important;
+          }
+          main.portal-main {
+            display: block !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            max-width: 100% !important;
+            width: 100% !important;
+          }
+          .portal-card {
+            display: block !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+          .contrato-print-area {
+            display: block !important;
+            background-color: #ffffff !important;
+            color: #111827 !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            font-family: "Times New Roman", Times, Georgia, serif !important;
+            font-size: 11pt !important;
+            line-height: 1.6 !important;
+            text-align: justify !important;
+            width: 100% !important;
+          }
+          .badge-adaptada,
+          .print-hide {
+            display: none !important;
+          }
+          .bloco-adaptado {
+            background-color: transparent !important;
+            border-left: none !important;
+            padding: 0 !important;
+            margin: 0 0 1.25rem 0 !important;
+            box-shadow: none !important;
+          }
+          .bloco-adaptado div {
+            color: #111827 !important;
+            font-weight: normal !important;
+          }
+          p, .bloco-adaptado {
+            page-break-inside: avoid;
+            break-inside: avoid;
+            margin-bottom: 1.25rem !important;
+          }
+        }
+      `}</style>
+      {/* SIDEBAR NAVEGAÇÃO DOS 60 CONTRATOS VIVOS */}
+      <aside className="no-print portal-sidebar" style={{
         width: '360px',
         backgroundColor: 'var(--bg-surface)',
         borderRight: '1px solid var(--bg-surface-light)',
@@ -401,7 +488,7 @@ export default function AcervoContratos() {
       </aside>
 
       {/* ÁREA PRINCIPAL: O CONTRATO VIVO SELECIONADO */}
-      <main style={{
+      <main className="portal-main" style={{
         flex: 1,
         padding: '2.5rem 3.5rem',
         maxWidth: '1150px',
@@ -409,10 +496,10 @@ export default function AcervoContratos() {
         display: 'flex',
         flexDirection: 'column'
       }}>
-        <div className="card-surface" style={{ flex: 1, padding: '2.5rem' }}>
+        <div className="card-surface portal-card" style={{ flex: 1, padding: '2.5rem' }}>
           
           {/* HEADER DO CONTRATO COM BADGE E AÇÕES */}
-          <div style={{ 
+          <div className="no-print portal-header" style={{ 
             display: 'flex', 
             justifyContent: 'space-between', 
             alignItems: 'flex-start', 
@@ -523,7 +610,7 @@ export default function AcervoContratos() {
 
           {/* ASSISTENTE JURÍDICO INTELIGENTE DA BANCA */}
           {!isInstruction && (
-            <div style={{
+            <div className="no-print portal-ai-box" style={{
               backgroundColor: 'rgba(212, 175, 55, 0.05)',
               border: '1px solid rgba(212, 175, 55, 0.4)',
               borderRadius: '8px',
@@ -651,7 +738,7 @@ export default function AcervoContratos() {
 
           {/* PAINEL DE PERSONALIZAÇÃO AO VIVO (FAZ O CONTRATO FICAR VIVO!) */}
           {!isInstruction && showLiveEditor && (
-            <div style={{
+            <div className="no-print portal-live-panel" style={{
               backgroundColor: 'var(--bg-color)',
               border: '1px solid var(--accent-gold)',
               borderRadius: '8px',
@@ -767,18 +854,21 @@ export default function AcervoContratos() {
           )}
 
           {/* O CONTRATO VIVO FORMATADO NA TELA */}
-          <div style={{
-            backgroundColor: isInstruction ? 'var(--bg-color)' : '#FFFFFF',
-            color: isInstruction ? '#E0E0E0' : '#111827',
-            padding: isInstruction ? '2rem' : '3.5rem 3rem',
-            borderRadius: '6px',
-            fontFamily: isInstruction ? 'var(--font-body)' : 'serif',
-            fontSize: isInstruction ? '1.05rem' : '1.02rem',
-            lineHeight: 1.85,
-            flex: 1,
-            border: isInstruction ? '1px solid var(--bg-surface-light)' : '1px solid #E5E7EB',
-            boxShadow: isInstruction ? 'none' : '0 15px 35px rgba(0,0,0,0.5)'
-          }}>
+          <div 
+            className="contrato-print-area"
+            style={{
+              backgroundColor: isInstruction ? 'var(--bg-color)' : '#FFFFFF',
+              color: isInstruction ? '#E0E0E0' : '#111827',
+              padding: isInstruction ? '2rem' : '3.5rem 3rem',
+              borderRadius: '6px',
+              fontFamily: isInstruction ? 'var(--font-body)' : 'serif',
+              fontSize: isInstruction ? '1.05rem' : '1.02rem',
+              lineHeight: 1.85,
+              flex: 1,
+              border: isInstruction ? '1px solid var(--bg-surface-light)' : '1px solid #E5E7EB',
+              boxShadow: isInstruction ? 'none' : '0 15px 35px rgba(0,0,0,0.5)'
+            }}
+          >
             {isInstruction ? (
               <div style={{ whiteSpace: 'pre-line' }}>
                 {contratoFormatadoAoVivo}
@@ -792,6 +882,7 @@ export default function AcervoContratos() {
                   return (
                     <div 
                       key={pIdx} 
+                      className="bloco-adaptado"
                       style={{ 
                         backgroundColor: 'rgba(212, 175, 55, 0.12)', 
                         borderLeft: '4px solid var(--accent-gold)', 
@@ -801,20 +892,23 @@ export default function AcervoContratos() {
                         boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
                       }}
                     >
-                      <div style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.4rem',
-                        backgroundColor: 'var(--accent-gold)',
-                        color: '#000',
-                        fontSize: '0.74rem',
-                        fontWeight: 800,
-                        padding: '0.2rem 0.6rem',
-                        borderRadius: '4px',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.5px',
-                        marginBottom: '0.5rem'
-                      }}>
+                      <div 
+                        className="badge-adaptada print-hide"
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.4rem',
+                          backgroundColor: 'var(--accent-gold)',
+                          color: '#000',
+                          fontSize: '0.74rem',
+                          fontWeight: 800,
+                          padding: '0.2rem 0.6rem',
+                          borderRadius: '4px',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.5px',
+                          marginBottom: '0.5rem'
+                        }}
+                      >
                         ✦ Cláusula Adaptada
                       </div>
                       <div style={{ color: '#111827', fontWeight: 500, whiteSpace: 'pre-line' }}>
@@ -834,7 +928,7 @@ export default function AcervoContratos() {
           </div>
 
           {/* RODAPÉ DO CONTRATO COM SUPORTE DA BANCA */}
-          <div style={{
+          <div className="no-print portal-support-footer" style={{
             marginTop: '2.5rem',
             backgroundColor: 'rgba(212, 175, 55, 0.06)',
             border: '1px solid rgba(212, 175, 55, 0.2)',
