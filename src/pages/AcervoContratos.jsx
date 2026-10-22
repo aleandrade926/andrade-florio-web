@@ -152,17 +152,22 @@ export default function AcervoContratos() {
     setLiveData(prev => ({ ...prev, [field]: val }));
   };
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    setCopied(false);
-  }, [activeSlide]);
-
   if (!isAuthenticated) {
     return <Gatekeeper onLogin={() => setIsAuthenticated(true)} />;
   }
 
   const currentItem = contratosData[activeSlide] || contratosData[0];
   const isInstruction = currentItem.id === 'instrucoes';
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setCopied(false);
+    if (currentItem && currentItem.title) {
+      document.title = currentItem.title;
+    } else {
+      document.title = "Acervo Oficial de Contratos Jurídicos";
+    }
+  }, [activeSlide, currentItem]);
 
   // Motor que injeta os dados ou adaptações da IA dentro do contrato selecionado
   const contratoFormatadoAoVivo = useMemo(() => {
@@ -268,6 +273,7 @@ export default function AcervoContratos() {
   };
 
   const handlePrint = () => {
+    document.title = currentItem?.title || "Instrumento Contratual";
     window.print();
   };
 
