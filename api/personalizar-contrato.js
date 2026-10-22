@@ -25,7 +25,7 @@ export default async function handler(req, res) {
     }
 
     // Leitura da variável de ambiente com fallback seguro
-    const defaultEncoded = 'QVEuQWI4Uk42TGVRWjNyNWF3bDRnRzBxeFdySUtSaG5YTVhKcktmNEwzaEpJWG8zbmNUWkE=';
+    const defaultEncoded = 'QVEuQWI4Uk42TGVUWjNyNWF3bDRnRzBxeFdySUtSaG5YTVhKcktmNEwzaEpJWG8zbmNUWkE=';
     const apiKey = process.env.GEMINI_API_KEY || Buffer.from(defaultEncoded, 'base64').toString('utf-8');
     
     const model = 'gemini-3.5-flash-lite';
