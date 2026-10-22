@@ -136,7 +136,7 @@ export default function KitContratos() {
     },
     {
       q: "Como funciona o acesso após a compra?",
-      a: "Assim que o Pix for aprovado, você recebe no seu e-mail a chave de acesso instantânea e o link para o nosso portal exclusivo (andradeflorio.com.br/acervo-contratos). Lá você pode ler todos os contratos na tela e baixar um por um ou o pacote completo em .zip."
+      a: "Assim que o Pix for aprovado, a sua chave de acesso e o link do portal exclusivo (andradeflorio.com.br/acervo-contratos) ficam imediatamente disponíveis na sua área de membros. Lá você pode ler todos os 60 contratos na tela, personalizar com o assistente inteligente da banca e baixar um por um ou o pacote completo em .zip."
     },
     {
       q: "E se eu precisar de suporte jurídico individual?",
@@ -241,7 +241,7 @@ export default function KitContratos() {
             QUERO O ACERVO COMPLETO DE CONTRATOS POR R$ 19,90
           </button>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.9rem', marginBottom: 0 }}>
-            (Chave de acesso imediata enviada para o seu e-mail)
+            (Chave de acesso imediata disponível na sua área de membros)
           </p>
         </div>
 
@@ -372,6 +372,9 @@ export default function KitContratos() {
           <Download size={24} />
           BAIXAR OS 60 CONTRATOS AGORA
         </button>
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.9rem', marginBottom: 0 }}>
+          (Chave de acesso imediata disponível na sua área de membros)
+        </p>
       </section>
 
       {/* FAQ SECTION */}
