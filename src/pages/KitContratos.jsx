@@ -127,8 +127,8 @@ export default function KitContratos() {
 
   const faqs = [
     {
-      q: "Em qual formato recebo os 30 contratos?",
-      a: "Todos os 30 documentos são entregues em formato Word (.docx) 100% editáveis no seu computador, celular ou Google Docs. É só abrir, preencher os dados entre colchetes [NOME, CPF, VALOR] e assinar."
+      q: "Em qual formato recebo os 60 contratos?",
+      a: "Todos os 60 documentos são entregues em formato Word (.docx) 100% editáveis no seu computador, celular ou Google Docs, além do acesso ao portal com leitor online e inteligência artificial para adaptação de cláusulas."
     },
     {
       q: "Por que esses modelos custam apenas R$ 19,90 se foram feitos por advogados?",
@@ -255,7 +255,7 @@ export default function KitContratos() {
           color: 'var(--text-muted)'
         }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <CheckCircle2 size={18} color="var(--accent-gold)" /> 30 Arquivos Word (.docx) Editáveis
+            <CheckCircle2 size={18} color="var(--accent-gold)" /> 60 Arquivos Word (.docx) Editáveis
           </span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <CheckCircle2 size={18} color="var(--accent-gold)" /> Portal com Leitor Online Interativo
@@ -344,7 +344,7 @@ export default function KitContratos() {
       {/* SEGUNDO CTA DE FECHAMENTO */}
       <section style={{ padding: '5rem 1.5rem', maxWidth: '750px', margin: '0 auto', textAlign: 'center' }}>
         <h2 style={{ fontSize: '2.2rem', color: '#FFFFFF', marginBottom: '1rem', fontFamily: 'var(--font-heading)' }}>
-          Acesso Imediato aos 30 Modelos
+          Acesso Imediato aos 60 Modelos
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginBottom: '2rem' }}>
           De R$ 67,00 por apenas <strong>R$ 19,90 no Pix</strong>. Liberação instantânea da sua chave.
@@ -370,7 +370,7 @@ export default function KitContratos() {
           }}
         >
           <Download size={24} />
-          BAIXAR OS 30 CONTRATOS AGORA
+          BAIXAR OS 60 CONTRATOS AGORA
         </button>
       </section>
 
