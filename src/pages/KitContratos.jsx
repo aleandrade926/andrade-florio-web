@@ -9,22 +9,15 @@ import { Navbar, Footer, handleWhatsAppClick } from '../components/Shared';
 export default function KitContratos() {
   const [openFaq, setOpenFaq] = useState(null);
 
-  // Link da Kiwify ou Checkout direto (pode ser substituído pela URL final gerada)
-  const KIWIFY_CHECKOUT_URL = "https://pay.kiwify.com.br/LINK_DO_SEU_PRODUTO"; 
+  // Link oficial de Checkout Kiwify
+  const KIWIFY_CHECKOUT_URL = "https://pay.kiwify.com.br/4K6NZbq"; 
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
   const handleCheckout = () => {
-    if (KIWIFY_CHECKOUT_URL.includes("LINK_DO_SEU_PRODUTO")) {
-      handleWhatsAppClick(
-        'nlxZCPiY6qAcEMzlgIgD',
-        'Olá! Quero baixar agora o Acervo Definitivo de 30 Contratos da Andrade & Florio (R$ 19,90 no Pix) com liberação imediata da chave de acesso.'
-      );
-    } else {
-      window.open(KIWIFY_CHECKOUT_URL, '_blank');
-    }
+    window.location.href = KIWIFY_CHECKOUT_URL;
   };
 
   const modulos = [
