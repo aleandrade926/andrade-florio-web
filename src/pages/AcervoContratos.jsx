@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { 
   Lock, ChevronRight, ChevronLeft, ShieldCheck, 
   Download, Copy, Check, MessageCircle, FileText,
-  Sparkles, Printer, AlertTriangle, Eye, Edit3, Sliders, CheckCircle2
+  Sparkles, Printer, AlertTriangle, Eye, Edit3, Sliders, CheckCircle2,
+  Building, User, Users
 } from 'lucide-react';
 import contratosData from '../data/contratosData.json';
 import { handleWhatsAppClick } from '../components/Shared';
@@ -135,12 +136,61 @@ export default function AcervoContratos() {
 
   // Dados universais que alimentam e deixam QUALQUER um dos 60 contratos vivo em tempo real!
   const [liveData, setLiveData] = useState({
+    // 1ª Parte
+    parte1Tipo: 'PF', // 'PF' ou 'PJ'
     parte1Nome: '',
+    parte1Nacionalidade: 'brasileiro(a)',
+    parte1EstadoCivil: 'casado(a) sob o regime de comunhão parcial de bens',
+    parte1Profissao: '',
+    parte1Rg: '',
     parte1Cpf: '',
     parte1Endereco: '',
+    parte1TemConjuge: false,
+    parte1ConjugeNome: '',
+    parte1ConjugeNacionalidade: 'brasileiro(a)',
+    parte1ConjugeProfissao: '',
+    parte1ConjugeRg: '',
+    parte1ConjugeCpf: '',
+    // Se PJ 1ª Parte
+    parte1RazaoSocial: '',
+    parte1Cnpj: '',
+    parte1Sede: '',
+    parte1RepNome: '',
+    parte1RepCargo: 'Sócio-Administrador',
+    parte1RepNacionalidade: 'brasileiro(a)',
+    parte1RepEstadoCivil: 'casado(a)',
+    parte1RepProfissao: 'empresário(a)',
+    parte1RepRg: '',
+    parte1RepCpf: '',
+
+    // 2ª Parte
+    parte2Tipo: 'PF', // 'PF' ou 'PJ'
     parte2Nome: '',
+    parte2Nacionalidade: 'brasileiro(a)',
+    parte2EstadoCivil: 'solteiro(a)',
+    parte2Profissao: '',
+    parte2Rg: '',
     parte2Cpf: '',
     parte2Endereco: '',
+    parte2TemConjuge: false,
+    parte2ConjugeNome: '',
+    parte2ConjugeNacionalidade: 'brasileiro(a)',
+    parte2ConjugeProfissao: '',
+    parte2ConjugeRg: '',
+    parte2ConjugeCpf: '',
+    // Se PJ 2ª Parte
+    parte2RazaoSocial: '',
+    parte2Cnpj: '',
+    parte2Sede: '',
+    parte2RepNome: '',
+    parte2RepCargo: 'Sócio-Administrador',
+    parte2RepNacionalidade: 'brasileiro(a)',
+    parte2RepEstadoCivil: 'casado(a)',
+    parte2RepProfissao: 'empresário(a)',
+    parte2RepRg: '',
+    parte2RepCpf: '',
+
+    // Negócio
     objetoDescricao: '',
     valor: '',
     sinalOuCondicao: '',
@@ -169,38 +219,143 @@ export default function AcervoContratos() {
     }
   }, [activeSlide, currentItem]);
 
+  // Montagem da Qualificação Completa da 1ª Parte (PF ou PJ)
+  const qualifParte1 = useMemo(() => {
+    if (liveData.parte1Tipo === 'PJ') {
+      if (!liveData.parte1RazaoSocial.trim()) return '';
+      let s = `${liveData.parte1RazaoSocial.trim().toUpperCase()}, pessoa jurídica de direito privado, inscrita no CNPJ/MF sob o nº ${liveData.parte1Cnpj.trim() || '[CNPJ]'}`;
+      if (liveData.parte1Sede.trim()) s += `, com sede na ${liveData.parte1Sede.trim()}`;
+      if (liveData.parte1RepNome.trim()) {
+        s += `, neste ato representada por seu ${liveData.parte1RepCargo.trim() || 'Administrador'}, ${liveData.parte1RepNome.trim().toUpperCase()}`;
+        if (liveData.parte1RepNacionalidade.trim()) s += `, ${liveData.parte1RepNacionalidade.trim()}`;
+        if (liveData.parte1RepEstadoCivil.trim()) s += `, ${liveData.parte1RepEstadoCivil.trim()}`;
+        if (liveData.parte1RepProfissao.trim()) s += `, ${liveData.parte1RepProfissao.trim()}`;
+        if (liveData.parte1RepRg.trim()) s += `, portador(a) da cédula de identidade RG nº ${liveData.parte1RepRg.trim()}`;
+        if (liveData.parte1RepCpf.trim()) s += `, inscrito(a) no CPF/MF sob o nº ${liveData.parte1RepCpf.trim()}`;
+      }
+      return s;
+    } else {
+      if (!liveData.parte1Nome.trim()) return '';
+      let s = `${liveData.parte1Nome.trim().toUpperCase()}`;
+      if (liveData.parte1Nacionalidade.trim()) s += `, ${liveData.parte1Nacionalidade.trim()}`;
+      if (liveData.parte1EstadoCivil.trim()) s += `, ${liveData.parte1EstadoCivil.trim()}`;
+      if (liveData.parte1Profissao.trim()) s += `, ${liveData.parte1Profissao.trim()}`;
+      if (liveData.parte1Rg.trim()) s += `, portador(a) da cédula de identidade RG nº ${liveData.parte1Rg.trim()}`;
+      if (liveData.parte1Cpf.trim()) s += `, inscrito(a) no CPF/MF sob o nº ${liveData.parte1Cpf.trim()}`;
+      if (liveData.parte1TemConjuge && liveData.parte1ConjugeNome.trim()) {
+        s += `, e seu(sua) cônjuge/companheiro(a) ${liveData.parte1ConjugeNome.trim().toUpperCase()}`;
+        if (liveData.parte1ConjugeNacionalidade.trim()) s += `, ${liveData.parte1ConjugeNacionalidade.trim()}`;
+        if (liveData.parte1ConjugeProfissao.trim()) s += `, ${liveData.parte1ConjugeProfissao.trim()}`;
+        if (liveData.parte1ConjugeRg.trim()) s += `, RG nº ${liveData.parte1ConjugeRg.trim()}`;
+        if (liveData.parte1ConjugeCpf.trim()) s += `, CPF nº ${liveData.parte1ConjugeCpf.trim()}`;
+        if (liveData.parte1Endereco.trim()) s += `, ambos residentes e domiciliados na ${liveData.parte1Endereco.trim()}`;
+      } else if (liveData.parte1Endereco.trim()) {
+        s += `, residente e domiciliado(a) na ${liveData.parte1Endereco.trim()}`;
+      }
+      return s;
+    }
+  }, [liveData]);
+
+  // Montagem da Qualificação Completa da 2ª Parte (PF ou PJ)
+  const qualifParte2 = useMemo(() => {
+    if (liveData.parte2Tipo === 'PJ') {
+      if (!liveData.parte2RazaoSocial.trim()) return '';
+      let s = `${liveData.parte2RazaoSocial.trim().toUpperCase()}, pessoa jurídica de direito privado, inscrita no CNPJ/MF sob o nº ${liveData.parte2Cnpj.trim() || '[CNPJ]'}`;
+      if (liveData.parte2Sede.trim()) s += `, com sede na ${liveData.parte2Sede.trim()}`;
+      if (liveData.parte2RepNome.trim()) {
+        s += `, neste ato representada por seu ${liveData.parte2RepCargo.trim() || 'Administrador'}, ${liveData.parte2RepNome.trim().toUpperCase()}`;
+        if (liveData.parte2RepNacionalidade.trim()) s += `, ${liveData.parte2RepNacionalidade.trim()}`;
+        if (liveData.parte2RepEstadoCivil.trim()) s += `, ${liveData.parte2RepEstadoCivil.trim()}`;
+        if (liveData.parte2RepProfissao.trim()) s += `, ${liveData.parte2RepProfissao.trim()}`;
+        if (liveData.parte2RepRg.trim()) s += `, portador(a) da cédula de identidade RG nº ${liveData.parte2RepRg.trim()}`;
+        if (liveData.parte2RepCpf.trim()) s += `, inscrito(a) no CPF/MF sob o nº ${liveData.parte2RepCpf.trim()}`;
+      }
+      return s;
+    } else {
+      if (!liveData.parte2Nome.trim()) return '';
+      let s = `${liveData.parte2Nome.trim().toUpperCase()}`;
+      if (liveData.parte2Nacionalidade.trim()) s += `, ${liveData.parte2Nacionalidade.trim()}`;
+      if (liveData.parte2EstadoCivil.trim()) s += `, ${liveData.parte2EstadoCivil.trim()}`;
+      if (liveData.parte2Profissao.trim()) s += `, ${liveData.parte2Profissao.trim()}`;
+      if (liveData.parte2Rg.trim()) s += `, portador(a) da cédula de identidade RG nº ${liveData.parte2Rg.trim()}`;
+      if (liveData.parte2Cpf.trim()) s += `, inscrito(a) no CPF/MF sob o nº ${liveData.parte2Cpf.trim()}`;
+      if (liveData.parte2TemConjuge && liveData.parte2ConjugeNome.trim()) {
+        s += `, e seu(sua) cônjuge/companheiro(a) ${liveData.parte2ConjugeNome.trim().toUpperCase()}`;
+        if (liveData.parte2ConjugeNacionalidade.trim()) s += `, ${liveData.parte2ConjugeNacionalidade.trim()}`;
+        if (liveData.parte2ConjugeProfissao.trim()) s += `, ${liveData.parte2ConjugeProfissao.trim()}`;
+        if (liveData.parte2ConjugeRg.trim()) s += `, RG nº ${liveData.parte2ConjugeRg.trim()}`;
+        if (liveData.parte2ConjugeCpf.trim()) s += `, CPF nº ${liveData.parte2ConjugeCpf.trim()}`;
+        if (liveData.parte2Endereco.trim()) s += `, ambos residentes e domiciliados na ${liveData.parte2Endereco.trim()}`;
+      } else if (liveData.parte2Endereco.trim()) {
+        s += `, residente e domiciliado(a) na ${liveData.parte2Endereco.trim()}`;
+      }
+      return s;
+    }
+  }, [liveData]);
+
   // Motor que injeta os dados ou adaptações da IA dentro do contrato selecionado
   const contratoFormatadoAoVivo = useMemo(() => {
     if (isInstruction) return currentItem.content;
     let txt = customizedContracts[currentItem.id] || currentItem.content;
 
-    // Substituições Dinâmicas
-    if (liveData.parte1Nome) {
-      txt = txt.replace(/\[NOME COMPLETO DO VENDEDOR\]|\[NOME COMPLETO DO LOCADOR\]|\[PROPRIETÁRIO\]|\[TITULAR\]|\[CREDOR\]|\[MUTUANTE\]|\[OUTORGANTE\]|\[CEDENTE\]|\[VENDEDOR\]|\[LOCADOR\]|\[CONTRATANTE\]/g, liveData.parte1Nome.toUpperCase());
+    // 1. Substituição do Bloco da Qualificação da 1ª Parte
+    if (qualifParte1) {
+      txt = txt.replace(/\[NOME COMPLETO DO VENDEDOR\][\s\S]*?(?=doravante denominad|;\n\nE, de outro lado)/i, qualifParte1 + ', ');
+      txt = txt.replace(/(?:LOCADOR\(A\):|CONTRATANTE:|VENDEDOR\(A\):|CEDENTE\(A\):|MUTUANTE\(A\):|PARCEIRO A:)\s*(\[NOME[^;]+;|\[RAZÃO[^;]+;)/i, (m, p) => m.replace(p, qualifParte1 + ';'));
     }
-    if (liveData.parte1Cpf) {
-      txt = txt.replace(/\[NÚMERO DO CPF DO VENDEDOR\]|\[CPF DO VENDEDOR\]|\[CPF\]/g, liveData.parte1Cpf);
+
+    // 2. Substituição do Bloco da Qualificação da 2ª Parte
+    if (qualifParte2) {
+      txt = txt.replace(/\[NOME COMPLETO DO COMPRADOR\][\s\S]*?(?=doravante denominad|;\n\nTêm as partes)/i, qualifParte2 + ', ');
+      txt = txt.replace(/(?:LOCATÁRIO\(A\):|CONTRATADA:|COMPRADOR\(A\):|CESSIONÁRIO\(A\):|MUTUÁRIO\(A\):|PARCEIRO B:)\s*(\[NOME[^;]+;|\[RAZÃO[^;]+;)/i, (m, p) => m.replace(p, qualifParte2 + ';'));
     }
-    if (liveData.parte1Endereco) {
-      txt = txt.replace(/\[ENDEREÇO COMPLETO DO VENDEDOR\]|\[ENDEREÇO DO VENDEDOR\]|\[ENDEREÇO COMPLETO\]/g, liveData.parte1Endereco);
+
+    // 3. Fallbacks e substituições pontuais
+    const nome1 = liveData.parte1Tipo === 'PJ' ? liveData.parte1RazaoSocial : liveData.parte1Nome;
+    const doc1 = liveData.parte1Tipo === 'PJ' ? liveData.parte1Cnpj : liveData.parte1Cpf;
+    const end1 = liveData.parte1Tipo === 'PJ' ? liveData.parte1Sede : liveData.parte1Endereco;
+
+    const nome2 = liveData.parte2Tipo === 'PJ' ? liveData.parte2RazaoSocial : liveData.parte2Nome;
+    const doc2 = liveData.parte2Tipo === 'PJ' ? liveData.parte2Cnpj : liveData.parte2Cpf;
+    const end2 = liveData.parte2Tipo === 'PJ' ? liveData.parte2Sede : liveData.parte2Endereco;
+
+    if (nome1) {
+      txt = txt.replace(/\[NOME COMPLETO DO VENDEDOR\]|\[NOME COMPLETO DO LOCADOR\]|\[RAZÃO SOCIAL DA EMPRESA\]|\[PROPRIETÁRIO\]|\[TITULAR\]|\[CREDOR\]|\[MUTUANTE\]|\[OUTORGANTE\]|\[CEDENTE\]|\[VENDEDOR\]|\[LOCADOR\]|\[CONTRATANTE\]/g, nome1.toUpperCase());
     }
-    if (liveData.parte2Nome) {
-      txt = txt.replace(/\[NOME COMPLETO DO COMPRADOR\]|\[NOME COMPLETO DO LOCATÁRIO\]|\[BENEFICIÁRIO\]|\[COMODATÁRIO\]|\[DEVEDOR\]|\[MUTUÁRIO\]|\[OUTORGADO\]|\[CESSIONÁRIO\]|\[COMPRADOR\]|\[LOCATÁRIO\]|\[CONTRATADA\]/g, liveData.parte2Nome.toUpperCase());
+    if (doc1) {
+      txt = txt.replace(/\[NÚMERO DO CPF DO VENDEDOR\]|\[CPF DO VENDEDOR\]|\[CPF\]|\[CNPJ\]/g, doc1);
     }
-    if (liveData.parte2Cpf) {
-      txt = txt.replace(/\[NÚMERO DO CPF DO COMPRADOR\]|\[CPF DO COMPRADOR\]/g, liveData.parte2Cpf);
+    if (end1) {
+      txt = txt.replace(/\[ENDEREÇO COMPLETO DO VENDEDOR\]|\[ENDEREÇO DO VENDEDOR\]|\[ENDEREÇO DA SEDE\]|\[ENDEREÇO COMPLETO\]/g, end1);
     }
-    if (liveData.parte2Endereco) {
-      txt = txt.replace(/\[ENDEREÇO COMPLETO DO COMPRADOR\]|\[ENDEREÇO DO COMPRADOR\]/g, liveData.parte2Endereco);
+
+    if (nome2) {
+      txt = txt.replace(/\[NOME COMPLETO DO COMPRADOR\]|\[NOME COMPLETO DO LOCATÁRIO\]|\[RAZÃO SOCIAL DA PRESTADORA PJ \/ MEI\]|\[BENEFICIÁRIO\]|\[COMODATÁRIO\]|\[DEVEDOR\]|\[MUTUÁRIO\]|\[OUTORGADO\]|\[CESSIONÁRIO\]|\[COMPRADOR\]|\[LOCATÁRIO\]|\[CONTRATADA\]/g, nome2.toUpperCase());
     }
+    if (doc2) {
+      txt = txt.replace(/\[NÚMERO DO CPF DO COMPRADOR\]|\[CPF DO COMPRADOR\]/g, doc2);
+    }
+    if (end2) {
+      txt = txt.replace(/\[ENDEREÇO COMPLETO DO COMPRADOR\]|\[ENDEREÇO DO COMPRADOR\]/g, end2);
+    }
+
+    // 4. Assinaturas no Rodapé
+    if (nome1) {
+      txt = txt.replace(/PRIMEIRA PARTE\nCPF\/CNPJ nº \[NÚMERO\]/g, `${nome1.toUpperCase()}\nCPF/CNPJ nº ${doc1 || '[DOCUMENTO]'}`);
+    }
+    if (nome2) {
+      txt = txt.replace(/SEGUNDA PARTE\nCPF\/CNPJ nº \[NÚMERO\]/g, `${nome2.toUpperCase()}\nCPF/CNPJ nº ${doc2 || '[DOCUMENTO]'}`);
+    }
+
+    // 5. Dados do Negócio e Objeto
     if (liveData.objetoDescricao) {
-      txt = txt.replace(/\[ENDEREÇO COMPLETO DO IMÓVEL\]|\[ENDEREÇO DO IMÓVEL\]|\[DESCRIÇÃO DA OBRA\]|\[DESCRIÇÃO DO BEM\]|\[DESCREVER DETALHADAMENTE O ESCOPO DOS SERVIÇOS E ENTREGÁVEIS\]|\[DESCREVER\]/g, liveData.objetoDescricao);
+      txt = txt.replace(/\[ENDEREÇO COMPLETO DO IMÓVEL.*?\]|\[ENDEREÇO DO IMÓVEL\]|\[DESCRIÇÃO DA OBRA\]|\[DESCRIÇÃO DO BEM\]|\[DESCREVER.*?\]/g, liveData.objetoDescricao);
     }
     if (liveData.valor) {
       txt = txt.replace(/\[VALOR TOTAL POR EXTENSO\]|\[VALOR POR EXTENSO\]|\[VALOR TOTAL\]|\[VALOR\]/g, `R$ ${liveData.valor}`);
     }
     if (liveData.sinalOuCondicao) {
-      txt = txt.replace(/\[VALOR DO SINAL\]|\[Transferência Bancária PIX \/ TED.*?\]/g, liveData.sinalOuCondicao);
+      txt = txt.replace(/\[VALOR DO SINAL.*?\]|\[Transferência Bancária PIX \/ TED.*?\]/g, liveData.sinalOuCondicao);
     }
     if (liveData.cidadeForo) {
       txt = txt.replace(/\[CIDADE DA SITUAÇÃO DO IMÓVEL\/ESTADO\]|\[CIDADE\/UF DO IMÓVEL\]|\[CIDADE\/UF\]/g, liveData.cidadeForo);
@@ -210,7 +365,7 @@ export default function AcervoContratos() {
     txt = txt.replace(/\[DIA\] de \[MÊS\] de 202\[X\]/g, dataHoje);
 
     return txt;
-  }, [currentItem, liveData, isInstruction, customizedContracts]);
+  }, [currentItem, liveData, isInstruction, customizedContracts, qualifParte1, qualifParte2]);
 
   const handleAiCustomize = async () => {
     if (!aiPrompt.trim()) return;
@@ -744,7 +899,7 @@ export default function AcervoContratos() {
             </div>
           )}
 
-          {/* PAINEL DE PERSONALIZAÇÃO AO VIVO (FAZ O CONTRATO FICAR VIVO!) */}
+          {/* PAINEL DE QUALIFICAÇÃO E PERSONALIZAÇÃO AO VIVO (COM SUPORTE A PF E PJ) */}
           {!isInstruction && showLiveEditor && (
             <div className="no-print portal-live-panel" style={{
               backgroundColor: 'var(--bg-color)',
@@ -754,108 +909,307 @@ export default function AcervoContratos() {
               marginBottom: '2.5rem',
               boxShadow: '0 10px 25px rgba(0,0,0,0.4)'
             }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.9rem', textTransform: 'uppercase' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.95rem', textTransform: 'uppercase' }}>
                   <Sparkles size={18} />
-                  Painel de Preenchimento em Tempo Real
+                  Painel de Qualificação em Tempo Real (PF e PJ)
                 </div>
-                <span style={{ fontSize: '0.8rem', color: '#4ade80' }}>
-                  ● O texto abaixo se atualiza enquanto você digita
+                <span style={{ fontSize: '0.8rem', color: '#4ade80', backgroundColor: 'rgba(74, 222, 128, 0.1)', padding: '0.25rem 0.65rem', borderRadius: '4px', fontWeight: 600 }}>
+                  ● Qualificação completa de cartório sem colchetes sobrando
                 </span>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.3rem' }}>
-                    1ª Parte (Vendedor / Locador / Credor)
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="Nome Completo" 
-                    value={liveData.parte1Nome} 
-                    onChange={(e) => handleDataChange('parte1Nome', e.target.value)}
-                    style={{ width: '100%', padding: '0.75rem', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.9rem' }}
-                  />
+              {/* GRID 2 COLUNAS: 1ª PARTE E 2ª PARTE */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                
+                {/* 1ª PARTE (PF OU PJ) */}
+                <div style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)', borderRadius: '6px', padding: '1.25rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    <span style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.85rem' }}>
+                      1ª PARTE (Vendedor / Locador / Credor)
+                    </span>
+                    <div style={{ display: 'flex', gap: '0.25rem', backgroundColor: 'var(--bg-color)', padding: '0.2rem', borderRadius: '4px' }}>
+                      <button
+                        type="button"
+                        onClick={() => handleDataChange('parte1Tipo', 'PF')}
+                        style={{
+                          padding: '0.25rem 0.6rem',
+                          fontSize: '0.72rem',
+                          borderRadius: '3px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          fontWeight: 700,
+                          backgroundColor: liveData.parte1Tipo === 'PF' ? 'var(--accent-gold)' : 'transparent',
+                          color: liveData.parte1Tipo === 'PF' ? '#000' : 'var(--text-muted)'
+                        }}
+                      >
+                        Pessoa Física (PF)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDataChange('parte1Tipo', 'PJ')}
+                        style={{
+                          padding: '0.25rem 0.6rem',
+                          fontSize: '0.72rem',
+                          borderRadius: '3px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          fontWeight: 700,
+                          backgroundColor: liveData.parte1Tipo === 'PJ' ? 'var(--accent-gold)' : 'transparent',
+                          color: liveData.parte1Tipo === 'PJ' ? '#000' : 'var(--text-muted)'
+                        }}
+                      >
+                        Pessoa Jurídica (PJ)
+                      </button>
+                    </div>
+                  </div>
+
+                  {liveData.parte1Tipo === 'PF' ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.6rem' }}>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Nome Completo</label>
+                          <input type="text" placeholder="Nome Completo" value={liveData.parte1Nome} onChange={e => handleDataChange('parte1Nome', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>CPF</label>
+                          <input type="text" placeholder="000.000.000-00" value={liveData.parte1Cpf} onChange={e => handleDataChange('parte1Cpf', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                      </div>
+
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.6rem' }}>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>RG / Órgão</label>
+                          <input type="text" placeholder="RG nº e Órgão" value={liveData.parte1Rg} onChange={e => handleDataChange('parte1Rg', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Nacionalidade</label>
+                          <input type="text" placeholder="brasileiro(a)" value={liveData.parte1Nacionalidade} onChange={e => handleDataChange('parte1Nacionalidade', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Profissão</label>
+                          <input type="text" placeholder="Ex: Empresário" value={liveData.parte1Profissao} onChange={e => handleDataChange('parte1Profissao', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Estado Civil e Regime de Bens</label>
+                        <input type="text" placeholder="Ex: casado sob comunhão parcial de bens / solteiro(a)" value={liveData.parte1EstadoCivil} onChange={e => handleDataChange('parte1EstadoCivil', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                      </div>
+
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Endereço Residencial Completo (com CEP)</label>
+                        <input type="text" placeholder="Rua, nº, Complemento, Bairro, Cidade/UF, CEP" value={liveData.parte1Endereco} onChange={e => handleDataChange('parte1Endereco', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                      </div>
+
+                      <div style={{ borderTop: '1px dashed var(--bg-surface-light)', paddingTop: '0.5rem', marginTop: '0.25rem' }}>
+                        <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: 'var(--accent-gold)', cursor: 'pointer' }}>
+                          <input type="checkbox" checked={liveData.parte1TemConjuge} onChange={e => handleDataChange('parte1TemConjuge', e.target.checked)} />
+                          Incluir Cônjuge / Companheiro(a)
+                        </label>
+                        {liveData.parte1TemConjuge && (
+                          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.5rem', marginTop: '0.5rem' }}>
+                            <input type="text" placeholder="Nome Completo do Cônjuge" value={liveData.parte1ConjugeNome} onChange={e => handleDataChange('parte1ConjugeNome', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                            <input type="text" placeholder="CPF do Cônjuge" value={liveData.parte1ConjugeCpf} onChange={e => handleDataChange('parte1ConjugeCpf', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                            <input type="text" placeholder="RG do Cônjuge" value={liveData.parte1ConjugeRg} onChange={e => handleDataChange('parte1ConjugeRg', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                            <input type="text" placeholder="Profissão do Cônjuge" value={liveData.parte1ConjugeProfissao} onChange={e => handleDataChange('parte1ConjugeProfissao', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    /* SE FOR PJ 1ª PARTE */
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.6rem' }}>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Razão Social / Nome Empresarial</label>
+                          <input type="text" placeholder="Ex: EMPRESA ALFA PARTICIPAÇÕES LTDA." value={liveData.parte1RazaoSocial} onChange={e => handleDataChange('parte1RazaoSocial', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>CNPJ</label>
+                          <input type="text" placeholder="00.000.000/0001-00" value={liveData.parte1Cnpj} onChange={e => handleDataChange('parte1Cnpj', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Endereço da Sede com CEP</label>
+                        <input type="text" placeholder="Avenida, nº, Conjunto, Bairro, Cidade/UF, CEP" value={liveData.parte1Sede} onChange={e => handleDataChange('parte1Sede', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                      </div>
+
+                      <div style={{ borderTop: '1px dashed var(--bg-surface-light)', paddingTop: '0.5rem', marginTop: '0.25rem' }}>
+                        <span style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', fontWeight: 700, display: 'block', marginBottom: '0.4rem' }}>
+                          Representante Legal da Empresa
+                        </span>
+                        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                          <input type="text" placeholder="Nome do Sócio/Administrador" value={liveData.parte1RepNome} onChange={e => handleDataChange('parte1RepNome', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                          <input type="text" placeholder="Cargo (Sócio-Administrador)" value={liveData.parte1RepCargo} onChange={e => handleDataChange('parte1RepCargo', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem' }}>
+                          <input type="text" placeholder="CPF do Representante" value={liveData.parte1RepCpf} onChange={e => handleDataChange('parte1RepCpf', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                          <input type="text" placeholder="RG do Representante" value={liveData.parte1RepRg} onChange={e => handleDataChange('parte1RepRg', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                          <input type="text" placeholder="Profissão/Nacionalidade" value={liveData.parte1RepProfissao} onChange={e => handleDataChange('parte1RepProfissao', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.3rem' }}>
-                    CPF da 1ª Parte
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="000.000.000-00" 
-                    value={liveData.parte1Cpf} 
-                    onChange={(e) => handleDataChange('parte1Cpf', e.target.value)}
-                    style={{ width: '100%', padding: '0.75rem', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.9rem' }}
-                  />
+                {/* 2ª PARTE (PF OU PJ) */}
+                <div style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)', borderRadius: '6px', padding: '1.25rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    <span style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.85rem' }}>
+                      2ª PARTE (Comprador / Locatário / Devedor)
+                    </span>
+                    <div style={{ display: 'flex', gap: '0.25rem', backgroundColor: 'var(--bg-color)', padding: '0.2rem', borderRadius: '4px' }}>
+                      <button
+                        type="button"
+                        onClick={() => handleDataChange('parte2Tipo', 'PF')}
+                        style={{
+                          padding: '0.25rem 0.6rem',
+                          fontSize: '0.72rem',
+                          borderRadius: '3px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          fontWeight: 700,
+                          backgroundColor: liveData.parte2Tipo === 'PF' ? 'var(--accent-gold)' : 'transparent',
+                          color: liveData.parte2Tipo === 'PF' ? '#000' : 'var(--text-muted)'
+                        }}
+                      >
+                        Pessoa Física (PF)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDataChange('parte2Tipo', 'PJ')}
+                        style={{
+                          padding: '0.25rem 0.6rem',
+                          fontSize: '0.72rem',
+                          borderRadius: '3px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          fontWeight: 700,
+                          backgroundColor: liveData.parte2Tipo === 'PJ' ? 'var(--accent-gold)' : 'transparent',
+                          color: liveData.parte2Tipo === 'PJ' ? '#000' : 'var(--text-muted)'
+                        }}
+                      >
+                        Pessoa Jurídica (PJ)
+                      </button>
+                    </div>
+                  </div>
+
+                  {liveData.parte2Tipo === 'PF' ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.6rem' }}>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Nome Completo</label>
+                          <input type="text" placeholder="Nome Completo" value={liveData.parte2Nome} onChange={e => handleDataChange('parte2Nome', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>CPF</label>
+                          <input type="text" placeholder="000.000.000-00" value={liveData.parte2Cpf} onChange={e => handleDataChange('parte2Cpf', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                      </div>
+
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.6rem' }}>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>RG / Órgão</label>
+                          <input type="text" placeholder="RG nº e Órgão" value={liveData.parte2Rg} onChange={e => handleDataChange('parte2Rg', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Nacionalidade</label>
+                          <input type="text" placeholder="brasileiro(a)" value={liveData.parte2Nacionalidade} onChange={e => handleDataChange('parte2Nacionalidade', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Profissão</label>
+                          <input type="text" placeholder="Ex: Comerciante" value={liveData.parte2Profissao} onChange={e => handleDataChange('parte2Profissao', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Estado Civil e Regime de Bens</label>
+                        <input type="text" placeholder="Ex: solteiro(a) / casado sob comunhão..." value={liveData.parte2EstadoCivil} onChange={e => handleDataChange('parte2EstadoCivil', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                      </div>
+
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Endereço Residencial Completo (com CEP)</label>
+                        <input type="text" placeholder="Rua, nº, Complemento, Bairro, Cidade/UF, CEP" value={liveData.parte2Endereco} onChange={e => handleDataChange('parte2Endereco', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                      </div>
+
+                      <div style={{ borderTop: '1px dashed var(--bg-surface-light)', paddingTop: '0.5rem', marginTop: '0.25rem' }}>
+                        <label style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', color: 'var(--accent-gold)', cursor: 'pointer' }}>
+                          <input type="checkbox" checked={liveData.parte2TemConjuge} onChange={e => handleDataChange('parte2TemConjuge', e.target.checked)} />
+                          Incluir Cônjuge / Companheiro(a)
+                        </label>
+                        {liveData.parte2TemConjuge && (
+                          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.5rem', marginTop: '0.5rem' }}>
+                            <input type="text" placeholder="Nome Completo do Cônjuge" value={liveData.parte2ConjugeNome} onChange={e => handleDataChange('parte2ConjugeNome', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                            <input type="text" placeholder="CPF do Cônjuge" value={liveData.parte2ConjugeCpf} onChange={e => handleDataChange('parte2ConjugeCpf', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                            <input type="text" placeholder="RG do Cônjuge" value={liveData.parte2ConjugeRg} onChange={e => handleDataChange('parte2ConjugeRg', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                            <input type="text" placeholder="Profissão do Cônjuge" value={liveData.parte2ConjugeProfissao} onChange={e => handleDataChange('parte2ConjugeProfissao', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    /* SE FOR PJ 2ª PARTE */
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.6rem' }}>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Razão Social / Nome Empresarial</label>
+                          <input type="text" placeholder="Ex: EMPRESA BETA SERVIÇOS LTDA." value={liveData.parte2RazaoSocial} onChange={e => handleDataChange('parte2RazaoSocial', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                        <div>
+                          <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>CNPJ</label>
+                          <input type="text" placeholder="00.000.000/0001-00" value={liveData.parte2Cnpj} onChange={e => handleDataChange('parte2Cnpj', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Endereço da Sede com CEP</label>
+                        <input type="text" placeholder="Avenida, nº, Conjunto, Bairro, Cidade/UF, CEP" value={liveData.parte2Sede} onChange={e => handleDataChange('parte2Sede', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                      </div>
+
+                      <div style={{ borderTop: '1px dashed var(--bg-surface-light)', paddingTop: '0.5rem', marginTop: '0.25rem' }}>
+                        <span style={{ fontSize: '0.75rem', color: 'var(--accent-gold)', fontWeight: 700, display: 'block', marginBottom: '0.4rem' }}>
+                          Representante Legal da Empresa
+                        </span>
+                        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '0.5rem', marginBottom: '0.5rem' }}>
+                          <input type="text" placeholder="Nome do Sócio/Administrador" value={liveData.parte2RepNome} onChange={e => handleDataChange('parte2RepNome', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                          <input type="text" placeholder="Cargo (Sócio-Administrador)" value={liveData.parte2RepCargo} onChange={e => handleDataChange('parte2RepCargo', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem' }}>
+                          <input type="text" placeholder="CPF do Representante" value={liveData.parte2RepCpf} onChange={e => handleDataChange('parte2RepCpf', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                          <input type="text" placeholder="RG do Representante" value={liveData.parte2RepRg} onChange={e => handleDataChange('parte2RepRg', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                          <input type="text" placeholder="Profissão/Nacionalidade" value={liveData.parte2RepProfissao} onChange={e => handleDataChange('parte2RepProfissao', e.target.value)} style={{ width: '100%', padding: '0.5rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.78rem' }} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.3rem' }}>
-                    2ª Parte (Comprador / Locatário / Devedor)
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="Nome Completo" 
-                    value={liveData.parte2Nome} 
-                    onChange={(e) => handleDataChange('parte2Nome', e.target.value)}
-                    style={{ width: '100%', padding: '0.75rem', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.9rem' }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.3rem' }}>
-                    CPF da 2ª Parte
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="000.000.000-00" 
-                    value={liveData.parte2Cpf} 
-                    onChange={(e) => handleDataChange('parte2Cpf', e.target.value)}
-                    style={{ width: '100%', padding: '0.75rem', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.9rem' }}
-                  />
-                </div>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.3rem' }}>
-                    Descrição do Objeto / Imóvel / Veículo / Serviço
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="Ex: Apartamento 31, Rua das Flores, 120" 
-                    value={liveData.objetoDescricao} 
-                    onChange={(e) => handleDataChange('objetoDescricao', e.target.value)}
-                    style={{ width: '100%', padding: '0.75rem', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.9rem' }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.3rem' }}>
-                    Valor Total (R$)
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="Ex: 350.000,00 ou 2.500,00" 
-                    value={liveData.valor} 
-                    onChange={(e) => handleDataChange('valor', e.target.value)}
-                    style={{ width: '100%', padding: '0.75rem', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.9rem' }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.3rem' }}>
-                    Cidade e Foro da Assinatura
-                  </label>
-                  <input 
-                    type="text" 
-                    placeholder="Ex: São Paulo/SP" 
-                    value={liveData.cidadeForo} 
-                    onChange={(e) => handleDataChange('cidadeForo', e.target.value)}
-                    style={{ width: '100%', padding: '0.75rem', backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.9rem' }}
-                  />
+              {/* DADOS DO NEGÓCIO, OBJETO & VALORES */}
+              <div style={{ backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)', borderRadius: '6px', padding: '1.25rem' }}>
+                <span style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.85rem', display: 'block', marginBottom: '0.75rem' }}>
+                  DADOS DO NEGÓCIO, OBJETO & VALORES
+                </span>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem' }}>
+                  <div style={{ gridColumn: 'span 2' }}>
+                    <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Descrição do Objeto / Imóvel / Veículo / Serviço</label>
+                    <input type="text" placeholder="Ex: Apartamento 31, Edifício Solar, Rua das Flores, 120, Matrícula 123.456" value={liveData.objetoDescricao} onChange={e => handleDataChange('objetoDescricao', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Valor Total da Transação (R$)</label>
+                    <input type="text" placeholder="Ex: 450.000,00" value={liveData.valor} onChange={e => handleDataChange('valor', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Sinal / Arras / Condição de Pagamento</label>
+                    <input type="text" placeholder="Ex: R$ 50.000,00 via Pix nesta data" value={liveData.sinalOuCondicao} onChange={e => handleDataChange('sinalOuCondicao', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                  </div>
+                  <div>
+                    <label style={{ display: 'block', fontSize: '0.73rem', color: 'var(--text-muted)', marginBottom: '0.2rem' }}>Cidade e Foro Competente</label>
+                    <input type="text" placeholder="Ex: São Paulo/SP" value={liveData.cidadeForo} onChange={e => handleDataChange('cidadeForo', e.target.value)} style={{ width: '100%', padding: '0.6rem', backgroundColor: 'var(--bg-color)', border: '1px solid var(--bg-surface-light)', borderRadius: '4px', color: '#fff', fontSize: '0.82rem' }} />
+                  </div>
                 </div>
               </div>
             </div>
