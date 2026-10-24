@@ -213,10 +213,6 @@ export default function AcervoContratos() {
     setLiveData(prev => ({ ...prev, [field]: val }));
   };
 
-  if (!isAuthenticated) {
-    return <Gatekeeper onLogin={() => setIsAuthenticated(true)} />;
-  }
-
   const currentItem = contratosData[activeSlide] || contratosData[0];
   const isInstruction = currentItem.id === 'instrucoes';
 
@@ -649,6 +645,10 @@ export default function AcervoContratos() {
       .map((item, idx) => ({ ...item, originalIndex: idx }))
       .filter(item => item.title.toLowerCase().includes(q) || (item.badge && item.badge.toLowerCase().includes(q)));
   }, [searchQuery]);
+
+  if (!isAuthenticated) {
+    return <Gatekeeper onLogin={() => setIsAuthenticated(true)} />;
+  }
 
   return (
     <div className="portal-layout" style={{
