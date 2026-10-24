@@ -13,7 +13,9 @@ import {
   DollarSign, 
   Send, 
   HelpCircle,
-  ArrowRight
+  ArrowRight,
+  Search,
+  Award
 } from 'lucide-react';
 import { Navbar, Footer, StickyWhatsApp, handleWhatsAppClick } from '../components/Shared';
 
@@ -142,6 +144,7 @@ const customPageStyles = `
 
 export default function DespejoPage() {
   const [openFaq, setOpenFaq] = useState(null);
+  const [isDiplomaOpen, setIsDiplomaOpen] = useState(false);
 
   // Estado do Simulador de Prejuízo do Proprietário
   const [aluguelValor, setAluguelValor] = useState(3000);
@@ -405,8 +408,25 @@ Preciso do apoio do escritório para entrar com a Ação de Despejo e estancar e
                   />
                   <div>
                     <h3 style={{ fontSize: '1.25rem', marginBottom: '0.2rem' }}>Dra. Libia Florio</h3>
-                    <p style={{ fontSize: '0.88rem', color: 'var(--accent-gold)' }}>Mestre pela Faculdade de Direito da USP</p>
-                    <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Especialista em Direito Imobiliário e Notarial</p>
+                    <div 
+                      onClick={() => setIsDiplomaOpen(true)}
+                      style={{ 
+                        fontSize: '0.88rem', 
+                        color: 'var(--accent-gold)', 
+                        cursor: 'pointer', 
+                        display: 'inline-flex', 
+                        alignItems: 'center', 
+                        gap: '0.35rem',
+                        fontWeight: 600,
+                        transition: 'opacity 0.2s ease'
+                      }}
+                      onMouseOver={e => e.currentTarget.style.opacity = '0.8'}
+                      onMouseOut={e => e.currentTarget.style.opacity = '1'}
+                      title="Clique para visualizar o diploma oficial de Mestrado da USP"
+                    >
+                      <Award size={15} /> Mestre pela USP <span style={{ fontSize: '0.75rem', textDecoration: 'underline', opacity: 0.85 }}>(Ver Diploma ↗)</span>
+                    </div>
+                    <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.15rem' }}>Especialista em Direito Imobiliário e Notarial</p>
                   </div>
                 </div>
 
@@ -770,6 +790,104 @@ Preciso do apoio do escritório para entrar com a Ação de Despejo e estancar e
         </div>
       </section>
 
+      {/* Seção de Autoridade & Prova Visual: Dra. Líbia Florio & Diploma USP */}
+      <section className="section" style={{ padding: '4.5rem 0', backgroundColor: 'var(--bg-color)', borderTop: '1px solid var(--bg-surface-light)' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
+            {/* Texto de Autoridade */}
+            <div>
+              <div className="despejo-badge">
+                <Award size={16} /> Excelência Acadêmica & Prática Forense
+              </div>
+              <h2 style={{ fontSize: 'clamp(1.9rem, 3.5vw, 2.5rem)', marginBottom: '1.25rem', lineHeight: 1.2 }}>
+                Condução Jurídica por Quem Domina as Cortes Paulistas
+              </h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+                A <strong>Dra. Líbia Florio</strong> é Mestre pela prestigiada <strong>Faculdade de Direito da Universidade de São Paulo (USP)</strong>, com mais de 30 anos de prática jurídica em Direito Imobiliário, Notarial e Registral.
+              </p>
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
+                Em disputas de despejo, a solidez técnica na formulação do pedido liminar e na execução de bens garante que o locador não perca meses com despachos protelatórios ou decisões interlocutórias desfavoráveis.
+              </p>
+
+              {/* Grid de Credenciais */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1.25rem', borderTop: '1px solid var(--bg-surface-light)', paddingTop: '1.5rem', marginBottom: '2rem' }}>
+                <div>
+                  <div style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--accent-gold)' }}>USP</div>
+                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Mestrado em Direito</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--text-main)' }}>30+ Anos</div>
+                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Experiência Forense</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--text-main)' }}>OAB/SP</div>
+                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Comissão Especial</div>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setIsDiplomaOpen(true)}
+                className="btn-outline"
+                style={{
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.6rem',
+                  padding: '0.85rem 1.6rem',
+                  fontSize: '0.95rem',
+                  fontWeight: 600
+                }}
+              >
+                <Search size={17} />
+                Visualizar Diploma Oficial da USP
+              </button>
+            </div>
+
+            {/* Imagem do Diploma com Lightbox Trigger */}
+            <div>
+              <div 
+                style={{ 
+                  position: 'relative', 
+                  padding: '1rem', 
+                  background: 'var(--bg-surface)', 
+                  border: '1px solid var(--accent-gold)', 
+                  borderRadius: '8px',
+                  cursor: 'pointer', 
+                  overflow: 'hidden',
+                  boxShadow: '0 15px 35px rgba(0,0,0,0.4)',
+                  transition: 'transform 0.3s ease'
+                }}
+                onClick={() => setIsDiplomaOpen(true)}
+                onMouseOver={e => e.currentTarget.querySelector('.diploma-overlay').style.opacity = '1'}
+                onMouseOut={e => e.currentTarget.querySelector('.diploma-overlay').style.opacity = '0'}
+              >
+                <img 
+                  src="/diploma-usp.jpg" 
+                  alt="Diploma de Mestrado da USP - Dra. Libia Florio" 
+                  style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '4px', border: '1px solid var(--bg-surface-light)' }}
+                />
+                <div 
+                  className="diploma-overlay"
+                  style={{
+                    position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+                    background: 'rgba(17, 17, 17, 0.78)', display: 'flex', flexDirection: 'column',
+                    alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.3s ease', pointerEvents: 'none'
+                  }}
+                >
+                  <Search size={42} color="var(--accent-gold)" style={{ marginBottom: '0.6rem' }} />
+                  <span style={{ color: 'var(--accent-gold)', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.88rem', fontWeight: 700 }}>
+                    Clique para Ampliar
+                  </span>
+                </div>
+              </div>
+              <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '1rem', fontStyle: 'italic' }}>
+                Mestrado em Direito - Faculdade de Direito do Largo de São Francisco (USP)
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Perguntas Frequentes (FAQ) Exclusivo para Proprietários */}
       <section className="section" style={{ padding: '4.5rem 0', backgroundColor: 'var(--bg-surface)', borderTop: '1px solid var(--bg-surface-light)', borderBottom: '1px solid var(--bg-surface-light)' }}>
         <div className="container">
@@ -925,6 +1043,62 @@ Preciso do apoio do escritório para entrar com a Ação de Despejo e estancar e
 
       <Footer />
       <StickyWhatsApp />
+
+      {/* Lightbox / Modal do Diploma USP */}
+      {isDiplomaOpen && (
+        <div 
+          style={{
+            position: 'fixed', 
+            top: 0, 
+            left: 0, 
+            width: '100vw', 
+            height: '100vh',
+            backgroundColor: 'rgba(0, 0, 0, 0.92)', 
+            backdropFilter: 'blur(6px)',
+            zIndex: 9999, 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            padding: '2rem'
+          }}
+          onClick={() => setIsDiplomaOpen(false)}
+        >
+          <div style={{ position: 'relative', maxWidth: '880px', width: '100%' }} onClick={(e) => e.stopPropagation()}>
+            <button 
+              onClick={() => setIsDiplomaOpen(false)}
+              style={{
+                position: 'absolute', 
+                top: '-45px', 
+                right: '0', 
+                background: 'none', 
+                border: 'none', 
+                color: 'var(--accent-gold)', 
+                fontSize: '2.8rem', 
+                cursor: 'pointer', 
+                lineHeight: '1'
+              }}
+              aria-label="Fechar"
+            >
+              &times;
+            </button>
+            <img 
+              src="/diploma-usp.jpg" 
+              alt="Diploma de Mestrado da USP - Dra. Libia Florio" 
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
+                display: 'block',
+                border: '2px solid var(--accent-gold)', 
+                boxShadow: '0 15px 50px rgba(0,0,0,0.7)',
+                borderRadius: '4px'
+              }} 
+            />
+            <p style={{ textAlign: 'center', color: '#fff', fontSize: '0.9rem', marginTop: '1rem', letterSpacing: '0.5px' }}>
+              Faculdade de Direito da Universidade de São Paulo (Largo de São Francisco)
+            </p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
