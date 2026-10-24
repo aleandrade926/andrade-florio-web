@@ -17,7 +17,7 @@ import {
   Search,
   Award
 } from 'lucide-react';
-import { Navbar, Footer, StickyWhatsApp, handleWhatsAppClick } from '../components/Shared';
+import { Navbar, Footer, StickyWhatsApp, handleWhatsAppClick, LinkedinIcon } from '../components/Shared';
 
 const customPageStyles = `
   .despejo-badge {
@@ -318,46 +318,47 @@ Preciso do apoio do escritório para entrar com a Ação de Despejo e estancar e
       <Navbar />
 
       {/* Hero Section */}
-      <section className="section" style={{ paddingTop: '4.5rem', paddingBottom: '3.5rem', overflow: 'hidden' }}>
+      <section className="section" style={{ paddingTop: '4rem', overflow: 'hidden' }}>
         <div className="container">
-          <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1.25fr 0.75fr', gap: '3.5rem', alignItems: 'center' }}>
-            {/* Coluna de Texto Principal */}
-            <div>
-              <div className="despejo-badge">
-                <KeyRound size={16} /> Assessoria Exclusiva para Proprietários & Locadores
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+            {/* Texto */}
+            <div style={{ paddingRight: '2rem' }}>
+              <div style={{ 
+                display: 'inline-block', 
+                padding: '0.35rem 1.1rem', 
+                border: '1px solid var(--accent-gold)', 
+                borderRadius: '50px',
+                color: 'var(--accent-gold)',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                letterSpacing: '1.5px',
+                textTransform: 'uppercase',
+                marginBottom: '1.5rem'
+              }}>
+                Direito Imobiliário & Locações · São Paulo
               </div>
-              <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.2rem, 4.2vw, 3.5rem)', lineHeight: 1.15 }}>
+              <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.3rem, 4.5vw, 3.6rem)', lineHeight: 1.2 }}>
                 Ação de Despejo por Falta de Pagamento: Retome seu Imóvel e Estanque o Prejuízo.
               </h1>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '2.2rem', lineHeight: 1.7 }}>
-                Cada mês de inércia é mais condomínio e IPTU acumulando no <strong>seu nome</strong>. Atuamos com pedido de <strong>liminar em até 15 dias</strong> para desocupação do imóvel e execução imediata de bens do inquilino e fiadores na Justiça de São Paulo.
+              <p style={{ color: 'var(--text-muted)', fontSize: '1.2rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+                Cada mês de inércia é mais condomínio e IPTU acumulando no <strong>seu nome</strong>. Atuamos com pedido de <strong>liminar em até 15 dias</strong> para desocupação do imóvel e execução imediata de bens do inquilino e fiadores na Justiça de São Paulo, com a autoridade de quem é <strong>Mestre pela Faculdade de Direito da USP</strong> e especialista em Direito Imobiliário e Notarial.
               </p>
-
-              {/* Botão de Alta Conversão */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', alignItems: 'flex-start', marginBottom: '2.2rem' }}>
-                <button
-                  onClick={() => handleWhatsAppAction()}
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start', marginBottom: '2.5rem' }}>
+                <button 
                   className="btn-gold"
-                  style={{
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                    padding: '1.1rem 2.2rem',
-                    fontSize: '1.08rem',
-                    fontWeight: 700
-                  }}
+                  onClick={() => handleWhatsAppAction()}
+                  style={{ border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', fontFamily: 'inherit', fontSize: '1.05rem', gap: '0.5rem', padding: '1rem 2rem' }}
                 >
                   <Send size={19} />
-                  Retomar Meu Imóvel: Falar com Especialista
+                  Iniciar Ação de Despejo via WhatsApp
                 </button>
-                <span style={{ fontSize: '0.88rem', color: 'var(--text-muted)' }}>
-                  ✓ Plantão direto com a equipe jurídica da Dra. Libia Florio · Atuação imediata no TJSP
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                  ✓ Atendimento sigiloso e direto com a equipe jurídica da Dra. Libia Florio
                 </span>
               </div>
 
-              {/* Prova de Autoridade / Métricas Legais */}
+              {/* Indicadores Legais */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.75rem', borderTop: '1px solid var(--bg-surface-light)', paddingTop: '1.75rem', flexWrap: 'wrap' }}>
                 <div>
                   <div style={{ fontSize: '1.35rem', fontWeight: 700, color: 'var(--accent-gold)' }}>Art. 59 § 1º IX</div>
@@ -371,82 +372,32 @@ Preciso do apoio do escritório para entrar com a Ação de Despejo e estancar e
                 <div style={{ width: '1px', height: '35px', background: 'var(--bg-surface-light)' }}></div>
                 <div>
                   <div style={{ fontSize: '1.35rem', fontWeight: 700, color: 'var(--text-main)' }}>Mestre USP</div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Coordenação Dra. Libia Florio</div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Dra. Libia Florio</div>
                 </div>
               </div>
             </div>
 
-            {/* Imagem de Autoridade / Card Lateral */}
+            {/* Imagem Oficial Grande com Borda Deslocada */}
             <div style={{ position: 'relative' }}>
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '-15px',
-                  right: '-15px',
-                  width: '100%',
-                  height: '100%',
-                  border: '1px solid var(--accent-gold)',
-                  zIndex: 0
+              <div style={{ 
+                position: 'absolute', top: '-20px', right: '-20px', width: '100%', height: '100%', 
+                border: '1px solid var(--accent-gold)', zIndex: 0 
+              }}></div>
+              <img 
+                src="/dra-libia.png" 
+                alt="Dra. Libia Florio - Advogada Especialista em Direito Imobiliário e Notarial" 
+                style={{ position: 'relative', zIndex: 1, objectFit: 'cover', width: '100%', height: 'auto', border: '1px solid var(--bg-surface-light)' }} 
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'flex';
                 }}
-              ></div>
-              <div
-                style={{
-                  position: 'relative',
-                  zIndex: 1,
-                  background: 'var(--bg-surface)',
-                  border: '1px solid var(--bg-surface-light)',
-                  padding: '2.5rem',
-                  borderRadius: '6px'
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                  <img
-                    src="/dra-libia.png"
-                    alt="Dra. Libia Florio - Advogada Especialista em Direito Imobiliário"
-                    style={{ width: '75px', height: '75px', borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--accent-gold)' }}
-                    onError={(e) => { e.target.style.display = 'none'; }}
-                  />
-                  <div>
-                    <h3 style={{ fontSize: '1.25rem', marginBottom: '0.2rem' }}>Dra. Libia Florio</h3>
-                    <div 
-                      onClick={() => setIsDiplomaOpen(true)}
-                      style={{ 
-                        fontSize: '0.88rem', 
-                        color: 'var(--accent-gold)', 
-                        cursor: 'pointer', 
-                        display: 'inline-flex', 
-                        alignItems: 'center', 
-                        gap: '0.35rem',
-                        fontWeight: 600,
-                        transition: 'opacity 0.2s ease'
-                      }}
-                      onMouseOver={e => e.currentTarget.style.opacity = '0.8'}
-                      onMouseOut={e => e.currentTarget.style.opacity = '1'}
-                      title="Clique para visualizar o diploma oficial de Mestrado da USP"
-                    >
-                      <Award size={15} /> Mestre pela USP <span style={{ fontSize: '0.75rem', textDecoration: 'underline', opacity: 0.85 }}>(Ver Diploma ↗)</span>
-                    </div>
-                    <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '0.15rem' }}>Especialista em Direito Imobiliário e Notarial</p>
-                  </div>
-                </div>
-
-                <div style={{ background: 'rgba(0,0,0,0.35)', padding: '1.25rem', borderRadius: '6px', borderLeft: '3px solid var(--accent-gold)', marginBottom: '1.5rem' }}>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--text-main)', fontStyle: 'italic', lineHeight: 1.65 }}>
-                    "Esperar a boa vontade do inquilino inadimplente é o maior erro do locador. As dívidas de condomínio e IPTU são obrigações propter rem que recaem sobre o proprietário. A única forma de salvar o imóvel é o despejo liminar ágil combinado com o bloqueio patrimonial dos devedores."
-                  </p>
-                </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.7rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <CheckCircle2 size={16} color="var(--accent-gold)" /> Mandado de desocupação com força policial se necessário
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <CheckCircle2 size={16} color="var(--accent-gold)" /> Penhora eletrônica em contas correntes (SISBAJUD)
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <CheckCircle2 size={16} color="var(--accent-gold)" /> Notificação extrajudicial premonitória prévia formal
-                  </div>
-                </div>
+              />
+              <div style={{
+                display: 'none', position: 'relative', zIndex: 1, width: '100%', aspectRatio: '3/4',
+                backgroundColor: 'var(--bg-surface)', border: '1px solid var(--bg-surface-light)',
+                alignItems: 'center', justifyContent: 'center', flexDirection: 'column', color: 'var(--text-muted)'
+              }}>
+                <span style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>[ Dra. Libia Florio ]</span>
               </div>
             </div>
           </div>
@@ -790,99 +741,77 @@ Preciso do apoio do escritório para entrar com a Ação de Despejo e estancar e
         </div>
       </section>
 
-      {/* Seção de Autoridade & Prova Visual: Dra. Líbia Florio & Diploma USP */}
-      <section className="section" style={{ padding: '4.5rem 0', backgroundColor: 'var(--bg-color)', borderTop: '1px solid var(--bg-surface-light)' }}>
+      {/* Autoridade (Bio Boutique & Formação de Elite) */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-surface)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
-            {/* Texto de Autoridade */}
-            <div>
-              <div className="despejo-badge">
-                <Award size={16} /> Excelência Acadêmica & Prática Forense
-              </div>
-              <h2 style={{ fontSize: 'clamp(1.9rem, 3.5vw, 2.5rem)', marginBottom: '1.25rem', lineHeight: 1.2 }}>
-                Condução Jurídica por Quem Domina as Cortes Paulistas
-              </h2>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-                A <strong>Dra. Líbia Florio</strong> é Mestre pela prestigiada <strong>Faculdade de Direito da Universidade de São Paulo (USP)</strong>, com mais de 30 anos de prática jurídica em Direito Imobiliário, Notarial e Registral.
-              </p>
-              <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
-                Em disputas de despejo, a solidez técnica na formulação do pedido liminar e na execução de bens garante que o locador não perca meses com despachos protelatórios ou decisões interlocutórias desfavoráveis.
-              </p>
-
-              {/* Grid de Credenciais */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1.25rem', borderTop: '1px solid var(--bg-surface-light)', paddingTop: '1.5rem', marginBottom: '2rem' }}>
-                <div>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--accent-gold)' }}>USP</div>
-                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Mestrado em Direito</div>
-                </div>
-                <div>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--text-main)' }}>30+ Anos</div>
-                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Experiência Forense</div>
-                </div>
-                <div>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--text-main)' }}>OAB/SP</div>
-                  <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>Comissão Especial</div>
-                </div>
-              </div>
-
-              <button
-                onClick={() => setIsDiplomaOpen(true)}
-                className="btn-outline"
-                style={{
-                  cursor: 'pointer',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.6rem',
-                  padding: '0.85rem 1.6rem',
-                  fontSize: '0.95rem',
-                  fontWeight: 600
-                }}
-              >
-                <Search size={17} />
-                Visualizar Diploma Oficial da USP
-              </button>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+            <div style={{ order: 2 }}>
+               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
+                 <h2 style={{ fontSize: '2.5rem', margin: 0 }}>Dra. Libia Florio</h2>
+                 <a 
+                   href="https://www.linkedin.com/in/libiaflorio/" target="_blank" rel="noopener noreferrer" 
+                   style={{ color: 'var(--accent-gold)', display: 'flex', transition: 'opacity 0.2s ease' }} 
+                   onMouseOver={e => e.currentTarget.style.opacity = '0.7'}
+                   onMouseOut={e => e.currentTarget.style.opacity = '1'}
+                   aria-label="LinkedIn Dra. Libia Florio"
+                 >
+                   <LinkedinIcon size={32} />
+                 </a>
+               </div>
+               <p style={{ color: 'var(--accent-gold)', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.85rem', marginBottom: '2rem' }}>
+                 Advogada Especialista em Direito Notarial, Registral e Imobiliário
+               </p>
+               <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '1.5rem', lineHeight: '1.7' }}>
+                 A Dra. Libia Cristiane Correa e Andrade e Florio é <strong>Mestre em Direito Comercial pela Faculdade de Direito da Universidade de São Paulo (USP)</strong> e pós-graduada especialista em <strong>Direito Notarial e Registral</strong> pela Legale Educacional.
+               </p>
+               <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: '1.7' }}>
+                 Com mais de 30 anos de atuação no mercado jurídico paulistano e profundo conhecimento dos procedimentos perante os Cartórios de Notas e Registros de Imóveis, é Membro Efetivo da Comissão Especial de Direito Imobiliário da OAB/SP. Sua prática é pautada na discrição, rigor técnico e foco em resultados concretos para a retomada rápida da posse e proteção do patrimônio do locador.
+               </p>
+               
+               <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem', borderTop: '1px solid var(--bg-surface-light)', paddingTop: '2rem' }}>
+                  <div>
+                    <strong style={{ fontSize: '1.5rem', color: 'var(--text-main)', display: 'block' }}>USP</strong>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Mestrado em Direito</span>
+                  </div>
+                  <div>
+                    <strong style={{ fontSize: '1.5rem', color: 'var(--text-main)', display: 'block' }}>30+</strong>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Anos de Prática Jurídica</span>
+                  </div>
+                  <div>
+                    <strong style={{ fontSize: '1.5rem', color: 'var(--text-main)', display: 'block' }}>OAB/SP</strong>
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Comissão Especial</span>
+                  </div>
+               </div>
             </div>
 
-            {/* Imagem do Diploma com Lightbox Trigger */}
-            <div>
-              <div 
-                style={{ 
-                  position: 'relative', 
-                  padding: '1rem', 
-                  background: 'var(--bg-surface)', 
-                  border: '1px solid var(--accent-gold)', 
-                  borderRadius: '8px',
-                  cursor: 'pointer', 
-                  overflow: 'hidden',
-                  boxShadow: '0 15px 35px rgba(0,0,0,0.4)',
-                  transition: 'transform 0.3s ease'
-                }}
-                onClick={() => setIsDiplomaOpen(true)}
-                onMouseOver={e => e.currentTarget.querySelector('.diploma-overlay').style.opacity = '1'}
-                onMouseOut={e => e.currentTarget.querySelector('.diploma-overlay').style.opacity = '0'}
-              >
-                <img 
-                  src="/diploma-usp.jpg" 
-                  alt="Diploma de Mestrado da USP - Dra. Libia Florio" 
-                  style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '4px', border: '1px solid var(--bg-surface-light)' }}
-                />
-                <div 
-                  className="diploma-overlay"
-                  style={{
-                    position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-                    background: 'rgba(17, 17, 17, 0.78)', display: 'flex', flexDirection: 'column',
-                    alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.3s ease', pointerEvents: 'none'
-                  }}
-                >
-                  <Search size={42} color="var(--accent-gold)" style={{ marginBottom: '0.6rem' }} />
-                  <span style={{ color: 'var(--accent-gold)', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.88rem', fontWeight: 700 }}>
-                    Clique para Ampliar
-                  </span>
-                </div>
-              </div>
-              <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '1rem', fontStyle: 'italic' }}>
-                Mestrado em Direito - Faculdade de Direito do Largo de São Francisco (USP)
-              </p>
+            <div style={{ order: 1 }}>
+               {/* Diploma USP */}
+               <div 
+                 style={{ 
+                   position: 'relative', padding: '1rem', background: 'var(--bg-surface-light)', 
+                   border: '1px solid var(--accent-gold)', cursor: 'pointer', overflow: 'hidden'
+                 }}
+                 onClick={() => setIsDiplomaOpen(true)}
+                 onMouseOver={e => e.currentTarget.lastChild.style.opacity = '1'}
+                 onMouseOut={e => e.currentTarget.lastChild.style.opacity = '0'}
+               >
+                 <img 
+                   src="/diploma-usp.jpg" 
+                   alt="Diploma de Mestrado da USP - Dra. Libia Florio" 
+                   style={{ width: '100%', height: 'auto', display: 'block', border: '1px solid var(--bg-surface)' }}
+                 />
+                 <div style={{
+                   position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
+                   background: 'rgba(17, 17, 17, 0.7)', display: 'flex', flexDirection: 'column',
+                   alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.3s ease', pointerEvents: 'none'
+                 }}>
+                   <Search size={40} color="var(--accent-gold)" style={{ marginBottom: '0.5rem' }} />
+                   <span style={{ color: 'var(--accent-gold)', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem' }}>Ampliar</span>
+                 </div>
+               </div>
+               <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '1rem', fontStyle: 'italic' }}>
+                 Mestrado em Direito Comercial - Universidade de São Paulo (USP)
+               </p>
             </div>
           </div>
         </div>
