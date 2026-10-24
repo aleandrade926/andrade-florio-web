@@ -21,6 +21,7 @@ import Imobiliarias from './pages/Imobiliarias';
 import KitContratos from './pages/KitContratos';
 import AcervoContratos from './pages/AcervoContratos';
 import GeradorContratos from './pages/GeradorContratos';
+import Despejo from './pages/Despejo';
 
 // Componente para rastrear mudanças de página no Google Ads (SPA)
 function PageViewTracker() {
@@ -83,6 +84,10 @@ function App() {
         <Route path="/portal-contratos" element={<AcervoContratos />} />
         <Route path="/area-membros-contratos" element={<AcervoContratos />} />
         <Route path="/gerador-contratos" element={<GeradorContratos />} />
+        <Route path="/despejo" element={<Despejo />} />
+        <Route path="/espejo" element={<Despejo />} />
+        <Route path="/acao-de-despejo" element={<Despejo />} />
+        <Route path="/defesa-despejo" element={<Despejo />} />
       </Routes>
 
       {showLgpdBanner && (
