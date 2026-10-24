@@ -131,7 +131,7 @@ export default function KitContratos() {
       a: "Todos os 60 documentos são entregues em formato Word (.docx) 100% editáveis no seu computador, celular ou Google Docs, além do acesso ao portal com leitor online e inteligência artificial para adaptação de cláusulas."
     },
     {
-      q: "Por que esses modelos custam apenas R$ 19,90 se foram feitos por advogados?",
+      q: "Por que esses modelos custam apenas R$ 29,90 se foram feitos por advogados?",
       a: "Porque criamos um acervo padronizado de escala para a internet. Enquanto uma única consulta para redigir um contrato individual na banca custa no mínimo R$ 800,00, este acervo digital entrega a estrutura pronta por um valor acessível e irrecusável."
     },
     {
@@ -198,7 +198,7 @@ export default function KitContratos() {
           Chega de amadorismo e risco jurídico. Tenha em mãos o acervo com mais de <strong>60 modelos que cobrem Imobiliário, Trabalhista/CLT, Empresarial, Rural, Digital, Família e Veículos</strong> — com assistente de IA da banca para personalizar cláusulas em segundos.
         </p>
 
-        {/* ANCORAGEM E OFERTA R$ 19,90 */}
+        {/* ANCORAGEM E OFERTA R$ 29,90 */}
         <div style={{
           backgroundColor: 'var(--bg-surface)',
           border: '2px solid var(--accent-gold)',
@@ -212,7 +212,7 @@ export default function KitContratos() {
             De R$ 67,00
           </span>
           <div style={{ fontSize: 'clamp(2.8rem, 6vw, 4.2rem)', fontWeight: 800, color: 'var(--accent-gold)', margin: '0.2rem 0' }}>
-            R$ 19,90
+            R$ 29,90
           </div>
           <p style={{ color: '#E5E7EB', fontSize: '1rem', marginBottom: '1.75rem', fontWeight: 500 }}>
             Pagamento único no Pix • Menos que um lanche para blindar todo o seu patrimônio
@@ -238,7 +238,7 @@ export default function KitContratos() {
             }}
           >
             <Download size={24} />
-            QUERO O ACERVO COMPLETO DE CONTRATOS POR R$ 19,90
+            QUERO O ACERVO COMPLETO DE CONTRATOS POR R$ 29,90
           </button>
           <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginTop: '0.9rem', marginBottom: 0 }}>
             (Chave de acesso imediata disponível na sua área de membros)
@@ -279,7 +279,7 @@ export default function KitContratos() {
             Segurança Jurídica de Alto Nível
           </h2>
           <p style={{ color: 'var(--text-main)', fontSize: '1.15rem', lineHeight: 1.7, margin: 0 }}>
-            Contratar um advogado para redigir apenas <strong>UM</strong> destes contratos custaria no mínimo R$ 800,00. Hoje, você leva o acervo completo com <strong>60+ documentos editáveis e IA integrada por apenas R$ 19,90</strong>. É a engenharia jurídica de um escritório atuante diretamente na sua mesa.
+            Contratar um advogado para redigir apenas <strong>UM</strong> destes contratos custaria no mínimo R$ 800,00. Hoje, você leva o acervo completo com <strong>60+ documentos editáveis e IA integrada por apenas R$ 29,90</strong>. É a engenharia jurídica de um escritório atuante diretamente na sua mesa.
           </p>
         </div>
       </section>
@@ -347,7 +347,7 @@ export default function KitContratos() {
           Acesso Imediato aos 60 Modelos
         </h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '1.05rem', marginBottom: '2rem' }}>
-          De R$ 67,00 por apenas <strong>R$ 19,90 no Pix</strong>. Liberação instantânea da sua chave.
+          De R$ 67,00 por apenas <strong>R$ 29,90 no Pix</strong>. Liberação instantânea da sua chave.
         </p>
         <button 
           onClick={handleCheckout}
