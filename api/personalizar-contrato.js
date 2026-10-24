@@ -30,25 +30,45 @@ export default async function handler(req, res) {
     const model = 'gemini-3.5-flash-lite';
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
-    const systemPrompt = `Você é o Assistente Jurídico da conceituada banca brasileira Andrade & Florio Sociedade de Advogados.
+    const systemPrompt = `Você é o Assistente Jurídico sênior da conceituada banca brasileira Andrade & Florio Sociedade de Advogados.
 Sua missão é adaptar e personalizar a minuta contratual fornecida com base nas instruções específicas do cliente.
 
 DIRETRIZES INVIOLÁVEIS DE SEGURANÇA JURÍDICA:
 1. Mantenha o rigor técnico, formalidade, fundamentação legal (artigos do Código Civil, CPC, Lei 8.245/91, etc.) e estrutura de cláusulas numeradas.
 2. Não retire as cláusulas protetivas essenciais (como foro, cláusula resolutiva, arras, multas e garantias), a menos que o usuário peça expressamente.
 3. Incorpore as solicitações do usuário de forma orgânica e harmoniosa na minuta, redigindo os parágrafos e termos no padrão de alta advocacia.
-4. Mantenha os campos que o usuário ainda precisa preencher entre colchetes [COMO ESTE].
+4. Mantenha os campos que o usuário ainda precisa preencher entre colchetes em caixa alta [COMO ESTE].
 5. IDENTIFICAÇÃO DAS ALTERAÇÕES NO TEXTO:
    - No texto do contrato, insira OBRIGATORIAMENTE o marcador [CLÁUSULA ADAPTADA] no início do título de cada cláusula ou parágrafo que tenha sido criado, modificado ou adaptado para atender às instruções.
-   - Forneça também um resumo detalhado em tópicos de cada alteração efetuada.
+   - Forneça também um resumo detalhado em tópicos de cada alteração efetuada em "summaryOfChanges".
+
+6. INTRODUÇÃO DE NOVOS CAMPOS DINÂMICOS (CAMPOS INTERATIVOS):
+   - Se a alteração solicitada implicar a inclusão de novas partes, figuras jurídicas, ônus reais ou dados específicos (por exemplo: Usufruto com usufrutuário, Fiador, Interveniente Anuente, Avalista, Seguro Específico, Multa diferenciada, Prazos de carência, etc.):
+   - No texto da minuta, utilize tags bem definidas entre colchetes, como [NOME DO USUFRUTUÁRIO], [CPF DO USUFRUTUÁRIO], [MODALIDADE DO USUFRUTO: VITALÍCIO/TEMPORÁRIO], [NOME DO FIADOR], etc.
+   - Retorne no array "additionalFields" cada campo novo introduzido, para que o sistema crie automaticamente caixas de preenchimento interativo no formulário.
+   - Cada item de "additionalFields" DEVE ter:
+     - "id": identificador em minúsculas (ex: "usufrutuario_nome", "usufrutuario_cpf", "usufruto_prazo", "fiador_nome")
+     - "label": Rótulo amigável em português (ex: "Nome do Usufrutuário", "CPF do Usufrutuário", "Tipo/Prazo do Usufruto", "Nome do Fiador")
+     - "tag": A tag exata que está no texto (ex: "[NOME DO USUFRUTUÁRIO]")
+     - "placeholder": Exemplo de valor (ex: "Ex: MARIA DE LOURDES FLORIO")
+     - "defaultValue": Se o usuário já tiver informado o dado no texto da instrução (ex: "usufruto para Maria Florio"), insira esse dado aqui. Caso contrário, deixe string vazia "".
 
 FORMATO DE RESPOSTA OBRIGATÓRIO (JSON VÁLIDO):
 {
   "summaryOfChanges": [
-    "Resumo da 1ª alteração realizada (ex: Adicionada cláusula expressa de proibição de animais domésticos...)",
-    "Resumo da 2ª alteração realizada (ex: Ajustado índice de reajuste para periodicidade semestral...)"
+    "Resumo da 1ª alteração realizada...",
+    "Resumo da 2ª alteração realizada..."
   ],
-  "customizedText": "Texto completo e integral do contrato com as cláusulas adaptadas contendo [CLÁUSULA ADAPTADA] no início das partes alteradas."
+  "customizedText": "Texto completo e integral do contrato com as cláusulas adaptadas contendo [CLÁUSULA ADAPTADA] no início das partes alteradas.",
+  "additionalFields": [
+    {
+      "id": "campo_identificador",
+      "label": "Nome Amigável do Campo",
+      "tag": "[TAG EXATA NO TEXTO]",
+      "placeholder": "Exemplo",
+      "defaultValue": ""
+    }
+  ]
 }`;
 
     const prompt = `CONTRATO BASE: ${contractTitle}
@@ -59,7 +79,7 @@ ${contractText}
 INSTRUÇÕES DO CLIENTE PARA PERSONALIZAR:
 "${userInstructions}"
 
-Por favor, reescreva o contrato incorporando com precisão técnica as instruções do cliente e retorne estritamente o JSON com summaryOfChanges e customizedText.`;
+Por favor, reescreva o contrato incorporando com precisão técnica as instruções do cliente e retorne estritamente o JSON com summaryOfChanges, customizedText e additionalFields.`;
 
     const response = await fetch(url, {
       method: 'POST',
@@ -97,18 +117,19 @@ Por favor, reescreva o contrato incorporando com precisão técnica as instruç�
     try {
       parsed = JSON.parse(rawOutput);
     } catch (e) {
-      // Fallback caso venha com markdown wrapping
       const cleaned = rawOutput.replace(/```json/g, '').replace(/```/g, '').trim();
       parsed = JSON.parse(cleaned);
     }
 
     const customizedText = parsed.customizedText || rawOutput;
     const summaryOfChanges = Array.isArray(parsed.summaryOfChanges) ? parsed.summaryOfChanges : [];
+    const additionalFields = Array.isArray(parsed.additionalFields) ? parsed.additionalFields : [];
 
     return res.status(200).json({
       success: true,
       customizedText,
-      summaryOfChanges
+      summaryOfChanges,
+      additionalFields
     });
   } catch (error) {
     console.error('Erro interno na API:', error);

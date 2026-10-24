@@ -4,7 +4,7 @@ import {
   Lock, ChevronRight, ChevronLeft, ShieldCheck, 
   Download, Copy, Check, MessageCircle, FileText,
   Sparkles, Printer, AlertTriangle, Eye, Edit3, Sliders, CheckCircle2,
-  Building, User, Users
+  Building, User, Users, Upload, FileUp, FileCheck, RefreshCw, X
 } from 'lucide-react';
 import contratosData from '../data/contratosData.json';
 import { handleWhatsAppClick } from '../components/Shared';
@@ -133,6 +133,17 @@ export default function AcervoContratos() {
   const [customizedContracts, setCustomizedContracts] = useState({});
   const [customizedSummaries, setCustomizedSummaries] = useState({});
   const [showHighlights, setShowHighlights] = useState(true);
+
+  // Leitor Inteligente de Documentação (PDF / Foto)
+  const [showDocUploadBox, setShowDocUploadBox] = useState(false);
+  const [docLoading, setDocLoading] = useState(false);
+  const [docError, setDocError] = useState(null);
+  const [docSuccess, setDocSuccess] = useState(null);
+  const [docTarget, setDocTarget] = useState('auto'); // 'auto', 'parte1', 'parte2', 'objeto'
+
+  // Campos Dinâmicos Introduzidos pela IA (Usufruto, Fiador, Interveniente, etc.)
+  const [customizedAdditionalFields, setCustomizedAdditionalFields] = useState({});
+  const [dynamicValues, setDynamicValues] = useState({});
 
   // Dados universais que alimentam e deixam QUALQUER um dos 60 contratos vivo em tempo real!
   const [liveData, setLiveData] = useState({
@@ -361,11 +372,21 @@ export default function AcervoContratos() {
       txt = txt.replace(/\[CIDADE DA SITUAÇÃO DO IMÓVEL\/ESTADO\]|\[CIDADE\/UF DO IMÓVEL\]|\[CIDADE\/UF\]/g, liveData.cidadeForo);
     }
 
+    // 6. Substituição dos campos dinâmicos introduzidos pela IA (Usufruto, Fiador, Interveniente, etc.)
+    const currentAdditionalFields = customizedAdditionalFields[currentItem.id] || [];
+    currentAdditionalFields.forEach(field => {
+      const userVal = dynamicValues[field.id];
+      if (userVal && userVal.trim()) {
+        const escapedTag = field.tag.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        txt = txt.replace(new RegExp(escapedTag, 'g'), userVal.trim());
+      }
+    });
+
     const dataHoje = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
     txt = txt.replace(/\[DIA\] de \[MÊS\] de 202\[X\]/g, dataHoje);
 
     return txt;
-  }, [currentItem, liveData, isInstruction, customizedContracts, qualifParte1, qualifParte2]);
+  }, [currentItem, liveData, isInstruction, customizedContracts, qualifParte1, qualifParte2, customizedAdditionalFields, dynamicValues]);
 
   const handleAiCustomize = async () => {
     if (!aiPrompt.trim()) return;
@@ -393,6 +414,22 @@ export default function AcervoContratos() {
             [currentItem.id]: data.summaryOfChanges
           }));
         }
+        if (data.additionalFields && data.additionalFields.length > 0) {
+          setCustomizedAdditionalFields(prev => ({
+            ...prev,
+            [currentItem.id]: data.additionalFields
+          }));
+          setDynamicValues(prev => {
+            const next = { ...prev };
+            data.additionalFields.forEach(f => {
+              if (f.defaultValue) {
+                next[f.id] = f.defaultValue;
+              }
+            });
+            return next;
+          });
+          setShowLiveEditor(true);
+        }
         setShowHighlights(true);
         setAiPrompt('');
       } else {
@@ -416,7 +453,178 @@ export default function AcervoContratos() {
       delete updated[currentItem.id];
       return updated;
     });
+    setCustomizedAdditionalFields(prev => {
+      const updated = { ...prev };
+      delete updated[currentItem.id];
+      return updated;
+    });
     setAiError(null);
+  };
+
+  const handleFileUpload = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const allowed = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+    if (!allowed.includes(file.type)) {
+      setDocError('Formato não suportado. Por favor, envie arquivos PDF ou fotos (JPG, PNG).');
+      return;
+    }
+
+    if (file.size > 15 * 1024 * 1024) {
+      setDocError('O arquivo excede o limite de 15MB.');
+      return;
+    }
+
+    setDocLoading(true);
+    setDocError(null);
+    setDocSuccess(null);
+
+    const reader = new FileReader();
+    reader.onload = async () => {
+      try {
+        const base64Data = reader.result;
+        const res = await fetch('/api/extrair-documento', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fileBase64: base64Data,
+            mimeType: file.type,
+            target: docTarget
+          })
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.success) {
+          throw new Error(data.error || 'Falha ao processar documento');
+        }
+
+        const ext = data.extractedData || {};
+        const target = data.targetDetected || docTarget;
+        const campos = [];
+
+        setLiveData(prev => {
+          const updated = { ...prev };
+
+          // Preenche Parte 1
+          if (target === 'parte1' || (target === 'auto' && (ext.tipoPessoa === 'PJ' || ext.nome || ext.razaoSocial))) {
+            if (ext.tipoPessoa === 'PJ') {
+              updated.parte1Tipo = 'PJ';
+              if (ext.razaoSocial) { updated.parte1RazaoSocial = ext.razaoSocial; campos.push('Razão Social 1'); }
+              if (ext.cnpj) { updated.parte1Cnpj = ext.cnpj; campos.push('CNPJ 1'); }
+              if (ext.sede) { updated.parte1Sede = ext.sede; campos.push('Sede 1'); }
+              if (ext.repNome) { updated.parte1RepNome = ext.repNome; campos.push('Representante 1'); }
+              if (ext.repCargo) updated.parte1RepCargo = ext.repCargo;
+              if (ext.repCpf) updated.parte1RepCpf = ext.repCpf;
+              if (ext.repRg) updated.parte1RepRg = ext.repRg;
+              if (ext.repProfissao) updated.parte1RepProfissao = ext.repProfissao;
+              if (ext.repEstadoCivil) updated.parte1RepEstadoCivil = ext.repEstadoCivil;
+            } else {
+              updated.parte1Tipo = 'PF';
+              if (ext.nome) { updated.parte1Nome = ext.nome; campos.push('Nome 1'); }
+              if (ext.cpf) { updated.parte1Cpf = ext.cpf; campos.push('CPF 1'); }
+              if (ext.rg) { updated.parte1Rg = ext.rg; campos.push('RG 1'); }
+              if (ext.nacionalidade) updated.parte1Nacionalidade = ext.nacionalidade;
+              if (ext.estadoCivil) updated.parte1EstadoCivil = ext.estadoCivil;
+              if (ext.profissao) updated.parte1Profissao = ext.profissao;
+              if (ext.endereco) { updated.parte1Endereco = ext.endereco; campos.push('Endereço 1'); }
+              if (ext.temConjuge) {
+                updated.parte1TemConjuge = true;
+                if (ext.conjugeNome) updated.parte1ConjugeNome = ext.conjugeNome;
+                if (ext.conjugeCpf) updated.parte1ConjugeCpf = ext.conjugeCpf;
+                if (ext.conjugeRg) updated.parte1ConjugeRg = ext.conjugeRg;
+              }
+            }
+          } 
+          
+          // Preenche Parte 2
+          if (target === 'parte2') {
+            if (ext.tipoPessoa === 'PJ') {
+              updated.parte2Tipo = 'PJ';
+              if (ext.razaoSocial) { updated.parte2RazaoSocial = ext.razaoSocial; campos.push('Razão Social 2'); }
+              if (ext.cnpj) { updated.parte2Cnpj = ext.cnpj; campos.push('CNPJ 2'); }
+              if (ext.sede) { updated.parte2Sede = ext.sede; campos.push('Sede 2'); }
+              if (ext.repNome) { updated.parte2RepNome = ext.repNome; campos.push('Representante 2'); }
+              if (ext.repCargo) updated.parte2RepCargo = ext.repCargo;
+              if (ext.repCpf) updated.parte2RepCpf = ext.repCpf;
+              if (ext.repRg) updated.parte2RepRg = ext.repRg;
+              if (ext.repProfissao) updated.parte2RepProfissao = ext.repProfissao;
+              if (ext.repEstadoCivil) updated.parte2RepEstadoCivil = ext.repEstadoCivil;
+            } else {
+              updated.parte2Tipo = 'PF';
+              if (ext.nome) { updated.parte2Nome = ext.nome; campos.push('Nome 2'); }
+              if (ext.cpf) { updated.parte2Cpf = ext.cpf; campos.push('CPF 2'); }
+              if (ext.rg) { updated.parte2Rg = ext.rg; campos.push('RG 2'); }
+              if (ext.nacionalidade) updated.parte2Nacionalidade = ext.nacionalidade;
+              if (ext.estadoCivil) updated.parte2EstadoCivil = ext.estadoCivil;
+              if (ext.profissao) updated.parte2Profissao = ext.profissao;
+              if (ext.endereco) { updated.parte2Endereco = ext.endereco; campos.push('Endereço 2'); }
+              if (ext.temConjuge) {
+                updated.parte2TemConjuge = true;
+                if (ext.conjugeNome) updated.parte2ConjugeNome = ext.conjugeNome;
+                if (ext.conjugeCpf) updated.parte2ConjugeCpf = ext.conjugeCpf;
+                if (ext.conjugeRg) updated.parte2ConjugeRg = ext.conjugeRg;
+              }
+            }
+          }
+
+          // Preenche Objeto / Negócio
+          if (ext.objetoDescricao) {
+            updated.objetoDescricao = ext.objetoDescricao;
+            campos.push('Objeto/Imóvel');
+          }
+          if (ext.cidadeForo) {
+            updated.cidadeForo = ext.cidadeForo;
+            campos.push('Cidade/Foro');
+          }
+          if (ext.valor) {
+            updated.valor = ext.valor;
+            campos.push('Valor');
+          }
+
+          return updated;
+        });
+
+        // Preenche campos dinâmicos se o documento contiver dados compatíveis
+        const activeFields = customizedAdditionalFields[currentItem.id] || [];
+        if (activeFields.length > 0) {
+          setDynamicValues(prev => {
+            const next = { ...prev };
+            activeFields.forEach(f => {
+              const fTag = f.tag.toLowerCase();
+              if (fTag.includes('usufrutu') && (fTag.includes('nome') || fTag.includes('benefic'))) {
+                if (ext.nome && !next[f.id]) next[f.id] = ext.nome;
+              }
+              if (fTag.includes('usufrutu') && fTag.includes('cpf')) {
+                if (ext.cpf && !next[f.id]) next[f.id] = ext.cpf;
+              }
+              if (fTag.includes('fiador') && fTag.includes('nome')) {
+                if (ext.nome && !next[f.id]) next[f.id] = ext.nome;
+              }
+              if (fTag.includes('fiador') && fTag.includes('cpf')) {
+                if (ext.cpf && !next[f.id]) next[f.id] = ext.cpf;
+              }
+            });
+            return next;
+          });
+        }
+
+        setShowLiveEditor(true);
+        setDocSuccess(`${data.summary || 'Documento lido com sucesso!'} (${campos.join(', ') || 'Dados cadastrais atualizados'})`);
+      } catch (err) {
+        setDocError('Falha ao processar leitura do documento: ' + err.message);
+      } finally {
+        setDocLoading(false);
+        event.target.value = '';
+      }
+    };
+
+    reader.onerror = () => {
+      setDocError('Erro ao ler arquivo no navegador.');
+      setDocLoading(false);
+    };
+
+    reader.readAsDataURL(file);
   };
 
   const handleCopy = () => {
@@ -702,6 +910,25 @@ export default function AcervoContratos() {
               {!isInstruction && (
                 <>
                   <button
+                    onClick={() => setShowDocUploadBox(!showDocUploadBox)}
+                    className={showDocUploadBox ? "btn-gold" : "btn-outline"}
+                    style={{
+                      fontSize: '0.88rem',
+                      padding: '0.7rem 1.25rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.4rem',
+                      cursor: 'pointer',
+                      borderColor: 'var(--accent-gold)',
+                      color: showDocUploadBox ? '#111' : 'var(--accent-gold)',
+                      fontWeight: 700
+                    }}
+                  >
+                    <FileUp size={16} />
+                    {showDocUploadBox ? "Ocultar Leitor PDF" : "Preencher com PDF / Foto"}
+                  </button>
+
+                  <button
                     onClick={() => setShowLiveEditor(!showLiveEditor)}
                     className={showLiveEditor ? "btn-gold" : "btn-outline"}
                     style={{
@@ -770,6 +997,167 @@ export default function AcervoContratos() {
               </a>
             </div>
           </div>
+
+          {/* LEITOR AUTOMÁTICO DE DOCUMENTAÇÃO EM PDF / FOTO (OCR COM IA) */}
+          {!isInstruction && showDocUploadBox && (
+            <div className="no-print" style={{
+              backgroundColor: 'rgba(212, 175, 55, 0.07)',
+              border: '1px solid var(--accent-gold)',
+              borderRadius: '8px',
+              padding: '1.5rem',
+              marginBottom: '1.75rem',
+              boxShadow: '0 10px 25px rgba(0,0,0,0.3)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                  <FileUp size={22} color="var(--accent-gold)" />
+                  <span style={{ fontWeight: 700, color: 'var(--accent-gold)', fontSize: '1rem', textTransform: 'uppercase' }}>
+                    Leitor Inteligente de Documentos (PDF / Foto)
+                  </span>
+                </div>
+                <button
+                  onClick={() => setShowDocUploadBox(false)}
+                  style={{
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    color: 'var(--text-muted)',
+                    cursor: 'pointer',
+                    padding: '0.25rem'
+                  }}
+                  title="Fechar Leitor"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              <p style={{ fontSize: '0.86rem', color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: 1.5 }}>
+                Envie o documento digital (<strong>CNH, RG, Contrato Social, Matrícula de Imóvel, Comprovante de Residência</strong>) e o sistema fará a leitura via IA, preenchendo automaticamente a qualificação completa das partes no contrato.
+              </p>
+
+              {/* SELEÇÃO DO ALVO DO DOCUMENTO */}
+              <div style={{ marginBottom: '1.1rem' }}>
+                <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--accent-gold)', fontWeight: 700, marginBottom: '0.4rem', textTransform: 'uppercase' }}>
+                  Destino dos Dados Extraídos:
+                </label>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  {[
+                    { id: 'auto', label: '✦ Auto-detectar pelo documento' },
+                    { id: 'parte1', label: '1ª Parte (Vendedor / Locador)' },
+                    { id: 'parte2', label: '2ª Parte (Comprador / Locatário)' },
+                    { id: 'objeto', label: 'Objeto / Matrícula do Imóvel' }
+                  ].map(tgt => (
+                    <button
+                      key={tgt.id}
+                      type="button"
+                      onClick={() => setDocTarget(tgt.id)}
+                      style={{
+                        padding: '0.4rem 0.8rem',
+                        fontSize: '0.78rem',
+                        borderRadius: '4px',
+                        cursor: 'pointer',
+                        fontWeight: 600,
+                        border: docTarget === tgt.id ? '1px solid var(--accent-gold)' : '1px solid var(--bg-surface-light)',
+                        backgroundColor: docTarget === tgt.id ? 'var(--accent-gold)' : 'var(--bg-surface)',
+                        color: docTarget === tgt.id ? '#111827' : 'var(--text-muted)',
+                        transition: 'all 0.2s'
+                      }}
+                    >
+                      {tgt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* ÁREA DE UPLOAD DO ARQUIVO */}
+              <div style={{
+                border: '2px dashed rgba(212, 175, 55, 0.4)',
+                borderRadius: '6px',
+                padding: '1.5rem',
+                textAlign: 'center',
+                backgroundColor: 'rgba(0,0,0,0.2)'
+              }}>
+                <input
+                  type="file"
+                  id="pdfDocInput"
+                  accept=".pdf,image/png,image/jpeg,image/jpg,image/webp"
+                  onChange={handleFileUpload}
+                  disabled={docLoading}
+                  style={{ display: 'none' }}
+                />
+                
+                {docLoading ? (
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                    <RefreshCw size={28} color="var(--accent-gold)" className="animate-spin" />
+                    <span style={{ fontSize: '0.9rem', color: '#fff', fontWeight: 600 }}>
+                      Analisando documento e qualificando partes com IA jurídica...
+                    </span>
+                    <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>
+                      Extraindo nomes, CPFs/CNPJs, estado civil, RG e endereços
+                    </span>
+                  </div>
+                ) : (
+                  <div>
+                    <label
+                      htmlFor="pdfDocInput"
+                      className="btn-gold"
+                      style={{
+                        padding: '0.75rem 1.5rem',
+                        fontSize: '0.9rem',
+                        fontWeight: 700,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        cursor: 'pointer',
+                        marginBottom: '0.5rem'
+                      }}
+                    >
+                      <Upload size={16} /> Selecionar Arquivo PDF ou Foto
+                    </label>
+                    <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: '0.3rem 0 0 0' }}>
+                      Suporta documentos em PDF (página única ou múltipla) e imagens (JPG, PNG) até 15MB.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* MENSAGEM DE SUCESSO OU ERRO */}
+              {docSuccess && (
+                <div style={{
+                  marginTop: '0.85rem',
+                  padding: '0.75rem 1rem',
+                  backgroundColor: 'rgba(74, 222, 128, 0.1)',
+                  border: '1px solid rgba(74, 222, 128, 0.4)',
+                  borderRadius: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  color: '#4ade80',
+                  fontSize: '0.85rem'
+                }}>
+                  <FileCheck size={18} />
+                  <span>{docSuccess}</span>
+                </div>
+              )}
+
+              {docError && (
+                <div style={{
+                  marginTop: '0.85rem',
+                  padding: '0.75rem 1rem',
+                  backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                  border: '1px solid rgba(239, 68, 68, 0.4)',
+                  borderRadius: '4px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  color: '#ef4444',
+                  fontSize: '0.85rem'
+                }}>
+                  <AlertTriangle size={18} />
+                  <span>{docError}</span>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* ASSISTENTE JURÍDICO INTELIGENTE DA BANCA */}
           {!isInstruction && (
@@ -918,6 +1306,57 @@ export default function AcervoContratos() {
                   ● Qualificação completa de cartório sem colchetes sobrando
                 </span>
               </div>
+
+              {/* SE A IA INTRODUZIU NOVOS CAMPOS NA MINUTA (EX: USUFRUTUÁRIO, FIADOR, INTERVENIENTE) */}
+              {customizedAdditionalFields[currentItem.id] && customizedAdditionalFields[currentItem.id].length > 0 && (
+                <div style={{
+                  backgroundColor: 'rgba(212, 175, 55, 0.08)',
+                  border: '1px solid var(--accent-gold)',
+                  borderRadius: '6px',
+                  padding: '1.25rem',
+                  marginBottom: '1.25rem'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.6rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      <Sparkles size={18} color="var(--accent-gold)" />
+                      <span style={{ color: 'var(--accent-gold)', fontWeight: 700, fontSize: '0.88rem', textTransform: 'uppercase' }}>
+                        Novos Campos Requeridos pela Cláusula Adaptada (IA)
+                      </span>
+                    </div>
+                    <span style={{ fontSize: '0.75rem', color: '#4ade80', backgroundColor: 'rgba(74, 222, 128, 0.15)', padding: '0.2rem 0.6rem', borderRadius: '4px', fontWeight: 600 }}>
+                      ✓ Preenchimento Dinâmico Ativo
+                    </span>
+                  </div>
+                  <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '0.85rem', lineHeight: 1.4 }}>
+                    A adaptação jurídica solicitada adicionou novas figuras e dados específicos (ex: usufrutuário, fiador ou termos particulares). Preencha abaixo para injetá-los diretamente na minuta:
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.75rem' }}>
+                    {customizedAdditionalFields[currentItem.id].map(field => (
+                      <div key={field.id}>
+                        <label style={{ display: 'block', fontSize: '0.74rem', color: 'var(--accent-gold)', marginBottom: '0.25rem', fontWeight: 600 }}>
+                          {field.label}
+                        </label>
+                        <input
+                          type="text"
+                          placeholder={field.placeholder || field.tag}
+                          value={dynamicValues[field.id] || ''}
+                          onChange={e => setDynamicValues(prev => ({ ...prev, [field.id]: e.target.value }))}
+                          style={{
+                            width: '100%',
+                            padding: '0.6rem',
+                            backgroundColor: 'var(--bg-color)',
+                            border: '1px solid rgba(212, 175, 55, 0.6)',
+                            borderRadius: '4px',
+                            color: '#fff',
+                            fontSize: '0.82rem',
+                            outline: 'none'
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* GRID 2 COLUNAS: 1ª PARTE E 2ª PARTE */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
