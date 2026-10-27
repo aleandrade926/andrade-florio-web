@@ -424,7 +424,7 @@ export default function Remax() {
             </div>
             
             <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '16.5px', lineHeight: '1.7', marginBottom: '24px' }}>
-              Nosso escritório tem orgulho de um histórico ativo prestando suporte jurídico e consultivo a operações de franqueados e corretores da rede, incluindo unidades de referência como a <strong>RE/MAX Empire</strong> (atuando ao lado de lideranças como <strong>Renata Lara e Renata Tannus</strong>), <strong>RE/MAX Lepex</strong>, <strong>RE/MAX Front</strong> e diversos corretores associados em São Paulo e no Brasil.
+              Nosso escritório conta com ampla experiência de bastidores prestando suporte jurídico, consultivo e contratual a operações de franqueados (Broker/Owners) e corretores associados da rede RE/MAX em São Paulo e em diversas regiões do Brasil, sempre sob rigoroso sigilo profissional e total domínio dos modelos de contratação da rede.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', borderTop: '1px solid rgba(212,175,55,0.15)', paddingTop: '1.5rem' }}>
