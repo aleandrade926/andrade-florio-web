@@ -11,9 +11,13 @@ import {
   ArrowRight, 
   Sparkles,
   Search,
-  Award
+  Award,
+  FileSearch,
+  ChevronDown,
+  X,
+  BadgeCheck
 } from 'lucide-react';
-import { Navbar, Footer, WhatsAppButton, StickyWhatsApp, handleWhatsAppClick, LinkedinIcon } from '../components/Shared';
+import { Navbar, Footer, handleWhatsAppClick, LinkedinIcon, StickyWhatsApp } from '../components/Shared';
 
 const customStyles = `
   .imob-hero-badge {
@@ -35,7 +39,7 @@ const customStyles = `
   .imob-card {
     background: linear-gradient(135deg, var(--bg-surface) 0%, rgba(212,175,55,0.02) 100%);
     border: 1px solid var(--bg-surface-light);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 2.2rem 2rem;
     transition: all 0.3s ease;
     display: flex;
@@ -72,19 +76,98 @@ const customStyles = `
     position: relative;
     overflow: hidden;
   }
+
+  .imob-tag {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.12);
+    color: var(--accent-gold);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .faq-accordion-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--bg-surface-light);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+  }
+
+  .faq-accordion-item:hover {
+    border-color: rgba(212,175,55,0.4);
+  }
+
+  .faq-header {
+    width: 100%;
+    text-align: left;
+    padding: 18px 24px;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 17px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .faq-body {
+    padding: 0 24px 20px 24px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    line-height: 1.6;
+  }
 `;
 
 export default function Imobiliarias() {
   const [isDiplomaOpen, setIsDiplomaOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleImobWhatsApp = () => {
-    const msg = 'Olá! Sou diretor/gestor de imobiliária e gostaria de conhecer como funciona a retaguarda jurídica e contratual da Andrade & Florio para nossos corretores e fechamentos.';
+  const handleImobWhatsApp = (origem = 'geral') => {
+    let msg = 'Olá! Sou gestor/corretor de imobiliária e gostaria de conhecer como funciona a retaguarda jurídica e contratual da Andrade & Florio para nossos fechamentos.';
+    if (origem === 'gestor') {
+      msg = 'Olá! Sou diretor/gestor de imobiliária e gostaria de estruturar a retaguarda jurídica e de contratos da nossa agência com a Andrade & Florio.';
+    } else if (origem === 'corretor') {
+      msg = 'Olá! Sou corretor de imóveis e tenho um negócio precisando de minuta ágil em 24h/48h, due diligence ou regularização de imóvel travado.';
+    }
     handleWhatsAppClick('nlxZCPiY6qAcEMzlgIgD', msg);
   };
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      q: 'Qual o prazo de entrega das minutas de Compra e Venda?',
+      a: 'Nosso padrão operacional para minutas personalizadas de Compromisso de Compra e Venda (CCV) é de 24 a 48 horas úteis após o recebimento das informações básicas das partes e da matrícula.'
+    },
+    {
+      q: 'A Due Diligence apenas aponta riscos ou propõe soluções para fechar o negócio?',
+      a: 'Nossa advocacia é orientada a viabilizar negócios com absoluta segurança jurídica. Não somos o "jurídico burocrático" que apenas trava vendas. Quando há apontamentos nas certidões, desenhamos o plano de blindagem (cláusulas resolutivas, retenções cautelares ou garantias) para permitir que a transação ocorra protegida de evicção ou fraude à execução.'
+    },
+    {
+      q: 'Como funciona a regularização de imóveis travados (Usucapião e Inventário)?',
+      a: 'Imóveis sem escritura definitiva, herdados sem inventário aberto ou com pendências registrais representam vendas represadas. Atuamos com celeridade judicial e extrajudicial em cartório para regularizar o imóvel, destravar a matrícula e permitir que a sua equipe feche a venda com até 30% de valorização patrimonial.'
+    },
+    {
+      q: 'O escritório atende também demandas pessoais dos corretores e equipe?',
+      a: 'Sim. Além do suporte às transações comerciais dos clientes da imobiliária, prestamos assessoria completa para o patrimônio pessoal dos próprios corretores e gestores — como ações de usucapião de imóvel próprio, inventários de família e contratos particulares com condições diferenciadas de parceria.'
+    },
+    {
+      q: 'A imobiliária precisa pagar mensalidade fixa obrigatória?',
+      a: 'Não. Trabalhamos tanto no modelo flexível sob demanda (por operação ou minuta fechada) quanto em pacotes mensais de retaguarda corporativa para agências de alta volumetria que preferem ter suporte jurídico contínuo com zero custo de folha CLT.'
+    }
+  ];
 
   return (
     <>
@@ -98,31 +181,31 @@ export default function Imobiliarias() {
 
         <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
           <div className="imob-hero-badge">
-            <Sparkles size={16} /> Parcerias & Retaguarda para Imobiliárias
+            <Sparkles size={16} /> Parcerias & Retaguarda Jurídica para Imobiliárias
           </div>
 
           <h1 style={{ marginBottom: '24px', fontSize: 'clamp(32px, 3.8vw, 54px)', lineHeight: '1.15' }}>
-            A retaguarda jurídica contratual da sua imobiliária em <span style={{ color: 'var(--accent-gold)' }}>24h a 48h</span>.
+            A retaguarda jurídica e contratual da sua imobiliária em <span style={{ color: 'var(--accent-gold)' }}>24h a 48h</span>.
           </h1>
 
-          <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: 'clamp(17px, 1.2vw, 20px)', maxWidth: '860px', margin: '0 auto 36px auto', lineHeight: '1.65' }}>
-            Libere seus corretores para focar no que dá resultado: <strong>captar, atender e vender</strong>. Assumimos a redação das promessas de compra e venda, a auditoria de certidões e servimos de <strong>para-raios legal</strong> para a sua operação, sob coordenação direta de mestres em Direito pela USP.
+          <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: 'clamp(17px, 1.2vw, 20px)', maxWidth: '880px', margin: '0 auto 36px auto', lineHeight: '1.65' }}>
+            Libere seus corretores para focar no que dá resultado: <strong>captar, atender e vender</strong>. Assumimos a redação das promessas de compra e venda, a auditoria de certidões (due diligence) e servimos de <strong>para-raios legal</strong> para a sua operação, sob coordenação direta de Mestre em Direito pela USP.
           </p>
 
           <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '48px' }}>
             <button 
-              onClick={handleImobWhatsApp} 
+              onClick={() => handleImobWhatsApp('gestor')} 
               className="btn-gold"
               style={{ padding: '1rem 2.2rem', fontSize: '16px', fontWeight: '600', cursor: 'pointer', border: 'none' }}
             >
               Alinhar Parceria via WhatsApp
             </button>
             <a 
-              href="#como-funciona" 
+              href="#servicos" 
               className="btn-outline"
               style={{ padding: '1rem 2.2rem', fontSize: '16px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
             >
-              Entenda o Modelo
+              Conhecer os Serviços
             </a>
           </div>
 
@@ -189,7 +272,17 @@ export default function Imobiliarias() {
               </div>
               <h3 style={{ fontSize: '20px', marginBottom: '12px' }}>Tempo Perdido com Minutas</h3>
               <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '15px', lineHeight: '1.6' }}>
-                Corretores gastam dias tentando adaptar contratos de gaveta antigos no Word, correndo atrás de certidões e negociando cláusulas complexas, quando deveriam estar captando novos imóveis e atendendo clientes.
+                Corretores gastam dias tentando adaptar contratos antigos no Word, correndo atrás de certidões e negociando cláusulas complexas, quando deveriam estar captando novos imóveis e atendendo clientes.
+              </p>
+            </div>
+
+            <div className="imob-card">
+              <div style={{ width: '48px', height: '48px', borderRadius: '8px', background: 'rgba(212,175,55,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                <FileSearch size={24} color="var(--accent-gold)" />
+              </div>
+              <h3 style={{ fontSize: '20px', marginBottom: '12px' }}>O Jurídico que "Só Trava"</h3>
+              <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '15px', lineHeight: '1.6' }}>
+                Muitos advogados apenas apontam riscos e inviabilizam negociações. Nosso compromisso é desenhar as cláusulas de salvaguarda que protegem as partes e viabilizam o fechamento com segurança total.
               </p>
             </div>
 
@@ -199,133 +292,122 @@ export default function Imobiliarias() {
               </div>
               <h3 style={{ fontSize: '20px', marginBottom: '12px' }}>O Peso do Risco e da Culpa</h3>
               <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '15px', lineHeight: '1.6' }}>
-                Se qualquer pendência registral, distrato ou cláusula dúbia gerar atrito, a cobrança e o desgaste sempre recaem sobre a imobiliária e o corretor. Servimos como o para-raios jurídico que assume a fundamentação técnica.
-              </p>
-            </div>
-
-            <div className="imob-card">
-              <div style={{ width: '48px', height: '48px', borderRadius: '8px', background: 'rgba(212,175,55,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                <Building2 size={24} color="var(--accent-gold)" />
-              </div>
-              <h3 style={{ fontSize: '20px', marginBottom: '12px' }}>Inviabilidade de Jurídico CLT</h3>
-              <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '15px', lineHeight: '1.6' }}>
-                Contratar advogados internos na folha de pagamento gera custos fixos pesados e encargos constantes. Nossa parceria entrega uma banca especializada sob demanda, sem vínculo empregatício e com máxima agilidade.
+                Se uma venda é anulada por fraude contra credores ou dívida fiscal não identificada, a responsabilidade civil e o desgaste recaem sobre a imobiliária. A Andrade & Florio assume esse para-raios.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. O QUE ENTREGAMOS EM CADA FECHAMENTO */}
-      <section className="section" style={{ position: 'relative' }}>
+      {/* 3. SERVIÇOS & PILARES DE RETAGUARDA */}
+      <section id="servicos" className="section">
         <div className="container" style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-            <h2 style={{ fontSize: 'clamp(26px, 2.5vw, 36px)', marginBottom: '16px' }}>
-              O Escopo Completo da Retaguarda Jurídica
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <span className="imob-tag">ESTEIRA JURÍDICA COMPLETA</span>
+            <h2 style={{ fontSize: 'clamp(28px, 2.6vw, 38px)', marginBottom: '16px' }}>
+              Soluções Sob Medida para Imobiliárias e Corretores
             </h2>
             <p style={{ color: 'rgba(255, 255, 255, 0.75)', maxWidth: '780px', margin: '0 auto', fontSize: '16.5px' }}>
-              Tudo o que sua imobiliária precisa para assinar contratos com tranquilidade absoluta e velocidade comercial.
+              Atuamos desde a minuta expressa até a regularização registral mais complexa com rigor de pós-graduação USP e velocidade de balcão de vendas.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+            {/* Serviço 1: Minutas */}
             <div className="imob-card">
-              <FileText size={28} color="var(--accent-gold)" style={{ marginBottom: '16px' }} />
-              <h4 style={{ fontSize: '18px', marginBottom: '10px' }}>Redação de Promessas de Venda</h4>
-              <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '14.5px', lineHeight: '1.6' }}>
-                Elaboração de minutas personalizadas para cada imóvel, com regras nítidas de sinal, princípio de pagamento, condições resolutivas, posse e prazos de escritura.
+              <span className="imob-tag">AGILIDADE DE FECHAMENTO</span>
+              <h3 style={{ fontSize: '22px', marginBottom: '14px', color: 'var(--accent-gold)' }}>
+                1. Minutas de Compra e Venda em 24h a 48h
+              </h3>
+              <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '15px', lineHeight: '1.6', marginBottom: '20px' }}>
+                Instrumentos particulares de compromisso de compra e venda (CCV), locações comerciais e residenciais, cessões de direitos e opções exclusivas.
               </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14.5px', color: 'rgba(255,255,255,0.85)' }}>
+                  <CheckCircle2 size={16} color="var(--accent-gold)" style={{ flexShrink: 0 }} /> Cláusulas resolutivas e proteção de arras/sinal
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14.5px', color: 'rgba(255,255,255,0.85)' }}>
+                  <CheckCircle2 size={16} color="var(--accent-gold)" style={{ flexShrink: 0 }} /> Blindagem expressa dos honorários de corretagem
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14.5px', color: 'rgba(255,255,255,0.85)' }}>
+                  <CheckCircle2 size={16} color="var(--accent-gold)" style={{ flexShrink: 0 }} /> Adequação às regras de financiamentos bancários
+                </li>
+              </ul>
+              <div style={{ marginTop: 'auto' }}>
+                <button 
+                  onClick={() => handleImobWhatsApp('corretor')}
+                  style={{ background: 'none', border: 'none', color: 'var(--accent-gold)', fontWeight: '600', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
+                >
+                  Solicitar minuta rápida <ArrowRight size={16} />
+                </button>
+              </div>
             </div>
 
+            {/* Serviço 2: Due Diligence */}
             <div className="imob-card">
-              <Search size={28} color="var(--accent-gold)" style={{ marginBottom: '16px' }} />
-              <h4 style={{ fontSize: '18px', marginBottom: '10px' }}>Due Diligence & Certidões</h4>
-              <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '14.5px', lineHeight: '1.6' }}>
-                Conferência e triagem de certidões pessoais (cíveis, trabalhistas, fiscais e protestos) dos vendedores e compradores, além de matrícula atualizada e ônus reais.
+              <span className="imob-tag">SEGURANÇA JURÍDICA</span>
+              <h3 style={{ fontSize: '22px', marginBottom: '14px', color: 'var(--accent-gold)' }}>
+                2. Due Diligence Imobiliária & Auditoria
+              </h3>
+              <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '15px', lineHeight: '1.6', marginBottom: '20px' }}>
+                Auditoria minuciosa das certidões dos vendedores, empresas coligadas e do imóvel para certificar que a transação é 100% inatacável.
               </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14.5px', color: 'rgba(255,255,255,0.85)' }}>
+                  <CheckCircle2 size={16} color="var(--accent-gold)" style={{ flexShrink: 0 }} /> Parecer conclusivo em linguagem clara para o cliente
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14.5px', color: 'rgba(255,255,255,0.85)' }}>
+                  <CheckCircle2 size={16} color="var(--accent-gold)" style={{ flexShrink: 0 }} /> Soluções para apontamentos e processos cíveis/trabalhistas
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14.5px', color: 'rgba(255,255,255,0.85)' }}>
+                  <CheckCircle2 size={16} color="var(--accent-gold)" style={{ flexShrink: 0 }} /> Prevenção ativa de anulações por fraude ou evicção
+                </li>
+              </ul>
+              <div style={{ marginTop: 'auto' }}>
+                <button 
+                  onClick={() => handleImobWhatsApp('corretor')}
+                  style={{ background: 'none', border: 'none', color: 'var(--accent-gold)', fontWeight: '600', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
+                >
+                  Auditar imóvel e partes <ArrowRight size={16} />
+                </button>
+              </div>
             </div>
 
+            {/* Serviço 3: Regularização */}
             <div className="imob-card">
-              <Scale size={28} color="var(--accent-gold)" style={{ marginBottom: '16px' }} />
-              <h4 style={{ fontSize: '18px', marginBottom: '10px' }}>Blindagem de Comissões</h4>
-              <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '14.5px', lineHeight: '1.6' }}>
-                Cláusulas de intermediação claras e juridicamente seguras que protegem o direito aos honorários de corretagem da imobiliária e dos corretores envolvidos.
+              <span className="imob-tag">DESTRAVE PATRIMONIAL</span>
+              <h3 style={{ fontSize: '22px', marginBottom: '14px', color: 'var(--accent-gold)' }}>
+                3. Regularização Imobiliária (Usucapião e Inventários)
+              </h3>
+              <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '15px', lineHeight: '1.6', marginBottom: '20px' }}>
+                Viabilizamos a venda de imóveis represados sem matrícula ou com espólio pendente. Atendimento também para o <strong>patrimônio pessoal do próprio corretor</strong>.
               </p>
-            </div>
-
-            <div className="imob-card">
-              <Users size={28} color="var(--accent-gold)" style={{ marginBottom: '16px' }} />
-              <h4 style={{ fontSize: '18px', marginBottom: '10px' }}>Suporte Direto aos Corretores</h4>
-              <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '14.5px', lineHeight: '1.6' }}>
-                Canal ágil para esclarecer dúvidas documentais pontuais com a equipe jurídica da banca antes e durante as reuniões com os clientes.
-              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px 0', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14.5px', color: 'rgba(255,255,255,0.85)' }}>
+                  <CheckCircle2 size={16} color="var(--accent-gold)" style={{ flexShrink: 0 }} /> Usucapião Extrajudicial rápida em cartório
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14.5px', color: 'rgba(255,255,255,0.85)' }}>
+                  <CheckCircle2 size={16} color="var(--accent-gold)" style={{ flexShrink: 0 }} /> Inventários com alvará e cessão de direitos hereditários
+                </li>
+                <li style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14.5px', color: 'rgba(255,255,255,0.85)' }}>
+                  <CheckCircle2 size={16} color="var(--accent-gold)" style={{ flexShrink: 0 }} /> Imóveis valorizados em até 30% após a regularização
+                </li>
+              </ul>
+              <div style={{ marginTop: 'auto' }}>
+                <button 
+                  onClick={() => handleImobWhatsApp('corretor')}
+                  style={{ background: 'none', border: 'none', color: 'var(--accent-gold)', fontWeight: '600', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', padding: 0 }}
+                >
+                  Consultar caso de regularização <ArrowRight size={16} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. DESTRAVE DE NEGÓCIOS COMPLEXOS */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-surface)' }}>
-        <div className="container" style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
-            <div>
-              <div className="imob-hero-badge">
-                Destrave de Negócios
-              </div>
-              <h2 style={{ fontSize: 'clamp(26px, 2.5vw, 36px)', marginBottom: '20px' }}>
-                Não perca vendas por pendências documentais ou sucessórias.
-              </h2>
-              <p style={{ color: 'rgba(255, 255, 255, 0.78)', fontSize: '16.5px', lineHeight: '1.65', marginBottom: '24px' }}>
-                Quantas vendas a sua imobiliária já viu esfriarem porque o imóvel pertencia a herdeiros, estava sem inventário concluído, sem habite-se ou com irregularidade de registro?
-              </p>
-              <p style={{ color: 'rgba(255, 255, 255, 0.78)', fontSize: '16.5px', lineHeight: '1.65', marginBottom: '32px' }}>
-                A Andrade & Florio atua como o braço jurídico resolutivo da sua equipe para estruturar soluções viáveis e destravar negócios que a concorrência dá como perdidos:
-              </p>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                {[
-                  'Inventários e Partilhas Extrajudiciais Express (para liberar o imóvel à venda)',
-                  'Regularização Fundiária e Usucapião Urbana e Rural',
-                  'Cancelamento de penhoras, gravames e hipotecas pretéritas',
-                  'Planejamento Patrimonial e Holdings Familiares para compradores investidores'
-                ].map((item, idx) => (
-                  <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <CheckCircle2 size={20} color="var(--accent-gold)" style={{ flexShrink: 0, marginTop: '3px' }} />
-                    <span style={{ fontSize: '15.5px', color: 'rgba(255, 255, 255, 0.85)' }}>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div style={{ 
-              background: 'linear-gradient(135deg, #1f2024 0%, #151618 100%)', 
-              border: '1px solid var(--accent-gold)', 
-              borderRadius: '12px', 
-              padding: '2.5rem',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
-            }}>
-              <Scale size={42} color="var(--accent-gold)" style={{ marginBottom: '20px' }} />
-              <h3 style={{ fontSize: '22px', marginBottom: '14px' }}>Autoridade Notarial & Registral</h3>
-              <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '15px', lineHeight: '1.65', marginBottom: '20px' }}>
-                Liderada pela <strong>Dra. Líbia Florio</strong>, Mestre em Direito pela Universidade de São Paulo (USP) e com mais de três décadas de vivência registral e imobiliária.
-              </p>
-              <p style={{ color: 'rgba(255, 255, 255, 0.75)', fontSize: '15px', lineHeight: '1.65', marginBottom: '28px' }}>
-                Oferecemos à sua imobiliária o mesmo peso técnico que atende grandes grupos empresariais e patrimônios privados.
-              </p>
-              <button 
-                onClick={handleImobWhatsApp} 
-                className="btn-gold" 
-                style={{ width: '100%', padding: '0.9rem', fontSize: '15px', cursor: 'pointer', border: 'none' }}
-              >
-                Falar com a Equipe de Parcerias
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. COMO FUNCIONA (FLUXO EM 3 PASSOS) */}
-      <section id="como-funciona" className="section">
+      {/* 4. COMO FUNCIONA (FLUXO EM 3 PASSOS) */}
+      <section id="como-funciona" className="section" style={{ backgroundColor: 'var(--bg-surface)' }}>
         <div className="container" style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
             <h2 style={{ fontSize: 'clamp(26px, 2.5vw, 36px)', marginBottom: '16px' }}>
@@ -364,7 +446,100 @@ export default function Imobiliarias() {
         </div>
       </section>
 
-      {/* 6. BANNER FINAL SEM ATRITO */}
+      {/* 5. AUTORIDADE TÉCNICA - DRA. LÍBIA FLORIO */}
+      <section className="section">
+        <div className="container" style={{ maxWidth: '1050px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
+            <div style={{ position: 'relative' }}>
+              <div style={{ position: 'absolute', top: '-15px', right: '-15px', width: '100%', height: '100%', border: '1px solid var(--accent-gold)', zIndex: 0, borderRadius: '8px' }}></div>
+              <img 
+                src="/dra-libia.png" 
+                alt="Dra. Líbia Florio - Mestre em Direito pela USP" 
+                style={{ position: 'relative', zIndex: 1, objectFit: 'cover', width: '100%', height: 'auto', borderRadius: '8px', border: '1px solid var(--bg-surface-light)' }} 
+                onError={(e) => { e.target.style.display = 'none'; }}
+              />
+            </div>
+
+            <div>
+              <div className="imob-hero-badge" style={{ marginBottom: '16px' }}>
+                <Award size={14} /> Coordenação Jurídica Especializada
+              </div>
+
+              <h2 style={{ fontSize: 'clamp(26px, 2.4vw, 36px)', marginBottom: '16px' }}>
+                Dra. Líbia Florio
+              </h2>
+
+              <p style={{ color: 'var(--accent-gold)', fontSize: '16px', fontWeight: '600', marginBottom: '20px' }}>
+                Mestre em Direito pela Universidade de São Paulo (USP)
+              </p>
+
+              <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '15.5px', lineHeight: '1.7', marginBottom: '16px' }}>
+                Advogada especialista com mais de duas décadas de atuação no Direito Imobiliário e Contratual de alta complexidade. Com passagens por renomadas bancas do setor e atuação direta em due diligence para incorporadoras e fundos imobiliários.
+              </p>
+
+              <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '15.5px', lineHeight: '1.7', marginBottom: '28px' }}>
+                À frente da <strong>Andrade & Florio</strong>, une o rigor técnico acadêmico da USP à velocidade que o mercado imobiliário moderno exige para não perder fechamentos.
+              </p>
+
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <button 
+                  onClick={() => setIsDiplomaOpen(true)}
+                  className="btn-outline"
+                  style={{ padding: '0.8rem 1.6rem', fontSize: '14px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <Award size={16} color="var(--accent-gold)" /> Ver Diploma de Mestrado USP
+                </button>
+                <a 
+                  href="https://www.linkedin.com/in/libia-florio-1a938634/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="btn-outline"
+                  style={{ padding: '0.8rem 1.6rem', fontSize: '14px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <LinkedinIcon size={16} /> Perfil no LinkedIn
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. FAQ - PERGUNTAS FREQUENTES */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-surface)' }}>
+        <div className="container" style={{ maxWidth: '880px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+            <span className="imob-tag">DÚVIDAS FREQUENTES</span>
+            <h2 style={{ fontSize: 'clamp(26px, 2.4vw, 36px)', marginBottom: '14px' }}>
+              Perguntas Frequentes de Imobiliárias e Corretores
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px' }}>
+              Tudo o que você precisa saber sobre prazos, custos e modelo de parceria sob demanda.
+            </p>
+          </div>
+
+          <div>
+            {faqs.map((faq, idx) => (
+              <div key={idx} className="faq-accordion-item">
+                <button className="faq-header" onClick={() => toggleFaq(idx)}>
+                  <span>{faq.q}</span>
+                  <ChevronDown 
+                    size={20} 
+                    color="var(--accent-gold)" 
+                    style={{ transform: openFaq === idx ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease', flexShrink: 0, marginLeft: '12px' }} 
+                  />
+                </button>
+                {openFaq === idx && (
+                  <div className="faq-body">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. BANNER FINAL SEM ATRITO */}
       <section className="section" style={{ paddingTop: '2rem', paddingBottom: '6rem' }}>
         <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
           <div className="imob-cta-banner" style={{ textAlign: 'center' }}>
@@ -376,7 +551,7 @@ export default function Imobiliarias() {
             </p>
 
             <button 
-              onClick={handleImobWhatsApp} 
+              onClick={() => handleImobWhatsApp('gestor')} 
               className="btn-gold" 
               style={{ padding: '1.1rem 2.8rem', fontSize: '17px', fontWeight: '600', cursor: 'pointer', border: 'none', display: 'inline-flex', alignItems: 'center', gap: '10px' }}
             >
@@ -388,6 +563,69 @@ export default function Imobiliarias() {
           </div>
         </div>
       </section>
+
+      {/* MODAL DO DIPLOMA USP */}
+      {isDiplomaOpen && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'rgba(0,0,0,0.85)',
+            zIndex: 99999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px'
+          }}
+          onClick={() => setIsDiplomaOpen(false)}
+        >
+          <div 
+            style={{
+              position: 'relative',
+              maxWidth: '850px',
+              width: '100%',
+              backgroundColor: '#121214',
+              borderRadius: '8px',
+              padding: '24px',
+              border: '1px solid var(--accent-gold)'
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setIsDiplomaOpen(false)}
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'none',
+                border: 'none',
+                color: '#fff',
+                cursor: 'pointer'
+              }}
+            >
+              <X size={24} />
+            </button>
+            <h3 style={{ marginBottom: '16px', color: 'var(--accent-gold)' }}>
+              Diploma de Mestrado em Direito - Universidade de São Paulo (USP)
+            </h3>
+            <img 
+              src="/diploma-usp.png" 
+              alt="Diploma de Mestrado em Direito USP - Dra. Líbia Florio" 
+              style={{ width: '100%', height: 'auto', borderRadius: '4px' }}
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'block';
+              }}
+            />
+            <div style={{ display: 'none', padding: '40px', textAlign: 'center', color: 'var(--text-muted)' }}>
+              Diploma arquivado institucionalmente. Dra. Líbia Florio - Faculdade de Direito do Largo São Francisco (FDUSP).
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
       <StickyWhatsApp />
