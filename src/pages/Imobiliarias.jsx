@@ -139,7 +139,8 @@ export default function Imobiliarias() {
     } else if (origem === 'corretor') {
       msg = 'Olá! Sou corretor de imóveis e tenho um negócio precisando de minuta ágil em 24h/48h, due diligence ou regularização de imóvel travado.';
     }
-    handleWhatsAppClick('nlxZCPiY6qAcEMzlgIgD', msg);
+    const url = `https://wa.me/5511993725876?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
   };
 
   const toggleFaq = (index) => {
