@@ -22,6 +22,7 @@ import KitContratos from './pages/KitContratos';
 import AcervoContratos from './pages/AcervoContratos';
 import GeradorContratos from './pages/GeradorContratos';
 import Despejo from './pages/Despejo';
+import Remax from './pages/Remax';
 
 // Componente para rastrear mudanças de página no Google Ads (SPA)
 function PageViewTracker() {
@@ -88,6 +89,10 @@ function App() {
         <Route path="/espejo" element={<Despejo />} />
         <Route path="/acao-de-despejo" element={<Despejo />} />
         <Route path="/defesa-despejo" element={<Despejo />} />
+        <Route path="/remax" element={<Remax />} />
+        <Route path="/re-max" element={<Remax />} />
+        <Route path="/servicos/remax" element={<Remax />} />
+        <Route path="/parceria-remax" element={<Remax />} />
       </Routes>
 
       {showLgpdBanner && (
