@@ -447,59 +447,115 @@ export default function Imobiliarias() {
       </section>
 
       {/* 5. AUTORIDADE TÉCNICA - DRA. LÍBIA FLORIO */}
-      <section className="section">
-        <div className="container" style={{ maxWidth: '1050px', margin: '0 auto' }}>
+      <section className="section" style={{ backgroundColor: 'var(--bg-surface)' }}>
+        <div className="container" style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem', alignItems: 'center' }}>
-            <div style={{ position: 'relative' }}>
-              <div style={{ position: 'absolute', top: '-15px', right: '-15px', width: '100%', height: '100%', border: '1px solid var(--accent-gold)', zIndex: 0, borderRadius: '8px' }}></div>
-              <img 
-                src="/dra-libia.png" 
-                alt="Dra. Líbia Florio - Mestre em Direito pela USP" 
-                style={{ position: 'relative', zIndex: 1, objectFit: 'cover', width: '100%', height: 'auto', borderRadius: '8px', border: '1px solid var(--bg-surface-light)' }} 
-                onError={(e) => { e.target.style.display = 'none'; }}
-              />
+            
+            {/* Diploma USP (Miniatura Clicável com Efeito Ampliar) */}
+            <div>
+              <div 
+                style={{ 
+                  position: 'relative', 
+                  padding: '1rem', 
+                  background: 'var(--bg-surface-light)', 
+                  border: '1px solid var(--accent-gold)', 
+                  borderRadius: '6px',
+                  cursor: 'pointer', 
+                  overflow: 'hidden'
+                }}
+                onClick={() => setIsDiplomaOpen(true)}
+                onMouseOver={e => {
+                  const overlay = e.currentTarget.querySelector('.diploma-hover-overlay');
+                  if (overlay) overlay.style.opacity = '1';
+                }}
+                onMouseOut={e => {
+                  const overlay = e.currentTarget.querySelector('.diploma-hover-overlay');
+                  if (overlay) overlay.style.opacity = '0';
+                }}
+              >
+                <img 
+                  src="/diploma-usp.jpg" 
+                  alt="Diploma de Mestrado da USP - Dra. Líbia Florio" 
+                  style={{ width: '100%', height: 'auto', display: 'block', border: '1px solid var(--bg-surface)', borderRadius: '4px' }}
+                />
+                <div 
+                  className="diploma-hover-overlay"
+                  style={{
+                    position: 'absolute', 
+                    top: 0, 
+                    left: 0, 
+                    width: '100%', 
+                    height: '100%',
+                    background: 'rgba(17, 17, 17, 0.72)', 
+                    display: 'flex', 
+                    flexDirection: 'column',
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    opacity: 0, 
+                    transition: 'opacity 0.3s ease', 
+                    pointerEvents: 'none'
+                  }}
+                >
+                  <Search size={40} color="var(--accent-gold)" style={{ marginBottom: '0.5rem' }} />
+                  <span style={{ color: 'var(--accent-gold)', letterSpacing: '2px', textTransform: 'uppercase', fontSize: '0.85rem', fontWeight: '700' }}>Ampliar Diploma</span>
+                </div>
+              </div>
+              <p style={{ textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '1rem', fontStyle: 'italic' }}>
+                Mestrado em Direito Comercial - Universidade de São Paulo (USP) • Clique na imagem para ampliar
+              </p>
             </div>
 
+            {/* Bio Dra. Líbia */}
             <div>
               <div className="imob-hero-badge" style={{ marginBottom: '16px' }}>
                 <Award size={14} /> Coordenação Jurídica Especializada
               </div>
 
-              <h2 style={{ fontSize: 'clamp(26px, 2.4vw, 36px)', marginBottom: '16px' }}>
-                Dra. Líbia Florio
-              </h2>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
+                <h2 style={{ fontSize: 'clamp(26px, 2.4vw, 36px)', margin: 0 }}>
+                  Dra. Líbia Florio
+                </h2>
+                <a 
+                  href="https://www.linkedin.com/in/libiaflorio/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ color: 'var(--accent-gold)', display: 'flex', transition: 'opacity 0.2s ease' }} 
+                  onMouseOver={e => e.currentTarget.style.opacity = '0.7'}
+                  onMouseOut={e => e.currentTarget.style.opacity = '1'}
+                  aria-label="LinkedIn Dra. Líbia Florio"
+                >
+                  <LinkedinIcon size={28} />
+                </a>
+              </div>
 
-              <p style={{ color: 'var(--accent-gold)', fontSize: '16px', fontWeight: '600', marginBottom: '20px' }}>
+              <p style={{ color: 'var(--accent-gold)', fontSize: '15px', fontWeight: '600', marginBottom: '20px' }}>
                 Mestre em Direito pela Universidade de São Paulo (USP)
               </p>
 
               <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '15.5px', lineHeight: '1.7', marginBottom: '16px' }}>
-                Advogada especialista com mais de duas décadas de atuação no Direito Imobiliário e Contratual de alta complexidade. Com passagens por renomadas bancas do setor e atuação direta em due diligence para incorporadoras e fundos imobiliários.
+                Advogada especialista com mais de três décadas de atuação no Direito Imobiliário, Notarial e Registral de alta complexidade. Com passagens por renomadas bancas do setor e atuação direta em due diligence para incorporadoras e fundos imobiliários.
               </p>
 
-              <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '15.5px', lineHeight: '1.7', marginBottom: '28px' }}>
+              <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '15.5px', lineHeight: '1.7', marginBottom: '24px' }}>
                 À frente da <strong>Andrade & Florio</strong>, une o rigor técnico acadêmico da USP à velocidade que o mercado imobiliário moderno exige para não perder fechamentos.
               </p>
 
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <button 
-                  onClick={() => setIsDiplomaOpen(true)}
-                  className="btn-outline"
-                  style={{ padding: '0.8rem 1.6rem', fontSize: '14px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-                >
-                  <Award size={16} color="var(--accent-gold)" /> Ver Diploma de Mestrado USP
-                </button>
-                <a 
-                  href="https://www.linkedin.com/in/libia-florio-1a938634/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn-outline"
-                  style={{ padding: '0.8rem 1.6rem', fontSize: '14px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-                >
-                  <LinkedinIcon size={16} /> Perfil no LinkedIn
-                </a>
+              <div style={{ display: 'flex', gap: '2rem', borderTop: '1px solid rgba(212,175,55,0.15)', paddingTop: '1.5rem' }}>
+                <div>
+                  <strong style={{ fontSize: '1.5rem', color: 'var(--text-main)', display: 'block' }}>USP</strong>
+                  <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Mestrado em Direito</span>
+                </div>
+                <div>
+                  <strong style={{ fontSize: '1.5rem', color: 'var(--text-main)', display: 'block' }}>30+</strong>
+                  <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Anos de Prática Jurídica</span>
+                </div>
+                <div>
+                  <strong style={{ fontSize: '1.5rem', color: 'var(--text-main)', display: 'block' }}>OAB/SP</strong>
+                  <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Comissão Especial</span>
+                </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -564,65 +620,58 @@ export default function Imobiliarias() {
         </div>
       </section>
 
-      {/* MODAL DO DIPLOMA USP */}
+      {/* Lightbox / Modal do Diploma USP */}
       {isDiplomaOpen && (
         <div 
           style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100vw',
+            position: 'fixed', 
+            top: 0, 
+            left: 0, 
+            width: '100vw', 
             height: '100vh',
-            backgroundColor: 'rgba(0,0,0,0.85)',
-            zIndex: 99999,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '20px'
+            backgroundColor: 'rgba(0, 0, 0, 0.92)', 
+            backdropFilter: 'blur(6px)',
+            zIndex: 99999, 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            padding: '2rem'
           }}
           onClick={() => setIsDiplomaOpen(false)}
         >
-          <div 
-            style={{
-              position: 'relative',
-              maxWidth: '850px',
-              width: '100%',
-              backgroundColor: '#121214',
-              borderRadius: '8px',
-              padding: '24px',
-              border: '1px solid var(--accent-gold)'
-            }}
-            onClick={e => e.stopPropagation()}
-          >
+          <div style={{ position: 'relative', maxWidth: '880px', width: '100%' }} onClick={(e) => e.stopPropagation()}>
             <button 
               onClick={() => setIsDiplomaOpen(false)}
               style={{
-                position: 'absolute',
-                top: '16px',
-                right: '16px',
-                background: 'none',
-                border: 'none',
-                color: '#fff',
-                cursor: 'pointer'
+                position: 'absolute', 
+                top: '-45px', 
+                right: '0', 
+                background: 'none', 
+                border: 'none', 
+                color: 'var(--accent-gold)', 
+                fontSize: '2.8rem', 
+                cursor: 'pointer', 
+                lineHeight: '1'
               }}
+              aria-label="Fechar"
             >
-              <X size={24} />
+              &times;
             </button>
-            <h3 style={{ marginBottom: '16px', color: 'var(--accent-gold)' }}>
-              Diploma de Mestrado em Direito - Universidade de São Paulo (USP)
-            </h3>
             <img 
-              src="/diploma-usp.png" 
-              alt="Diploma de Mestrado em Direito USP - Dra. Líbia Florio" 
-              style={{ width: '100%', height: 'auto', borderRadius: '4px' }}
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextSibling.style.display = 'block';
-              }}
+              src="/diploma-usp.jpg" 
+              alt="Diploma de Mestrado da USP - Dra. Líbia Florio" 
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
+                display: 'block',
+                border: '2px solid var(--accent-gold)', 
+                boxShadow: '0 15px 50px rgba(0,0,0,0.7)',
+                borderRadius: '4px'
+              }} 
             />
-            <div style={{ display: 'none', padding: '40px', textAlign: 'center', color: 'var(--text-muted)' }}>
-              Diploma arquivado institucionalmente. Dra. Líbia Florio - Faculdade de Direito do Largo São Francisco (FDUSP).
-            </div>
+            <p style={{ textAlign: 'center', color: '#fff', fontSize: '0.9rem', marginTop: '1rem', letterSpacing: '0.5px' }}>
+              Diploma de Mestrado em Direito - Faculdade de Direito da Universidade de São Paulo (FDUSP)
+            </p>
           </div>
         </div>
       )}
